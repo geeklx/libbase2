@@ -1,0 +1,1035 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.geek.libbase">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.WRITE_MEDIA_STORAGE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <!-- 用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!--适配Android R包可见性 开始-->
+    <queries package="${applicationId}">
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="android.media.action.ACTION_VIDEO_CAPTURE" />
+        </intent>
+    </queries>
+    <!--适配Android R包可见性 结束-->
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <!--        android:label="@string/app_namelibbase"-->
+        <provider
+            android:name="com.geek.libfileprovdider.LibFileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <!--        pluginbufen-->
+        <activity android:name=".plugins.proxy.ProxyActivity" />
+        <service android:name=".plugins.proxy.ProxyService" />
+        <receiver android:name=".plugins.proxy.ProxyBroadcastReceiver" />
+
+        <activity
+            android:name=".baserecycleview.yewu1.ActViewPageYewuList1"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ActViewPageYewuList1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".baserecycleview.yewu2.ActYewuList1"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ActYewuList1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".viewpager2.LunboMainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.LunboMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".viewpager2.ui.GalleryActivity" />
+        <activity android:name=".viewpager2.ui.TouTiaoActivity" />
+        <activity android:name=".viewpager2.ui.TVActivity" />
+        <activity android:name=".viewpager2.ui.RecyclerViewBannerActivity" />
+        <activity android:name=".viewpager2.ui.ConstraintLayoutBannerActivity" />
+        <activity
+            android:name=".viewpager2.ui.Vp2FragmentRecyclerviewActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".fragmentsgeek.demo1.MkDemo1Activity" />
+        <activity android:name=".fragmentsgeek.demo2.MkDemo2Activity" />
+        <!--demo2 config start-->
+        <meta-data
+            android:name="DEMO2_CONFIG"
+            android:value="${DEMO2_CONFIG_VALUE}" />
+        <meta-data
+            android:name="STATISTICS"
+            android:value="${STATISTICS_VALUE}" />
+        <!--demo2 config end-->
+
+        <!--demo3 config start-->
+        <activity android:name=".fragmentsgeek.demo3.MkDemo3Activity" />
+        <meta-data
+            android:name="DEMO3_CONFIG"
+            android:value="${DEMO3_CONFIG_VALUE}" />
+        <!--demo3 config end-->
+
+        <!--demo4 config start-->
+        <activity android:name=".fragmentsgeek.demo4.MkDemo4Activity" />
+        <meta-data
+            android:name="DEMO4_CONFIG"
+            android:value="${DEMO4_CONFIG_VALUE}" />
+        <!--demo4 config end-->
+        <activity android:name=".fragmentsgeek.demo5.MkDemo5Activity" />
+        <activity
+            android:name=".fragmentsgeek.NkMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.NkMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".plugin.ProxyActivity" />
+        <activity
+            android:name=".recycleviewcard2.StackAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.StackAct" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.StackAct"
+                    android:scheme="dataability" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.StackAct"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.StackAct"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".recycleviewcard2.StackActVertical"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.StackActVertical" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".recycleviewcard1.RCardAct1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.RCardAct1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.RCardAct1"
+                    android:scheme="dataability" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.RCardAct1"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.RCardAct1"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".splshact.SplshActDemo"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.SplshActDemo" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".fenlei.FenleiAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.FenleiAct" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".fenlei.fenlei1.FenleiAct1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.FenleiAct1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.geek.libswipebacklayout.demo.SwipebacklayoutDemoActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.SwipebacklayoutDemoActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.geek.liblanguage.demo.LanguageAct"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.LanguageAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.geek.tablayout.TablayoutAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.TablayoutAct" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.tablayout.CommonTabActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.tablayout.SlidingTabActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.tablayout.SegmentTabActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.geek.libwebview.DemoWebviewMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.webview.DemoWebviewMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--1.0-->
+        <activity
+            android:name="com.geek.libwebview.base.WebViewMainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="${applicationId}.ad.web.page" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.WebViewMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libwebview.base.WebViewPartActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Transparent">
+
+            <intent-filter>
+                <action android:name="${applicationId}.ad.web.page.part" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libwebview.base.WebViewPartActivity2"
+            android:exported="true"
+            android:theme="@style/Theme.Transparent">
+
+            <intent-filter>
+                <action android:name="${applicationId}.ad.web.page.part2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libwebview.base.AdCommPart1Activity"
+            android:exported="true"
+            android:theme="@style/Theme.Transparent">
+
+            <intent-filter>
+                <action android:name="${applicationId}.ad.web.page.AdCommPart1Activity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--2.0-->
+        <activity
+            android:name="com.geek.libwebview.base.WebViewActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="${applicationId}.web.page" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.WebViewActivity"
+                    android:scheme="dataability" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.WebViewActivity"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.WebViewActivity"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.geek.libwebview.activity.HiosMainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.TwoMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libwebview.activity.NoHiosMainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.NoHiosMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.geek.libglide47.GlideMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.GlideMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libglide47.GlideMainActivityalluse"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.GlideMainActivityalluse" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libglide47.GlideMainActivityjiugongge"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.GlideMainActivityjiugongge" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libglide47.demo.imageutil.SingleImageActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatFullscreenStyle" />
+        <activity
+            android:name="com.geek.libglide47.demo.imageutil.SingleImagePhotoViewActivity"
+            android:exported="true"
+            android:theme="@style/AppCompatFullscreenStyle" />
+        <activity
+            android:name="com.geek.libglide47.demo.imageutil.ImagesActivity"
+            android:exported="true"
+            android:theme="@style/ImagesStyle" />
+
+
+        <activity
+            android:name="com.geek.libupdateapp.DemoUpdateAppMainActivity"
+            android:exported="true"
+            android:requestLegacyExternalStorage="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.ac.github.DemoUpdateAppMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.geek.libupdateapp.util.UpdateoldFileProvider"
+            android:authorities="${applicationId}.UpdateoldFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/updateold_files_public" />
+        </provider>
+
+
+        <activity
+            android:name="com.just.agentweb.geek.activity.AgentwebAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.AgentwebAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--        <activity-->
+        <!--            android:name="com.just.agentweb.geek.activity.WebActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:launchMode="singleTop" />-->
+        <activity
+            android:name="com.just.agentweb.geek.hois3.HIOSAct1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.HIOSAct1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.just.agentweb.geek.hois3.HIOSLoginDemoAct1"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1"
+                    android:scheme="dataability" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.just.agentweb.geek.activity.RemoteWebViewlActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:process=":web" />
+
+        <service
+            android:name="com.just.agentweb.geek.service.WebService"
+            android:exported="true"
+            android:process=":web" />
+
+        <activity
+            android:name="com.just.agentweb.geek.activity.CommonActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.just.agentweb.geek.activity.EasyWebActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name="com.just.agentweb.geek.activity.ContainerActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name="com.just.agentweb.geek.activity.AutoHidenToolbarActivity"
+            android:exported="true" />
+
+        <activity
+            android:name="com.just.agentweb.geek.activity.NativeDownloadActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="fullSensor" />
+
+        <provider
+            android:name="com.just.agentweb.geek.provider.ServiceProvider"
+            android:authorities="${applicationId}.ServiceProvider"
+            android:exported="true" />
+
+        <provider
+            android:name="com.just.agentweb.geek.provider.WebServiceProvider"
+            android:authorities="${applicationId}.WebServiceProvider"
+            android:exported="true"
+            android:process=":web" />
+
+        <activity
+            android:name="com.just.agentweb.geek.activity.ExternalActivity"
+            android:exported="true">
+            <intent-filter>
+                <!--                <action android:name="android.intent.action.VIEW" />-->
+                <category android:name="android.intent.category.DEFAULT" />
+                <!--BROWSABLE指定该Activity能被浏览器安全调用-->
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="sample.just.com"
+                    android:scheme="agentweb" />
+            </intent-filter>
+        </activity>
+        <!--HIOS 3.0-->
+        <activity
+            android:name="com.just.agentweb.geek.activity.WebActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+
+            <intent-filter>
+                <action android:name="${applicationId}.web.page3" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.WebActivity"
+                    android:scheme="dataability" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.WebActivity"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.WebActivity"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.just.agentweb.geek.activity.JsWebActivity2"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="${applicationId}.web.page3.js2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity2"
+                    android:scheme="dataability" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity2"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity2"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.just.agentweb.geek.activity.JsWebActivity3"
+            android:configChanges="orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="${applicationId}.web.page3.js3" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity3"
+                    android:scheme="dataability" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity3"
+                    android:scheme="http" />
+            </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="aic.sairobo.cn"
+                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity3"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.zaaach.citypicker.activity.CityPickerAct"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/DefaultCityPickerTheme">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.CityPickerAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.zaaach.citypicker.activity.DemoAct1"
+            android:theme="@style/DefaultCityPickerTheme" />
+
+
+        <activity
+            android:name="drawthink.expandablerecyclerview.demo.ExpandableAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.phone.expandableview" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="drawthink.expandablerecyclerview.demo.extextview.TextViewAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.phone.TextViewAct" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="drawthink.expandablerecyclerview.demo.eximageview.ImageViewAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.phone.ImageViewAct" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity
+            android:name="com.kunminx.linkagelistview.ElmAct"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ElmAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.luck.pictureselector.PictureSelectorAct"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.luck.pictureselector.PhotoFragmentActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|keyboard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.luck.pictureselector.PictureSelectorSimpleActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.PictureSelectorSimpleActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="com.lxj.xpopupdemo.XpopupMainActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustNothing">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.XpopupMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lxj.xpopupdemo.XpopupDemoActivity"
+            android:screenOrientation="portrait" />
+
+
+
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.MainActivitylibxuanzeqi"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.MainActivitylibxuanzeqi" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.SinglePickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.DateTimePickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.LinkagePickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.AddressPickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.ColorPickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.FilePickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.CalendarPickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.geek.libxuanzeqi.activity.ImagePickerActivitylibxuanzeqi"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+
+
+
+
+        <activity
+            android:name="com.geek.zxinglibs3.SaomaAct3"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.SaomaAct3" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.zxinglibs3.Saoma3CreateCodeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.Saoma3CreateCodeActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.Saoma3CommonScanActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+<!--        <activity-->
+<!--            android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity4"-->
+<!--            android:exported="true"-->
+<!--            android:screenOrientation="portrait">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="${applicationId}.hs.act.slbapp.Saoma3CommonScanActivity4" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--        <activity-->
+<!--            android:name="com.geek.zxinglibs3.idcard.ScannerActivity"-->
+<!--            android:exported="true"-->
+<!--            android:screenOrientation="portrait">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="${applicationId}.hs.act.slbapp.ScannerActivity" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+        <activity
+            android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity2"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.Saoma3CommonScanActivity2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity1"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.Saoma3CommonScanActivity1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity
+            android:name="com.necer.ncalendar.activity.RiliMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.RiliMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.necer.ncalendar.activity.TestMiui9Activity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name="com.necer.ncalendar.activity.TestMiui10Activity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.necer.ncalendar.TestActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name="com.necer.ncalendar.activity.TestEmuiActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.necer.ncalendar.activity.TestWeekHoldActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name="com.necer.ncalendar.activity.TestAddViewActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name="com.necer.ncalendar.activity.CustomCalendarActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <!--一下为新-->
+
+
+        <activity
+            android:name="com.necer.ncalendar.activity.TestMonthActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.necer.ncalendar.activity.TestWeekActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.necer.ncalendar.activity.TestViewPagerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name="com.necer.ncalendar.activity.TestGeneralActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity
+            android:name="com.necer.ncalendar.activity.TestStretchActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <!--        <activity-->
+        <!--            android:name=".TestActivity"-->
+        <!--            android:configChanges="orientation|screenSize|keyboardHidden" />-->
+
+
+        <activity
+            android:name="com.necer.ncalendar.activity.GeneralAdapterActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name="com.necer.ncalendar.activity.TestAdapterActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name="com.necer.ncalendar.activity.DingAdapterActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+
+
+        <service android:name="com.amap.api.location.APSService" />
+        <!--        <meta-data-->
+        <!--            android:name="com.amap.api.v2.apikey"-->
+        <!--            android:value="dfc6928ba59ca473ecae8061c6913fcb" />-->
+        <!--            android:value="d589a9e9273ebd4e739c33c38bd6dd19" />-->
+        <!--        <meta-data-->
+        <!--            android:name="com.amap.api.v2.apikey"-->
+        <!--            android:value="5a17ab9cc5aa0d74e090c37f3ecd5a15" />-->
+        <activity
+            android:name="com.geek.liblocations.LocActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.LocActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+    </application>
+</manifest>

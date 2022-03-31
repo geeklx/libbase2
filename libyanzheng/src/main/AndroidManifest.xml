@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.slbyanzheng">
+
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+<!--        android:label="@string/app_nameslbyanzheng"-->
+
+        <activity
+            android:name=".ZhiwenActtivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ZhiwenActtivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".zhiwen1.ZhiwenAct1"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ZhiwenAct1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".zhiwen2.ZhiwenAct2"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ZhiwenAct2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".slide.SlideAct1"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.SlideAct1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".zhiwen2.GestureSettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".zhiwen2.GestureVerifyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".zhiwen2.GesturePswMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".zhiwen2.FingerprintPswMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".zhiwen2.OCRMainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".zhiwen2.CropImageActivity"
+            android:screenOrientation="portrait" />
+    </application>
+</manifest>

@@ -1,0 +1,86 @@
+apply from: "${rootDir.path}/gradle/publish.gradle"
+apply from: "${rootDir.path}/gradle/base.gradle"
+def librarys = rootProject.ext.dependencies //
+android {
+    defaultConfig {
+        def stValue = "ceshi"
+        manifestPlaceholders = [
+                // DEMO2_CONFIG_VALUE: ".demo2.factorys.MkDemo2Factory1",
+                DEMO2_CONFIG_VALUE: "com.geek.libbase.fragmentsgeek.demo2.factorys.MkDemo2Factory2",
+                DEMO3_CONFIG_VALUE: "com.geek.libbase.fragmentsgeek.demo3.factorys.MkDemo3Factory",
+                DEMO4_CONFIG_VALUE: "com.geek.libbase.fragmentsgeek.demo4.factorys.MkDemo4Factory",
+                STATISTICS_VALUE  : stValue
+        ]
+    }
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+}
+dependencies {
+    implementation project(':libutils')
+//    implementation 'com.github.geeklx:fosunglibs:1.4.6'
+    // agentlib
+    api 'us.feras.mdv:markdownview:1.1.0'
+    api 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    api 'com.github.lzyzsd:jsbridge:1.0.4'
+    api 'com.tencent.sonic:sdk:2.0.0'
+    api 'com.coolindicator.sdk:coolindicator:1.0.0-beta'
+    api 'com.github.Justson:flying-pigeon:v1.0.7'
+    api 'com.github.Justson:dispatch-queue:v1.0.5'
+    api 'com.github.Justson:Downloader:v4.1.9-androidx'
+    api 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx'
+    api 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx'
+    //3D地图so及jar
+    api 'com.amap.api:3dmap:latest.integration'
+    //定位功能
+    api 'com.amap.api:location:latest.integration'
+    //搜索功能
+    api 'com.amap.api:search:latest.integration'
+    // https://github.com/gzu-liyujiang/AndroidPicker
+    api 'com.orhanobut:logger:2.2.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:Common:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelView:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:AddressPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:ColorPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:FilePicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:CalendarPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:ImagePicker:3.1.0'
+    //
+    api 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    api 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    // https://github.com/Meituan-Dianping/walle
+//    api 'com.meituan.android.walle:library:1.1.7'
+    // viewpager2 轮播图 https://github.com/youth5201314/banner
+    api 'io.github.youth5201314:banner:2.2.2'
+    //
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    // 注意：分包之后不会有默认的Header和Footer需要手动添加！还是原来的三种方法！
+    api 'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
+    api 'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
+//    api 'com.scwang.smart:refresh-header-radar:2.0.3'       //雷达刷新头
+//    api 'com.scwang.smart:refresh-header-falsify:2.0.3'     //虚拟刷新头
+    api 'com.scwang.smart:refresh-header-material:2.0.3'    //谷歌刷新头
+//    api 'com.scwang.smart:refresh-header-two-level:2.0.3'   //二级刷新头
+//    api 'com.scwang.smart:refresh-footer-ball:2.0.3'        //球脉冲加载
+    api 'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
+    // https://github.com/KunMinX/Linkage-RecyclerView
+    api 'com.kunminx.linkage:linkage-recyclerview:2.4.0'
+    // https://github.com/LuckSiege/PictureSelector
+    api 'androidx.camera:camera-core:1.0.2'
+    api 'androidx.camera:camera-camera2:1.0.2'
+    api 'io.github.lucksiege:pictureselector:v2.7.3-rc08'
+    // https://github.com/getActivity/ToastUtils 横屏Toast
+    api 'com.github.getActivity:ToastUtils:9.2'
+    // 标题栏框架：https://github.com/getActivity/TitleBar
+    api 'com.github.getActivity:TitleBar:8.6'
+    //  https://github.com/li-xiaojun/XPopup
+    api 'com.github.li-xiaojun:XPopup:2.4.9'
+    api 'com.github.li-xiaojun:StateLayout:1.3.2'
+    api 'com.github.li-xiaojun:EasyAdapter:1.2.7'
+
+}

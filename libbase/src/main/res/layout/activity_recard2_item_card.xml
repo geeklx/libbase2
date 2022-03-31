@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="250dp"
+    android:layout_height="200dp"
+    android:padding="0dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:stateListAnimator="@animator/item_animator"
+        app:cardCornerRadius="8dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true"
+        tools:targetApi="lollipop">
+
+        <com.geek.libbase.recycleviewcard2.roundview.RoundedImageView
+            android:id="@+id/cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="8dp"
+            android:src="@color/colorPrimary2" />
+
+        <TextView
+            android:id="@+id/index"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="right|top"
+            android:layout_margin="10dp"
+            android:background="@drawable/circle_shape"
+            android:gravity="center" />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,97 @@
+def config = rootProject.ext //配置
+def librarys = config.dependencies //
+android {
+
+//    aaptOptions {
+//        cruncherEnabled = false
+//        useNewCruncher = false
+//    }
+
+//    packagingOptions {
+//        exclude 'META-INF/rxjava.properties'
+//    }
+
+    packagingOptions {
+//        pickFirst 'lib/armeabi/libRSSupport.so'
+//        pickFirst 'lib/armeabi/librsjni_androidx.so'
+//        pickFirst 'lib/armeabi/librsjni.so'
+//        pickFirst 'lib/armeabi-v7a/libRSSupport.so'
+//        pickFirst 'lib/armeabi-v7a/librsjni_androidx.so'
+//        pickFirst 'lib/armeabi-v7a/librsjni.so'
+//        pickFirst 'lib/arm64-v8a/librsjni.so'
+//        pickFirst 'lib/arm64-v8a/libRSSupport.so'
+//        pickFirst 'lib/arm64-v8a/librsjni_androidx.so'
+//        pickFirst 'lib/x86_64/libRSSupport.so'
+//        pickFirst 'lib/x86_64/librsjni_androidx.so'
+//        pickFirst 'lib/x86_64/librsjni.so'
+//        pickFirst 'lib/x86/librsjni_androidx.so'
+//        pickFirst 'lib/x86/libRSSupport.so'
+//        pickFirst 'lib/x86/librsjni.so'
+        //
+//        pickFirst 'lib/arm64-v8a/libBaiduMapSDK_util_v4_0_0.so'
+//        pickFirst 'lib/arm64-v8a/libBaiduMapSDK_map_v4_0_0.so'
+//        pickFirst 'lib/arm64-v8a/libBaiduMapSDK_util_v4_0_0.so'
+//        pickFirst 'lib/arm64-v8a/libBaiduMapSDK_base_v4_0_0.so'
+//        pickFirst 'lib/arm64-v8a/liblocSDK7.so'
+        //
+//        pickFirst 'lib/armeabi/libijkplayer.so'
+//        pickFirst 'lib/armeabi/libijkffmpeg.so'
+//        pickFirst 'lib/armeabi/libijksdl.so'
+//        pickFirst 'lib/armeabi-v7a/libijkplayer.so'
+//        pickFirst 'lib/armeabi-v7a/libijkffmpeg.so'
+//        pickFirst 'lib/armeabi-v7a/libijksdl.so'
+//        pickFirst 'lib/arm64-v8a/libijkplayer.so'
+//        pickFirst 'lib/arm64-v8a/libijkffmpeg.so'
+//        pickFirst 'lib/arm64-v8a/libijksdl.so'
+//        pickFirst 'lib/x86_64/libijkplayer.so'
+//        pickFirst 'lib/x86_64/libijkffmpeg.so'
+//        pickFirst 'lib/x86_64/libijksdl.so'
+//        pickFirst 'lib/x86/libijkplayer.so'
+//        pickFirst 'lib/x86/libijkffmpeg.so'
+//        pickFirst 'lib/x86/libijksdl.so'
+    }
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.appversionCode
+        versionName config.appversionName
+        multiDexEnabled true
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+        vectorDrawables.useSupportLibrary = true
+//        signingConfig signingConfigs.debug
+
+//        ndk {
+//            moduleName "aaaa,bbb"
+//            ldLibs "log", "z", "m", "android", "c"
+//            abiFilters "armeabi", "armeabi-v7a", "x86"
+//        }
+        sourceSets.main {
+            jni.srcDirs = []
+            //LOCAL_LDFLAGS += -fuse-ld=bfd
+            //jni.srcDirs 'src/main/jni'
+            jniLibs.srcDir '../../otherjar'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    libraryVariants.all { variant ->
+        variant.outputs.all {
+//            outputFileName = "${variant.name}-${variant.versionName}.apk"
+//            outputFileName = "${project.name}.aar"
+            outputFileName = "${project.name}.aar"
+        }
+    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
+}

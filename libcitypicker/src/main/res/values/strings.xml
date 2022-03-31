@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_namelibcitypicker" translatable="false">CityPicker</string>
+    <string name="cp_search_hint_text" translatable="false">城市中文名或拼音</string>
+    <string name="cp_cancel" translatable="false">取消</string>
+    <string name="cp_no_result" translatable="false">没有找到，换个词试试~</string>
+    <string name="cp_locate_failed" translatable="false">定位失败</string>
+    <string name="cp_locating" translatable="false">正在定位…</string>
+</resources>

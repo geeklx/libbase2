@@ -1,0 +1,83 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+//        mavenLocal()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+//        mavenLocal()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven {
+            allowInsecureProtocol = true
+            url 'http://maven.aliyun.com/nexus/content/repositories/releases/'
+        }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+    }
+}
+rootProject.name = "fosunglibs"
+//include ':app'
+// start aar
+include ':libsCenter', ':biz-libs'
+// end aar
+
+// start aar
+include ':libsCenterNew',
+        ':libsCenterNew:alipaysdk',
+        ':libsCenterNew:hooklistenerlib2',
+        ':libsCenterNew:libmvpaar',
+        ':libsCenterNew:libretrofitaar',
+        ':libsCenterNew:opendroid2'
+// end aar
+
+// commonlibs
+//include ':libgeek'
+include ':libotherlibs'
+include ':libbase'
+include ':libutils'
+//include ':libocr'
+//include ':libyanzheng'
+//include ':libdkplayer'
+
+//include ':zdkplayer:dkplayer'
+//include ':zdkplayer:dkplayer-java'
+//include ':zdkplayer:dkplayer-players:ijkexo'
+//include ':zdkplayer:dkplayer-ui'
+//include ':zdkplayer:dkplayer-videocache'
+
+//include ':libagentweb20'
+//include ':libmvp'
+//include ':libretrofit'
+//include ':libglide47'
+//include ':libwebview'
+//include ':libswipebacklayout'
+//include ':librararyforfileprovdider'
+//include ':liblanguage'
+//include ':libupdateapp'
+//include ':libtablayout'
+//include ':libopendroid'
+
+//include ':libzxing'
+//include ':libxuanzeqi'
+//include ':libxpopup'
+//include ':libpictureselector'
+//include ':liblinkagerecyclerview'
+//include ':libexpandablerecyclerview'
+//include ':libcitypicker'
+//include ':libncalendar'
+//include ':liblocations'

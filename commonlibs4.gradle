@@ -1,0 +1,32 @@
+def config = rootProject.ext //配置
+def librarys = config.dependencies //
+dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+    api 'com.github.ctiao:ndkbitmap-armv7a:0.9.21'
+    api 'com.github.wseemann:FFmpegMediaMetadataRetriever-core:1.0.15'
+    api 'com.github.wseemann:FFmpegMediaMetadataRetriever-native:1.0.15'
+    api 'com.aliyun.sdk.android:AliyunPlayer:4.5.0-full'
+    api 'com.alivc.conan:AlivcConan:0.9.5'
+    // 解决冲突bufen
+    api 'cn.jzvd:jiaozivideoplayer:7.5.0'
+    api "com.google.android.exoplayer:exoplayer:2.16.1"
+//    api 'com.google.android.exoplayer:exoplayer-ui:2.13.2'
+//    api "com.google.android.exoplayer:exoplayer-core:2.13.2"
+//    api "com.google.android.exoplayer:exoplayer-dash:2.13.2"
+//    api "com.google.android.exoplayer:exoplayer-smoothstreaming:2.13.2"
+//    api "com.google.android.exoplayer:exoplayer-hls:2.13.2"
+    api "com.google.android.exoplayer:exoplayer-rtsp:2.16.1"
+    api "com.google.android.exoplayer:extension-rtmp:2.16.1"
+    api "com.github.CarGuo:GSYIjkJava:1.0.0"
+    api('com.github.CarGuo.GSYVideoPlayer:GSYVideoPlayer:v8.1.9-release-jitpack') {
+//        exclude module: 'gsyVideoPlayer-armv5'
+//        exclude module: 'gsyVideoPlayer-armv7a'
+//        exclude module: 'gsyVideoPlayer-armv64'
+//        exclude module: 'gsyVideoPlayer-x86'
+//        exclude module: 'gsyVideoPlayer-x86_64'
+        exclude group: 'com.github.CarGuo', module: 'GSYIjkJava'
+        exclude group: 'com.google.android.exoplayer', module: 'exoplayer'
+        exclude group: 'com.google.android.exoplayer', module: 'extension-rtmp'
+    }
+}

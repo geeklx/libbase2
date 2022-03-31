@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_namezxinglibs3" translatable="false">Scan2Code</string>
+
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="scan_barcode_title" translatable="false">条形码扫描</string>
+    <string name="scan_qrcode_title" translatable="false">二维码扫描</string>
+    <string name="scan_allcode_title" translatable="false">二维码或条形码扫描</string>
+    <string name="scan_barcode_hint" translatable="false">将条形码对入取景框，即可自动扫描</string>
+    <string name="scan_qrcode_hint" translatable="false">将二维码对入取景框，即可自动扫描</string>
+    <string name="scan_allcode_hint" translatable="false">将二维码或条形码对入取景框，即可自动扫描</string>
+    <string name="title_activity_sao_mao" translatable="false">SaoMaoActivity</string>
+    <string name="action_settings"  translatable="false">Settings</string>
+
+
+    <string name="title_activity_jump_to"  translatable="false">JumpToActivity</string>
+
+    <string name="permission_camera" translatable="false">扫码需要用到拍摄权限</string>
+    <string name="permission_external_storage" translatable="false">需要用到读写权限</string>
+</resources>

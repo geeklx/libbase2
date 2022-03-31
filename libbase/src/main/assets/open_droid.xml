@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<open-droid>
+    <name value="libopendroid" />
+    <version value="1" />
+    <mapping class="com.geek.libopendroid.bean.DBBean" />
+</open-droid>

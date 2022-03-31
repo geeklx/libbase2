@@ -1,0 +1,67 @@
+def config = rootProject.ext //配置
+def librarys = config.dependencies //
+android {
+    compileSdkVersion config.compileSdkVersion
+
+//    ndkVersion "23.0.7599858" // e.g.,  ndkVersion '21.3.6528147'
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        multiDexEnabled true
+        renderscriptTargetApi 19
+        renderscriptSupportModeEnabled true
+        vectorDrawables.useSupportLibrary = true
+//        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+//        ndk {
+//            abiFilters /*'armeabi-v7a',*/'arm64-v8a'
+//        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+//    libraryVariants.all { variant ->
+//        variant.outputs.all {
+////            outputFileName = "${variant.name}-${variant.versionName}.apk"
+//            outputFileName = "${project.name}.aar"
+//        }
+//    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = '11'
+//        useIR = true
+    }
+
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
+    //    dataBinding {
+//        enabled = true
+//    }
+//    viewBinding.enabled = true
+    buildFeatures {
+        //noinspection DataBindingWithoutKapt
+        dataBinding = true
+        // for view binding :
+        // viewBinding = true
+    }
+}
+dependencies {
+//    implementation fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    implementation librarys.design
+    implementation librarys.appcompatV7
+    implementation librarys.supportannotations
+    implementation librarys.recyclerviewv7
+    implementation librarys.swiperefreshlayout
+}

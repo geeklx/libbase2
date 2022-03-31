@@ -1,0 +1,9 @@
+apply from: "./../../../gradle/base.gradle"
+apply from: "./../../../gradle/publish.gradle"
+//apply from: "./../${rootDir.path}/gradle/publish.gradle"
+apply from: './../../../commonlibs4.gradle'
+def librarys = rootProject.ext.dependencies //依赖
+dependencies {
+    implementation librarys.blankj
+    compileOnly project(':zdkplayer:dkplayer-java')
+}

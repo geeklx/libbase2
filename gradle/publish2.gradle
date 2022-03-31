@@ -1,0 +1,89 @@
+//plugins {
+//    id 'com.android.library'
+//    id 'kotlin-android'
+//    id 'maven-publish'//用来推送aar到jitpack
+//    id 'pl.allegro.tech.build.axion-release' version '1.13.6'//用来发行aar版本的插件
+//}
+//apply plugin: 'com.android.library'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'maven-publish'
+//apply plugin: 'pl.allegro.tech.build.axion-release'
+def config = rootProject.ext //配置
+def librarys = config.dependencies //
+def properties = new Properties()
+properties.load(rootProject.file("gradle.properties").newInputStream())
+def gitUser = properties.getProperty("gitUser")
+def gitPassWord = properties.getProperty("gitPassWord")
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+//                groupId = PROJ_NAME
+                groupId = PROJ_GROUPID
+                artifactId = PROJ_ARTIFACTID
+                version = PROJ_VERSION
+//                groupId = 'com.gitee.geekharmony'//插件id，格式：com.gitee/github.用户名
+//                artifactId = 'geekandroidmax'//插件名称
+//                version = '1.0.8'//版本号
+                //引用使用格式：implementation 'com.gitee.xiaweifeng:JitPackTest11:1.0'
+            }
+        }
+        //jitpack推送授权
+        repositories {
+            maven {
+                name('jitpack')
+                url "https://jitpack.io"
+                credentials {
+                    username gitUser
+                    password gitPassWord
+                }
+            }
+        }
+
+    }
+}
+//release插件，https授权
+scmVersion{
+    repository{
+        customUsername = gitUser
+        customPassword = gitPassWord
+    }
+}
+
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+}
+
+//dependencies {
+//
+//    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.10"
+//    implementation 'androidx.core:core-ktx:1.2.0'
+//    implementation 'androidx.appcompat:appcompat:1.1.0'
+//    implementation 'com.google.android.material:material:1.1.0'
+//    testImplementation 'junit:junit:4.+'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//}

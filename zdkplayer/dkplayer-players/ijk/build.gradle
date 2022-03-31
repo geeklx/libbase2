@@ -1,0 +1,10 @@
+apply plugin: 'com.android.library'
+apply from: "./../../../gradle/base.gradle"
+//apply from: "./../${rootDir.path}/gradle/publish.gradle"
+def librarys = rootProject.ext.dependencies //依赖
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    compileOnly project(':zdkplayer:dkplayer-java')
+
+}

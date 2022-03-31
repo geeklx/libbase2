@@ -1,0 +1,18 @@
+apply from: "${rootDir.path}/gradle/publish.gradle"
+apply from: "${rootDir.path}/gradle/base.gradle"
+def librarys = rootProject.ext.dependencies //
+dependencies {
+    implementation project(':libutils')
+//    implementation 'com.github.geeklx:fosunglibs:1.4.6'
+    // https://github.com/drakeet/MultiType
+    api 'me.drakeet.multitype:multitype:3.4.4'
+    // https://github.com/yshrsmz/KeyboardVisibilityEvent
+    api 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'
+    // https://github.com/SherlockGougou/BigImageViewPager
+    api 'com.github.SherlockGougou:BigImageViewPager:androidx-6.2.1'
+    // https://github.com/meetsl/SCardView-master
+    api 'io.github.meetsl:SCardView:1.2'
+    // https://github.com/princekin-f/EasyFloat
+    api 'com.github.princekin-f:EasyFloat:2.0.3'
+
+}

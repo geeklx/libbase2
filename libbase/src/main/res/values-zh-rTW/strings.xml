@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_namelibbase" translatable="false">libbase</string>
+    <string name="current_language">繁體中文</string>
+</resources>

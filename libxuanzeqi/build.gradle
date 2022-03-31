@@ -1,0 +1,16 @@
+apply from: "${rootDir.path}/gradle/base.gradle"
+apply from: "${rootDir.path}/gradle/publish.gradle"
+def librarys = rootProject.ext.dependencies //
+dependencies {
+    implementation project(':libutils')
+    api 'com.orhanobut:logger:2.2.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:Common:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelView:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:AddressPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:ColorPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:FilePicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:CalendarPicker:3.1.0'
+    api 'com.gitee.li_yu_jiang.AndroidPicker:ImagePicker:3.1.0'
+}
+

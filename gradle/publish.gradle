@@ -1,0 +1,101 @@
+// 7.2
+//plugins {
+//    id 'com.android.library'
+//    id 'kotlin-android'
+//    id 'maven-publish'//用来推送aar到jitpack
+////    id 'pl.allegro.tech.build.axion-release' version '1.13.6'//用来发行aar版本的插件
+//}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+//                groupId = PROJ_GROUP
+                groupId = PROJ_NAME
+                artifactId = PROJ_ARTIFACTID
+                version = PROJ_VERSION
+
+//                pom {
+//                    name = PROJ_NAME
+//                    description = PROJ_DESCRIPTION
+//                    url = PROJ_VCSURL
+//                    licenses {
+//                        license {
+//                            name = "The Apache License, Version 2.0"
+//                            url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+//                        }
+//                    }
+//                    developers {
+//                        developer {
+//                            id = DEVELOPER_ID
+//                            name = DEVELOPER_NAME
+//                        }
+//                    }
+//                    scm {
+//                        connection = PROJ_ISSUETRACKERURL
+//                        developerConnection = PROJ_VCSURL
+//                        url = PROJ_WEBSITEURL
+//                    }
+//                }
+            }
+        }
+    }
+}
+
+// 8.0
+//apply plugin: 'maven-publish'
+
+//subprojects {
+//    apply plugin: 'maven-publish'
+//
+//    // To avoid publishing of the applications inside the project ..
+//    if (!plugins.hasPlugin("android")) {
+//        afterEvaluate {
+//            publishing {
+//                publications {
+//                    mavenAar(MavenPublication) {
+//                        afterEvaluate {
+////                    artifactId "$project.name"
+//                            from components.release
+//
+////                            groupId = PROJ_GROUP
+//                            groupId = PROJ_NAME
+//                            artifactId = PROJ_ARTIFACTID
+//                            version = PROJ_VERSION
+//
+////                            pom {
+////                                name = PROJ_NAME
+////                                description = PROJ_DESCRIPTION
+////                                url = PROJ_VCSURL
+////                                licenses {
+////                                    license {
+////                                        name = "The Apache License, Version 2.0"
+////                                        url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+////                                    }
+////                                }
+////                                developers {
+////                                    developer {
+////                                        id = DEVELOPER_ID
+////                                        name = DEVELOPER_NAME
+////                                    }
+////                                }
+////                                scm {
+////                                    connection = PROJ_ISSUETRACKERURL
+////                                    developerConnection = PROJ_VCSURL
+////                                    url = PROJ_WEBSITEURL
+////                                }
+////                            }
+//                        }
+//
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+

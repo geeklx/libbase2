@@ -1,0 +1,42 @@
+apply from: "${rootDir.path}/gradle/base.gradle"
+apply from: "${rootDir.path}/gradle/publish.gradle"
+def librarys = rootProject.ext.dependencies //
+dependencies {
+    //
+//    api project(':libbase')
+//    api project(':libotherlibs')
+    api project(':libutils')
+//    api project(':libdkplayer')
+//    api project(':libocr')
+//    api project(':libyanzheng')
+
+//    api project(':libmvp')
+//    api project(':libretrofit')
+//    api project(':libswipebacklayout')
+//    api project(':libwebview')
+//    api project(':libagentweb20')
+//    api project(':libglide47')
+//    api project(':librararyforfileprovdider')
+//    api project(':liblanguage')
+//    api project(':libtablayout')
+//    api project(':libopendroid')
+    // api project(':libupdateapp')
+
+    //
+//    api project(':libexpandablerecyclerview')
+//    api project(':liblinkagerecyclerview')
+//    api project(':libncalendar')
+//    api project(':libpictureselector')
+//    api project(':libxpopup')
+//    api project(':libxuanzeqi')
+//    api project(':libyanzheng')
+//    api project(':libzxing')
+//    api project(':zdkplayer:dkplayer')
+//    api project(':zdkplayer:dkplayer-java')
+//    api project(':zdkplayer:dkplayer-players:ijkexo')
+//    api project(':zdkplayer:dkplayer-ui')
+//    api project(':zdkplayer:dkplayer-videocache')
+//    api project(':libcitypicker')
+//    api project(':liblocations')
+//    api project(':libocr')
+}
