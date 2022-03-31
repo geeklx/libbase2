@@ -753,45 +753,6 @@
             android:theme="@style/DefaultCityPickerTheme" />
 
 
-        <activity
-            android:name="drawthink.expandablerecyclerview.demo.ExpandableAct"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="${applicationId}.hs.act.phone.expandableview" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="drawthink.expandablerecyclerview.demo.extextview.TextViewAct"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="${applicationId}.hs.act.phone.TextViewAct" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="drawthink.expandablerecyclerview.demo.eximageview.ImageViewAct"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="${applicationId}.hs.act.phone.ImageViewAct" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-
-
-        <activity
-            android:name="com.kunminx.linkagelistview.ElmAct"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="${applicationId}.hs.act.slbapp.ElmAct" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
 
         <activity
             android:name="com.luck.pictureselector.PictureSelectorAct"
@@ -810,21 +771,6 @@
             </intent-filter>
         </activity>
 
-
-        <activity
-            android:name="com.lxj.xpopupdemo.XpopupMainActivity"
-            android:exported="true"
-            android:hardwareAccelerated="true"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustNothing">
-            <intent-filter>
-                <action android:name="${applicationId}.hs.act.slbapp.XpopupMainActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.lxj.xpopupdemo.XpopupDemoActivity"
-            android:screenOrientation="portrait" />
 
 
 

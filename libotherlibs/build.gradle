@@ -14,5 +14,7 @@ dependencies {
     api 'io.github.meetsl:SCardView:1.2'
     // https://github.com/princekin-f/EasyFloat
     api 'com.github.princekin-f:EasyFloat:2.0.3'
+    // https://github.com/KunMinX/Linkage-RecyclerView
+    api 'com.kunminx.linkage:linkage-recyclerview:2.4.0'
 
 }

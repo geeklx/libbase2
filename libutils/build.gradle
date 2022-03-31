@@ -46,6 +46,10 @@ dependencies {
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40'
     // https://github.com/airbnb/lottie-android
     api 'com.airbnb.android:lottie:4.1.0'
+    //  https://github.com/li-xiaojun/XPopup
+    api 'com.github.li-xiaojun:XPopup:2.4.9'
+    api 'com.github.li-xiaojun:StateLayout:1.2.8'
+    api 'com.github.li-xiaojun:EasyAdapter:1.2.5'
 //    //
 //    api librarys.rxJava2
 //    api librarys.rxandroid2

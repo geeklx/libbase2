@@ -212,5 +212,9 @@
 
     <color name="line">#e6e6e6</color>
 
+    <eat-comment />
+
+    <color name="color008577">#008577</color>
+
 
 </resources>
