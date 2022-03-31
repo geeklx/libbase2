@@ -1,6 +1,4 @@
-//apply from: "${rootDir.path}/gradle/publish.gradle"
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
+apply from: "${rootDir.path}/gradle/publish.gradle"
 apply from: "${rootDir.path}/gradle/base.gradle"
 def config = rootProject.ext //配置
 def librarys = rootProject.ext.dependencies //

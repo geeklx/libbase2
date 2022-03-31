@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 import drawthink.expandablerecyclerview.demo.extextview.bean.TextViewChildBean;
 import drawthink.expandablerecyclerview.demo.extextview.bean.TextViewGroupBean;
 import drawthink.expandablerecyclerview.demo.extextview.viewholder.TextViewHolder;

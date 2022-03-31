@@ -30,7 +30,7 @@ dependencyResolutionManagement {
         maven { url 'https://maven.aliyun.com/repository/public' }
     }
 }
-rootProject.name = "fosunglibs"
+rootProject.name = "libbase2"
 //include ':app'
 // start aar
 include ':libsCenter', ':biz-libs'

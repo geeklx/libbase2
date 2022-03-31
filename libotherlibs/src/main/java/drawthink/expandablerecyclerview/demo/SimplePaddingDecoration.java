@@ -5,7 +5,7 @@ import android.graphics.Rect;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 
 public class SimplePaddingDecoration extends RecyclerView.ItemDecoration {
 

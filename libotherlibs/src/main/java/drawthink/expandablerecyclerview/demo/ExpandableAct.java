@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import com.blankj.utilcode.util.AppUtils;
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 
 public class ExpandableAct extends AppCompatActivity {
     @Override

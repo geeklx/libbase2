@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 import drawthink.expandablerecyclerview.holder.BaseViewHolder;
 
 public class TextViewHolder extends BaseViewHolder {

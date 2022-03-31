@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.ToastUtils;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 import drawthink.expandablerecyclerview.demo.SimplePaddingDecoration;
 import drawthink.expandablerecyclerview.demo.eximageview.adapter.ImageViewAdapter;
 import drawthink.expandablerecyclerview.demo.eximageview.bean.ImageViewChildBean;
