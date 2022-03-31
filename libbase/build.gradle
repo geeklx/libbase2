@@ -19,7 +19,7 @@ android {
 //    }
 }
 dependencies {
-    implementation project(':libutils')
+    api project(':libutils')
 //    implementation 'com.github.geeklx:fosunglibs:1.4.6'
     // agentlib
     api 'us.feras.mdv:markdownview:1.1.0'
