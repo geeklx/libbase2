@@ -60,14 +60,22 @@ dependencies {
     //
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     // 注意：分包之后不会有默认的Header和Footer需要手动添加！还是原来的三种方法！
-    api 'com.scwang.smart:refresh-layout-kernel:2.0.3'      //核心必须依赖
-    api 'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
+    api 'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
+    api 'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
+    api 'io.github.scwang90:refresh-header-radar:2.0.5'       //雷达刷新头
+    api 'io.github.scwang90:refresh-header-falsify:2.0.5'     //虚拟刷新头
+    api 'io.github.scwang90:refresh-header-material:2.0.5'    //谷歌刷新头
+    api 'io.github.scwang90:refresh-header-two-level:2.0.5'   //二级刷新头
+    api 'io.github.scwang90:refresh-footer-ball:2.0.5'        //球脉冲加载
+    api 'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
+//    api 'com.scwang.smart:refresh-layout-kernel:2.0.5'      //核心必须依赖
+//    api 'com.scwang.smart:refresh-header-classics:2.0.5'    //经典刷新头
 //    api 'com.scwang.smart:refresh-header-radar:2.0.3'       //雷达刷新头
 //    api 'com.scwang.smart:refresh-header-falsify:2.0.3'     //虚拟刷新头
-    api 'com.scwang.smart:refresh-header-material:2.0.3'    //谷歌刷新头
+//    api 'com.scwang.smart:refresh-header-material:2.0.5'    //谷歌刷新头
 //    api 'com.scwang.smart:refresh-header-two-level:2.0.3'   //二级刷新头
 //    api 'com.scwang.smart:refresh-footer-ball:2.0.3'        //球脉冲加载
-    api 'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
+//    api 'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
     // https://github.com/LuckSiege/PictureSelector
     api 'androidx.camera:camera-core:1.0.2'
     api 'androidx.camera:camera-camera2:1.0.2'

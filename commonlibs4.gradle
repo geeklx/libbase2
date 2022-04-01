@@ -6,8 +6,8 @@ dependencies {
     api 'com.github.ctiao:ndkbitmap-armv7a:0.9.21'
     api 'com.github.wseemann:FFmpegMediaMetadataRetriever-core:1.0.15'
     api 'com.github.wseemann:FFmpegMediaMetadataRetriever-native:1.0.15'
-    api 'com.aliyun.sdk.android:AliyunPlayer:4.5.0-full'
-    api 'com.alivc.conan:AlivcConan:0.9.5'
+//    api 'com.aliyun.sdk.android:AliyunPlayer:4.5.0-full'
+//    api 'com.alivc.conan:AlivcConan:0.9.5'
     // 解决冲突bufen
     api 'cn.jzvd:jiaozivideoplayer:7.5.0'
     api "com.google.android.exoplayer:exoplayer:2.16.1"
