@@ -795,5 +795,22 @@
             android:screenOrientation="portrait" />
 
 
+
+
+        <activity
+            android:name="com.zaaach.citypicker.activity.CityPickerAct"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/DefaultCityPickerTheme">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.CityPickerAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.zaaach.citypicker.activity.DemoAct1"
+            android:theme="@style/DefaultCityPickerTheme" />
+
+
     </application>
 </manifest>

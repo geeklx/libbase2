@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 import com.zaaach.citypicker.adapter.decoration.GridItemDecoration;
 import com.zaaach.citypicker.model.City;
 import com.zaaach.citypicker.model.HotCity;
@@ -84,8 +84,12 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.BaseVi
      * @param index
      */
     public void scrollToSection(String index) {
-        if (mData == null || mData.isEmpty()) return;
-        if (TextUtils.isEmpty(index)) return;
+        if (mData == null || mData.isEmpty()) {
+            return;
+        }
+        if (TextUtils.isEmpty(index)) {
+            return;
+        }
         int size = mData.size();
         for (int i = 0; i < size; i++) {
             if (TextUtils.equals(index.substring(0, 1), mData.get(i).getSection().substring(0, 1))) {

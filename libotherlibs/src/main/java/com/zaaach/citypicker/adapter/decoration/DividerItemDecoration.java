@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 
 public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private float dividerHeight;

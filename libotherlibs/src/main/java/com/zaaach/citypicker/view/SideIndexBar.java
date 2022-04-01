@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

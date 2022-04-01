@@ -10,7 +10,7 @@ import android.text.TextPaint;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 import com.zaaach.citypicker.model.City;
 
 import java.util.List;
@@ -99,8 +99,12 @@ public class SectionItemDecoration extends RecyclerView.ItemDecoration {
     @Override
     public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
         int pos = ((LinearLayoutManager) (parent.getLayoutManager())).findFirstVisibleItemPosition();
-        if (pos < 0) return;
-        if (mData == null || mData.isEmpty()) return;
+        if (pos < 0) {
+            return;
+        }
+        if (mData == null || mData.isEmpty()) {
+            return;
+        }
         String section = mData.get(pos).getSection();
         View child = parent.findViewHolderForLayoutPosition(pos).itemView;
 
@@ -123,8 +127,9 @@ public class SectionItemDecoration extends RecyclerView.ItemDecoration {
                 child.getPaddingLeft(),
                 parent.getPaddingTop() + mSectionHeight - (mSectionHeight / 2 - mBounds.height() / 2),
                 mTextPaint);
-        if (flag)
+        if (flag) {
             c.restore();
+        }
     }
 
     @Override

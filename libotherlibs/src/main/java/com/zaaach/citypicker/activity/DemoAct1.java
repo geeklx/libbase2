@@ -3,17 +3,16 @@ package com.zaaach.citypicker.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.zaaach.citypicker.CityPicker;
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 import com.zaaach.citypicker.adapter.OnPickListener;
 import com.zaaach.citypicker.model.City;
 import com.zaaach.citypicker.model.HotCity;
@@ -23,17 +22,36 @@ import com.zaaach.citypicker.model.LocatedCity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DemoF1 extends Fragment {
-
-    private TextView currentTV;
+public class DemoAct1 extends AppCompatActivity {
+    private FragmentManager mFragmentManager;
+    private DemoF1 mFragment1; //
+    private TextView tv1;
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_citypickeract3, container, false);
-        currentTV = rootView.findViewById(R.id.tv_current);
-        rootView.findViewById(R.id.btn_pick).setOnClickListener(new View.OnClickListener() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_citypickeract2);
+        if (savedInstanceState != null) {
+            mFragment1 = (DemoF1) mFragmentManager.findFragmentByTag("LIST_TAG1");
+        }
+        tv1 = findViewById(R.id.tv1);
+        mFragmentManager = getSupportFragmentManager();
+        final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        if (mFragment1 != null) {
+            transaction.hide(mFragment1);
+        }
+        if (mFragment1 == null) {
+            mFragment1 = new DemoF1();
+            Bundle args = new Bundle();
+            args.putString("tablayoutId", "111");
+            mFragment1.setArguments(args);
+            transaction.add(R.id.container, mFragment1, "LIST_TAG1");
+        } else {
+            transaction.show(mFragment1);
+//            mFragment1.getCate(current_pos + "", isrefresh);
+        }
+        transaction.commitAllowingStateLoss();
+        tv1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 List<HotCity> hotCities = new ArrayList<>();
@@ -42,7 +60,7 @@ public class DemoF1 extends Fragment {
                 hotCities.add(new HotCity("广州", "广东", "101280101"));
                 hotCities.add(new HotCity("深圳", "广东", "101280601"));
                 hotCities.add(new HotCity("杭州", "浙江", "101210101"));
-                CityPicker.from(getActivity())
+                CityPicker.from(DemoAct1.this)
                         .enableAnimation(true)
                         .setAnimationStyle(R.style.CityPickerStyleCustomAnim)
                         .setLocatedCity(null)
@@ -50,7 +68,7 @@ public class DemoF1 extends Fragment {
                         .setOnPickListener(new OnPickListener() {
                             @Override
                             public void onPick(int position, City data) {
-                                currentTV.setText(String.format("当前城市：%s，%s", data.getName(), data.getCode()));
+                                tv1.setText(String.format("当前城市：%s，%s", data.getName(), data.getCode()));
 //                                Toast.makeText(
 //                                        getApplicationContext(),
 //                                        String.format("点击的数据：%s，%s", data.getName(), data.getCode()),
@@ -69,7 +87,7 @@ public class DemoF1 extends Fragment {
                                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
-                                        CityPicker.from(getActivity()).locateComplete(new LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS);
+                                        CityPicker.from(DemoAct1.this).locateComplete(new LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS);
                                     }
                                 }, 3000);
                             }
@@ -77,7 +95,5 @@ public class DemoF1 extends Fragment {
                         .show();
             }
         });
-        return rootView;
     }
-
 }

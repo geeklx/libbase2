@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.geek.libbase.R;
+import com.haier.cellarette.baselibrary.R;
 import com.zaaach.citypicker.model.City;
 import com.zaaach.citypicker.model.HotCity;
 
@@ -42,7 +42,9 @@ public class GridListAdapter extends RecyclerView.Adapter<GridListAdapter.GridVi
     public void onBindViewHolder(GridViewHolder holder, int position) {
         final int pos = holder.getAdapterPosition();
         final City data = mData.get(pos);
-        if (data == null) return;
+        if (data == null) {
+            return;
+        }
         //设置item宽高
         DisplayMetrics dm = mContext.getResources().getDisplayMetrics();
         int screenWidth = dm.widthPixels;
