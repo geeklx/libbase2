@@ -287,7 +287,7 @@ public class AlphaViewString extends RelativeLayout implements ViewPager.OnPageC
         for (int i = 0; i < imagesIds.length; i++) {
             LayoutParams layoutParams = new LayoutParams(-1, -1);
             ImageView imageView = new ImageView(mContext);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setLayoutParams(layoutParams);
 //            imageView.setBackgroundResource(imagesIds[imagesIds.length - 1 - i]);
             Glide.with(BaseApp.get().getApplicationContext()).load(imagesIds[imagesIds.length - 1 - i]).into(imageView);
