@@ -46,7 +46,7 @@ include ':libsCenterNew',
 // end aar
 
 // commonlibs
-//include ':libgeek'
+include ':libgeek'
 include ':libotherlibs'
 include ':libbase'
 include ':libutils'
