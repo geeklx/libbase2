@@ -1,7 +1,0 @@
-apply from: "${rootDir.path}/gradle/base.gradle"
-apply from: "${rootDir.path}/gradle/publish.gradle"
-def librarys = rootProject.ext.dependencies //依赖
-dependencies {
-    implementation project(':libutils')
-
-}
