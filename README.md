@@ -1,4 +1,4 @@
-# APP开发框架库3.2.4
+# APP开发框架库
 
 ### 集成方式
 
@@ -22,11 +22,11 @@ gradle maven sbt leiningen Add it in your root build.gradle at the end of reposi
 	}
 
 Step 2. Add the dependency
-
+### [![](https://jitpack.io/v/geeklx/libbase1.svg)](https://jitpack.io/#geeklx/libbase1)
 	dependencies {
 	     implementation 'com.github.geeklx:libbase1:Tag'
 	}
-
+### [![](https://jitpack.io/v/geeklx/libbase2.svg)](https://jitpack.io/#geeklx/libbase2)
 	dependencies {
 	     implementation 'com.github.geeklx:libbase2:Tag'
 	}
