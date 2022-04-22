@@ -241,7 +241,7 @@ public class AndroidApplication extends Application {
                 if (mFinalCount == 0) {
                     MyLogUtil.e("regActivityLife-onActivityStopped", mFinalCount + "");
                     //说明从前台回到了后台
-                    Toast.makeText(BaseApp.get(), AppUtils.getAppName() + "已进入后台运行", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(BaseApp.get(), AppUtils.getAppName() + "已进入后台运行", Toast.LENGTH_LONG).show();
 //                    ToastUtils.showLong(AppUtils.getAppName() + "已进入后台运行");
                 }
 
