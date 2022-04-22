@@ -1,6 +1,12 @@
 # APP开发框架库
 
-### 集成方式   https://github.com/GeekCodesTeam/geeklibs
+### 集成方式
+
+###### 1.https://github.com/GeekCodesTeam/geeklibs
+
+###### 2.https://github.com/geeklx/libbase1
+
+###### 3.https://github.com/geeklx/libbase2
 
 How to To get a Git project into your build:
 
@@ -16,59 +22,33 @@ gradle maven sbt leiningen Add it in your root build.gradle at the end of reposi
 	}
 
 Step 2. Add the dependency
-
+### [![](https://jitpack.io/v/geeklx/libbase1.svg)](https://jitpack.io/#geeklx/libbase1)
 	dependencies {
-	        implementation 'com.github.geeklx:geeklibs:Tag'
+	     implementation 'com.github.geeklx:libbase1:Tag'
+	}
+### [![](https://jitpack.io/v/geeklx/libbase2.svg)](https://jitpack.io/#geeklx/libbase2)
+	dependencies {
+	     implementation 'com.github.geeklx:libbase2:Tag'
 	}
 
 Share this release:
 
 ### 你也可以这样
 
-    // 总依赖																	
-    implementation 'com.github.GeekCodesTeam:geeklibs:3.0.6'	
-    或者
-    implementation 'com.github.GeekCodesTeam.geeklibs:libgeek:3.0.6'
-    或者  
-    implementation 'com.github.GeekCodesTeam.geeklibs:libbase:3.0.6'
-	+		
-    implementation 'com.github.GeekCodesTeam.geeklibs:libotherlibs:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libagentweb:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libxuanzeqi:3.0.6'
-    //
-    implementation 'com.github.GeekCodesTeam.geeklibs:zdkplayer:3.0.6'
-
-[comment]: <> (    implementation 'com.github.GeekCodesTeam.geeklibs:zdkplayer-java:3.0.6')
-
-[comment]: <> (    implementation 'com.github.GeekCodesTeam.geeklibs:zdkplayer-ijkexo:3.0.6')
-
-[comment]: <> (    implementation 'com.github.GeekCodesTeam.geeklibs:zdkplayer-ui:3.0.6')
-
-[comment]: <> (    implementation 'com.github.GeekCodesTeam.geeklibs:zdkplayer-videocache:3.0.6')
-
-[comment]: <> (    implementation 'com.github.GeekCodesTeam.geeklibs:libokhttputils:3.0.6')
-
-[comment]: <> (    implementation 'com.github.GeekCodesTeam.geeklibs:libyanzhenjieandpermission:3.0.6')
-
-    // 部分依赖 implementation 'com.github.GeekCodesTeam.geeklibs:libbase:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libutils:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:libswipebacklayout:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:libwebview:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:librararyforfileprovdider:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:libmvp:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:libretrofit:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:libglide47:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:refresh-layout:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:refresh-header:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:refresh-footer:3.0.6'																	
-    implementation 'com.github.GeekCodesTeam.geeklibs:libzxing:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libxpopup:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libupdateapp:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libncalendar:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libpictureselector:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:liblinkagerecyclerview:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libexpandablerecyclerview:3.0.6'
-    implementation 'com.github.GeekCodesTeam.geeklibs:libtablayout:3.0.6'
+    // new 方式1
+    implementation 'com.github.geeklx.libbase1:libocr:2.0.2'//三方库
+    implementation 'com.github.geeklx.libbase1:zdkplayer:2.0.2'//三方库
+    implementation 'com.github.geeklx.libbase1:libyanzheng:2.0.2'//三方库
+    // 方式1
+    implementation 'com.github.geeklx.libbase2:libutils:2.0.7'//核心库
+    implementation 'com.github.geeklx.libbase2:libbase:2.0.7'//核心库
+    implementation 'com.github.geeklx.libbase2:libotherlibs:2.0.7'//核心库
+    //方式2
+    implementation 'com.github.geeklx.libbase1:libgeek:2.0.2'//三方库
+    implementation 'com.github.geeklx.libbase2:libgeek:2.0.7'//核心库
+    //方式2
+    implementation 'com.github.geeklx:libbase1:2.0.2'//三方库
+    implementation 'com.github.geeklx:libbase2:2.0.7'//核心库
 
 混合移动应用框架APP-Android3
 
@@ -82,79 +62,79 @@ Share this release:
 
 ### 1.ANROOMCrashActivity：验证APP压力测试
 
-###     
+###       
 
 ### 2.AssetsMainActivity：为APP申请访问文件，写入txt存储，copy到assets
 
-###     
+###       
 
 ### 3.BannerViewDemoActivity：banner防止OOM
 
-###     
+###       
 
 ### 4.BannerDemoActivity：banner支持各种样式
 
-###     
+###       
 
 ### 5.BtnActivity：点击按钮按压效果
 
-###     
+###       
 
 ### 6.CacheUtil：清除缓存
 
-###     
+###       
 
 ### 7.CarAct：加入到购物车动画
 
-###     
+###       
 
 ### 8.ChangeLanActivity：切换APP语言
 
-###     
+###       
 
 ### 9.BaseApp：APP堆栈管理
 
-###     
+###       
 
 ### 10.DownLoadDialog：自定义下载loading
 
-###     
+###       
 
 ### 11.EmptyViewNew1,NiubiEmptyViewNew1：EmptyViewMainActivity自定义数据布局切换
 
-###     
+###       
 
 ### 12.ExpandableAct：二级tree
 
-###     
+###       
 
 ### 13.TagFlowLayout：自定义搜索历史标签
 
-###     
+###       
 
 ### 14.handler：handler各种使用
 
-###     
+###       
 
 ### 15.ImgOtherToBitmap：图片utils
 
-###     
+###       
 
 ### 16.SoftHideKeyBoardUtil：自定义弹出键盘，解决键盘档住输入框
 
-###     
+###       
 
 ### 17.LiandongDemoAct：分类列表联动 饿了么
 
-###     
+###       
 
 ### 18.LikeButtonActivity：点赞按钮
 
-###     
+###       
 
 ### 19.ShowLoadingUtil：自定义loading
 
-###     
+###       
 
 ### 20.LobsterPicker：根据颜色变化的进度条
 
@@ -204,59 +184,59 @@ Share this release:
 
 ### 21.MusicActivity：播放本地文件
 
-###     
+###       
 
 ### 22.NetEmptyViewMainActivity：联网是否布局动态
 
-###     
+###       
 
 ### 23.ExpandViewRect：点击范围
 
-###     
+###       
 
 ### 24.MohuReUtil：背景磨砂
 
-###     
+###       
 
 ### 25.QrCodeUtil：二维码生成
 
-###     
+###       
 
 ### 26.QuanxianActivity：获取权限
 
-###     
+###       
 
 ### 27.BaeRecycleViewActivity：recycleview使用大全
 
-###     
+###       
 
 ### 28.RecycleViewMainActivity：recycleview使用自定义
 
-###     
+###       
 
 ### 29.AdvertiseLinearLayoutManager：recycleview吸附效果
 
-###     
+###       
 
 ### 30.JackSnapHelper：recycleview按照item滚动
 
-###     
+###       
 
 ### 31.RingActivity：系统声音自定义
 
-###     
+###       
 
 ### 32.LightOnOffUtils：亮息屏
 
-###     
+###       
 
 ### 33.ScreenListenerUtils：屏幕监听
 
-###     
+###       
 
 ### 34.ScrollViewAct：用户须知滚动布局
 
-###     
+###       
 
 ### 35.ShadowLayout:呼吸布局
 
@@ -284,63 +264,63 @@ Share this release:
 
 ### 36.ShoppingCarActivity：添加购物车动画
 
-###     
+###       
 
 ### 37.LxShimmerLayout：布局加载动画
 
-###     
+###       
 
 ### 38.SizeUtils：尺寸相关工具类
 
-###     
+###       
 
 ### 39.SmartBar：返回|主页 工具类 一行解决你的问题
 
-###     
+###       
 
 ### 40.AlphaView：自定义导航页
 
-###     
+###       
 
 ### 41.StatusBarUtil，StatusBarUtilV7：透明栏
 
-###     
+###       
 
 ### 42.UnAnimTabLayout：自定义UnAnimTabLayout，ViewPagerSlide：自定义是否滚动viewpage
 
-###     
+###       
 
 ### 43.Toasty：自定义toast
 
-###     
+###       
 
 ### 44.MToast：自定义toast
 
-###     
+###       
 
 ### 45.UpdateManager：更新APP通过xml
 
-###     
+###       
 
 ### 46.YanzhengUtil：验证util
 
-###     
+###       
 
 ### 47.LocalBroadcastManagers：本地内部广播
 
-###     
+###       
 
 ### 48.DemoZuniScrollViewActivity：阻尼效果
 
-###     
+###       
 
 ### 49.AlertView：仿IOS的弹出框
 
-###     
+###       
 
 ### 50.AutofitTextView：自定义缩小textview
 
-###     
+###       
 
 ### 51.BookPaddingDecoration：自定义recycleview书架线
 
@@ -352,177 +332,177 @@ Share this release:
 
 ### 52.CircleImageView：自义定圆形图片
 
-###     
+###       
 
 ### 53.CircularSeekBar：
 
-###     
+###       
 
 ### 54.CustomImageView：自定义View，实现圆角，圆形等效果
 
-###     
+###       
 
 ### 55.LxLinearLayout，LxRelativeLayout：自定义点击拦截layout
 
 ### rl1.setTouch(true);
 
-###     
+###       
 
 ### 56.NoScrollView：自定义不滚动view
 
-###     
+###       
 
 ### 57.RecycleViewDivider：自定义添加默认分割线
 
-###     
+###       
 
 ### 58.SmoothCheckBox：自定义checkbox
 
-###     
+###       
 
 ### 59.SwitchButton：自义定开关按钮
 
-###     
+###       
 
 ### 60.AnnotateUtils：自定义butternife
 
-###     
+###       
 
 ### 61.AutoHideInputMethodFrameLayout：自定义键盘弹起layout
 
-###     
+###       
 
 ### 62.DaojishiUtil：时间转换util
 
-###     
+###       
 
 ### 63.NavigationBarUtil：虚拟键util
 
-###     
+###       
 
 ### 64.NoDoubleClickListener：两次误点击
 
-###     
+###       
 
 ### 65.SimpleTagImageView：图片标签
 
-###     
+###       
 
 ### 66.SpannableStringUtils：
 
-###     
+###       
 
 ### 67.StartHiddenManager：测试入口util
 
-###     
+###       
 
 ### 68.libagentweb-core：自定义webview
 
-###     
+###       
 
 ### 69.libappjpush：极光推送
 
-###     
+###       
 
 ### 70.libappjpushshare：极光分享
 
-###     
+###       
 
 ### 71.libappjpushstatistics：极光统计
 
-###     
+###       
 
 ### 72.libappmob：mob分享推送
 
-###     
+###       
 
 ### 73.libapppay：支付宝，微信，银联支付
 
-###     
+###       
 
 ### 74.libappumengstatistics：友盟统计
 
-###     
+###       
 
 ### 75.libglide47：glide4.10.0
 
-###     
+###       
 
 ### 76.libmvp：接口设计模式
 
-###     
+###       
 
 ### 77.librararyforfileprovdider：动态权限申请
 
-###     
+###       
 
 ### 78.libretrofit：网络请求
 
-###     
+###       
 
 ### 79.libupdateapputilsold：升级APP
 
-###     
+###       
 
 ### 80.libutils：无敌的工具类
 
-###     
+###       
 
 ### 81.libwebview：HIOS协议
 
-###     
+###       
 
 ### 82.libZRecyclerView：自定义recycleview支持分页
 
-###     
+###       
 
 ### 83.smartrefreshlayout：下拉刷新上拉加载
 
-###     
+###       
 
 ### 84.slbbluetooth：蓝牙
 
-###     
+###       
 
 ### 85.slbcitypickerview：自定义城市选择
 
-###     
+###       
 
 ### 86.slbdachshundtablayout：自定义tablayout
 
-###     
+###       
 
 ### 87.slbimagepicker：图片上传九宫格
 
-###     
+###       
 
 ### 88.slbjiaozivideoplayer：饺子视频播放器
 
-###     
+###       
 
 ### 89.slbncalendar：自定义日历
 
-###     
+###       
 
 ### 90.slbota：OTA升级
 
-###     
+###       
 
 ### 91.slbswipebacklayout：返回IOS
 
-###     
+###       
 
 ### 92.slbwifi：自定义WiFi
 
-###     
+###       
 
 ### 93.zxinglibs：扫码二维码
 
-###     
+###       
 
 ### 94.zuser_adapter+xml：自定义xml布局util
 
-###     
+###       
 
 ### 95.baselibrary
 
@@ -597,7 +577,7 @@ Share this release:
 <br/>    api 'pub.devrel:easypermissions:3.0.0'
 <br/>    // https://github.com/getActivity/XXPermissions         权限
 <br/>    api 'com.hjq:xxpermissions:9.6'
-<br/>    // https://github.com/yanzhenjie/AndPermission          权限
+<br/>    // https://github.com/yanzhenjie/AndPermission          权限(弃用)
 <br/>    api 'com.yanzhenjie:permission:2.0.3'
 <br/>    // https://github.com/yshrsmz/KeyboardVisibilityEvent
 <br/>    api 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.3.0'       监听键盘弹出过程
