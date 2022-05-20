@@ -79,7 +79,7 @@ dependencies {
 //    implementation 'com.github.geeklx:fosunglibs:1.2.6'
 
 //    implementation 'com.pgyersdk:sdk:4.2.1'
-//    implementation project(':libbase')
+    implementation project(':libbase')
 //    implementation 'com.github.geeklx:fosunglibs:1.0.8'
 
 }

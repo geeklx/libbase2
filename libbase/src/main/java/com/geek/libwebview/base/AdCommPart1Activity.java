@@ -27,8 +27,9 @@ public class AdCommPart1Activity extends WebViewActivity {
         //
         setUp();
 
-        id1 = getIntent().getExtras().getString("id1");
-        url1 = getIntent().getExtras().getString("url1");
+//        id1 = getIntent().getExtras().getString("id1");
+//        url1 = getIntent().getExtras().getString("url1");
+        url1 = "https://cx.o2o.bailingjk.net/wechat/#/main/medicalIndex?publicNoCode=jksd_0011&type=1&patientId=&language=";
         loadUrl(url1);
         //
         tv_adJumps = findViewById(R.id.tv_adJumps3);

@@ -1,9 +1,11 @@
 package com.fosung.lighthouse.fosunglibs;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.geek.libwebview.base.AdCommPart1Activity;
 import com.pgyer.pgyersdk.PgyerSDKManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         new PgyerSDKManager.Init()
                 .setContext(getApplicationContext()) //设置上下问对象
                 .start();
-//        startActivity(new Intent(MainActivity.this, ScanAct2.class));
+        startActivity(new Intent(MainActivity.this, AdCommPart1Activity.class));
 
 
     }

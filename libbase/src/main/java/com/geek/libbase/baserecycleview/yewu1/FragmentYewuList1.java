@@ -59,6 +59,7 @@ public class FragmentYewuList1 extends SlbBaseFragmentViewPageYewuList {
 
     @Override
     protected void retryDataAdd() {
+        PAGE_SIZE = 20;
         String limit = PAGE_SIZE + "";
         String page = mNextRequestPage + "";
         String orderStatus = tablayoutId;

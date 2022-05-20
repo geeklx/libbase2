@@ -31,7 +31,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "libbase2"
-//include ':app'
+include ':app'
 // start aar
 include ':libsCenter', ':biz-libs'
 // end aar
