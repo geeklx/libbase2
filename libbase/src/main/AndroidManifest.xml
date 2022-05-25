@@ -144,40 +144,6 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.StackAct"
-                    android:scheme="dataability" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.StackAct"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.StackAct"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".recycleviewcard2.StackActVertical"
@@ -198,39 +164,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.RCardAct1"
-                    android:scheme="dataability" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.RCardAct1"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.RCardAct1"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".splshact.SplshActDemo"
@@ -365,39 +298,7 @@
                 <action android:name="${applicationId}.web.page" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.WebViewActivity"
-                    android:scheme="dataability" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.WebViewActivity"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="cs.znclass.com"
-                    android:path="/${applicationId}.hs.act.slbapp.WebViewActivity"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -508,39 +409,7 @@
                 <action android:name="${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1"
-                    android:scheme="dataability" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.just.agentweb.geek.activity.RemoteWebViewlActivity"
@@ -614,39 +483,7 @@
                 <action android:name="${applicationId}.web.page3" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.WebActivity"
-                    android:scheme="dataability" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.WebActivity"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.WebActivity"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -658,39 +495,7 @@
                 <action android:name="${applicationId}.web.page3.js2" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity2"
-                    android:scheme="dataability" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity2"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity2"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
 
         <activity
@@ -702,39 +507,7 @@
                 <action android:name="${applicationId}.web.page3.js3" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity3"
-                    android:scheme="dataability" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity3"
-                    android:scheme="http" />
-            </intent-filter>
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="aic.sairobo.cn"
-                    android:path="/${applicationId}.hs.act.slbapp.JsWebActivity3"
-                    android:scheme="https" />
-            </intent-filter>
         </activity>
 
 
