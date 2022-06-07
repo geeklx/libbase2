@@ -33,6 +33,10 @@ dependencies {
     //
     api 'com.caverock:androidsvg:1.2.1'
     //
+    api "androidx.leanback:leanback:1.0.0"
+    // https://github.com/h6ah4i/android-verticalseekbar
+    api 'com.h6ah4i.android.widget.verticalseekbar:verticalseekbar:0.7.0'
+    //
     api librarys.retrofit
     api librarys.retrofitconverters
     api librarys.retrofitgconvertergson
