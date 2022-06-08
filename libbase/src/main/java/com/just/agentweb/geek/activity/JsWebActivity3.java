@@ -23,12 +23,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.ToastUtils;
+import com.geek.libbase.R;
 import com.geek.libutils.app.MyLogUtil;
 import com.github.lzyzsd.jsbridge.BridgeHandler;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 import com.just.agentweb.AgentWeb;
-import com.geek.libbase.R;
 import com.just.agentweb.geek.base.BaseAgentWebActivityJs2;
 import com.just.agentweb.geek.fragment.AgentWebFragment;
 
@@ -80,6 +79,53 @@ public class JsWebActivity3 extends BaseAgentWebActivityJs2 {
             }
 
         });
+        //ceshi
+        mBridgeWebView.registerHandler("get_token", new BridgeHandler() {
+
+            @Override
+            public void handler(String data, CallBackFunction function) {
+//                function.onCallBack("submitFromWeb exe, response data 中文 from Java");
+                function.onCallBack("get_token");
+            }
+
+        });
+        mBridgeWebView.registerHandler("get_response_type", new BridgeHandler() {
+
+            @Override
+            public void handler(String data, CallBackFunction function) {
+//                function.onCallBack("submitFromWeb exe, response data 中文 from Java");
+                function.onCallBack("get_response_type");
+            }
+
+        });
+        mBridgeWebView.registerHandler("get_client_id", new BridgeHandler() {
+
+            @Override
+            public void handler(String data, CallBackFunction function) {
+//                function.onCallBack("submitFromWeb exe, response data 中文 from Java");
+                function.onCallBack("get_client_id");
+            }
+
+        });
+        mBridgeWebView.registerHandler("get_redirect_uri", new BridgeHandler() {
+
+            @Override
+            public void handler(String data, CallBackFunction function) {
+//                function.onCallBack("submitFromWeb exe, response data 中文 from Java");
+                function.onCallBack("get_redirect_uri");
+            }
+
+        });
+        mBridgeWebView.registerHandler("get_scope", new BridgeHandler() {
+
+            @Override
+            public void handler(String data, CallBackFunction function) {
+//                function.onCallBack("submitFromWeb exe, response data 中文 from Java");
+                function.onCallBack("get_scope");
+            }
+
+        });
+
     }
 
     public class AndroidInterface2 {
@@ -112,18 +158,28 @@ public class JsWebActivity3 extends BaseAgentWebActivityJs2 {
         }
 
         @JavascriptInterface
-        public void exitApp() {
+        public String get_token() {
+            return "get_token";
+        }
 
-            deliver.post(new Runnable() {
-                @Override
-                public void run() {
-                    onBackPressed();
-                }
-            });
+        @JavascriptInterface
+        public String get_response_type() {
+            return "get_response_type";
+        }
 
+        @JavascriptInterface
+        public String get_client_id() {
+            return "get_client_id";
+        }
 
-            Log.i("Info", "Thread:" + Thread.currentThread());
+        @JavascriptInterface
+        public String get_redirect_uri() {
+            return "get_redirect_uri";
+        }
 
+        @JavascriptInterface
+        public String get_scope() {
+            return "get_scope";
         }
 
     }
@@ -199,7 +255,7 @@ public class JsWebActivity3 extends BaseAgentWebActivityJs2 {
             } else {
                 //
                 if (TextUtils.isEmpty(appLinkIntent.getStringExtra(AgentWebFragment.URL_KEY))) {
-                    target = "http://www.jd.com/";
+                    target = "http://192.168.10.182:8080/";
                 } else {
                     target = appLinkIntent.getStringExtra(AgentWebFragment.URL_KEY);
                 }
