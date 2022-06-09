@@ -40,15 +40,15 @@ dependencies {
     //搜索功能
     api 'com.amap.api:search:9.2.0'
     // https://github.com/gzu-liyujiang/AndroidPicker
-    api 'com.orhanobut:logger:2.2.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:Common:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelView:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:AddressPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:ColorPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:FilePicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:CalendarPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:ImagePicker:3.1.0'
+//    api 'com.orhanobut:logger:2.2.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:Common:4.1.7'
+    api 'com.github.gzu-liyujiang.AndroidPicker:WheelView:4.1.7'
+    api 'com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7'
+    api 'com.github.gzu-liyujiang.AndroidPicker:AddressPicker:4.1.7'
+    api 'com.github.gzu-liyujiang.AndroidPicker:ColorPicker:4.1.7'
+    api 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:4.1.7'
+    api 'com.github.gzu-liyujiang.AndroidPicker:CalendarPicker:4.1.7'
+    api 'com.github.gzu-liyujiang.AndroidPicker:ImagePicker:4.1.7'
     //
     api 'com.tencent.bugly:crashreport:latest.release'
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
