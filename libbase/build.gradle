@@ -33,11 +33,12 @@ dependencies {
     api 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx'
     api 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx'
     //3D地图so及jar
-    api 'com.amap.api:3dmap:latest.integration'
+//    api 'com.amap.api:3dmap:latest.integration'
+    api 'com.amap.api:3dmap:5.0.0'
     //定位功能
-    api 'com.amap.api:location:latest.integration'
+    api 'com.amap.api:location:3.3.0'
     //搜索功能
-    api 'com.amap.api:search:latest.integration'
+    api 'com.amap.api:search:5.0.0'
     // https://github.com/gzu-liyujiang/AndroidPicker
     api 'com.orhanobut:logger:2.2.0'
     api 'com.gitee.li_yu_jiang.AndroidPicker:Common:3.1.0'
