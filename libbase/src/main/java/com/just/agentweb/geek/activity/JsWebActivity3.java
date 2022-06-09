@@ -22,16 +22,24 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
+import com.blankj.utilcode.util.BarUtils;
 import com.geek.libbase.R;
 import com.geek.libutils.app.MyLogUtil;
 import com.github.lzyzsd.jsbridge.BridgeHandler;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 import com.just.agentweb.AgentWeb;
+import com.just.agentweb.geek.StartHiddenManagerAgent;
 import com.just.agentweb.geek.base.BaseAgentWebActivityJs2;
 import com.just.agentweb.geek.fragment.AgentWebFragment;
+import com.lxj.xpopup.XPopup;
+import com.lxj.xpopup.interfaces.OnInputConfirmListener;
 
 public class JsWebActivity3 extends BaseAgentWebActivityJs2 {
+
+    private TextView tv1;
+    private TextView tv2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +47,49 @@ public class JsWebActivity3 extends BaseAgentWebActivityJs2 {
         setContentView(R.layout.activity_dtysweb3);
         LinearLayout mLinearLayout = (LinearLayout) this.findViewById(R.id.container);
         mTitleTextView.setText("灯塔有声");
+        tv1 = findViewById(R.id.tv1);
+        tv2 = findViewById(R.id.tv2);
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        startHiddenManager = new StartHiddenManagerAgent(tv1, tv2, null, new StartHiddenManagerAgent.OnClickFinish() {
+            @Override
+            public void onFinish() {
+                new XPopup.Builder(JsWebActivity3.this)
+                        //.dismissOnBackPressed(false)
+                        .dismissOnTouchOutside(true) //对于只使用一次的弹窗，推荐设置这个
+                        .autoOpenSoftInput(true)
+//                        .autoFocusEditText(false) //是否让弹窗内的EditText自动获取焦点，默认是true
+//                        .isRequestFocus(false)
+                        //.moveUpToKeyboard(false)   //是否移动到软键盘上面，默认为true
+                        .asInputConfirm("修改地址", getUrl(), getUrl(), "",
+                                new OnInputConfirmListener() {
+                                    @Override
+                                    public void onConfirm(String text) {
+                                        mAgentWeb.getUrlLoader().loadUrl(text);
+                                    }
+                                })
+                        .show();
+            }
+        });
+
+    }
+
+    private StartHiddenManagerAgent startHiddenManager;
+
+    @Override
+    protected void onDestroy() {
+        startHiddenManager.onDestory();
+        super.onDestroy();
     }
 
     @Override
@@ -255,7 +306,7 @@ public class JsWebActivity3 extends BaseAgentWebActivityJs2 {
             } else {
                 //
                 if (TextUtils.isEmpty(appLinkIntent.getStringExtra(AgentWebFragment.URL_KEY))) {
-                    target = "http://192.168.10.182:8080/";
+                    target = "http://www.jd.com/";
                 } else {
                     target = appLinkIntent.getStringExtra(AgentWebFragment.URL_KEY);
                 }

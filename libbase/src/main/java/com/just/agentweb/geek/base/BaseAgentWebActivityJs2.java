@@ -75,7 +75,7 @@ public abstract class BaseAgentWebActivityJs2 extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, R.color.transparent));
-        BarUtils.setStatusBarLightMode(this, false);
+        BarUtils.setStatusBarLightMode(this, true);
     }
 
     @Override

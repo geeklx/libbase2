@@ -6,9 +6,9 @@ plugins {
 }
 apply from: "buildconfig.gradle"
 
-//configurations.all {
-//    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
-//}
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir
