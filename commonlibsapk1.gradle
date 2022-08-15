@@ -1,30 +1,21 @@
+// 提供单一包模式
 apply plugin: 'com.android.application'
 def config = rootProject.ext //配置
 def librarys = config.dependencies //
 android {
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
-    dexOptions {
-        jumboMode = true
-    }
+
+//    dexOptions {
+//        jumboMode = true
+//    }
     packagingOptions {
-        pickFirst 'lib/armeabi/libRSSupport.so'
-        pickFirst 'lib/armeabi/librsjni_androidx.so'
-        pickFirst 'lib/armeabi/librsjni.so'
-        pickFirst 'lib/armeabi-v7a/libRSSupport.so'
-        pickFirst 'lib/armeabi-v7a/librsjni_androidx.so'
-        pickFirst 'lib/armeabi-v7a/librsjni.so'
-        pickFirst 'lib/arm64-v8a/librsjni.so'
-        pickFirst 'lib/arm64-v8a/libRSSupport.so'
-        pickFirst 'lib/arm64-v8a/librsjni_androidx.so'
-        pickFirst 'lib/x86_64/libRSSupport.so'
-        pickFirst 'lib/x86_64/librsjni_androidx.so'
-        pickFirst 'lib/x86_64/librsjni.so'
-        pickFirst 'lib/x86/librsjni_androidx.so'
-        pickFirst 'lib/x86/libRSSupport.so'
-        pickFirst 'lib/x86/librsjni.so'
+        pickFirst 'lib/*/libRSSupport.so'
+        pickFirst 'lib/*/librsjni_androidx.so'
+        pickFirst 'lib/*/librsjni.so'
+        pickFirst 'lib/*/libstlport_shared.so'
 
     }
 
@@ -82,13 +73,13 @@ android {
     // MIM or Not MIM
     signingConfigs {
         release {
-            storeFile file('./../../../releasekey/harmonyandroid.jks')
+            storeFile file('./../releasekey/harmonyandroid.jks')
             keyAlias 'harmonyandroid'
             keyPassword 'HarmonyAndroid'
             storePassword 'HarmonyAndroid'
         }
         debug {
-            storeFile file('./../../../releasekey/harmonyandroid.jks')
+            storeFile file('./../releasekey/harmonyandroid.jks')
             keyAlias 'harmonyandroid'
             keyPassword 'HarmonyAndroid'
             storePassword 'HarmonyAndroid'

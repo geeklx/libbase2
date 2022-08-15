@@ -2,11 +2,14 @@ package com.geek.libretrofit;
 
 import android.app.Application;
 
+import com.alibaba.fastjson.JSON;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
+import com.geek.libutils.app.MyLogUtil;
+import com.geek.libutils.data.MmkvUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -150,11 +153,25 @@ public class RetrofitNetNew {
                 String accessSecret = SPUtils.getInstance().getString("accessSecret", "accessSecret");
                 String accessKey2 = SPUtils.getInstance().getString("accessKey", "accessKey");
                 String version2 = SPUtils.getInstance().getString("version", "V1");
-                String latitude = SPUtils.getInstance().getString("version", "weidu");
-                String longitude = SPUtils.getInstance().getString("version", "jingdu");
+                String latitude = SPUtils.getInstance().getString("weidu", "weidu");
+                String longitude = SPUtils.getInstance().getString("jingdu", "jingdu");
                 String timer = System.currentTimeMillis() + "";
                 String accessKey = timer + numcode + accessSecret;
                 String MD5 = version2 + EncryptUtils.encryptMD5ToString(accessKey) + "";
+                //
+                HeaderBean headerBean = new HeaderBean();
+                headerBean.setImei(BanbenUtils.getInstance().getImei());
+                headerBean.setPlatform(BanbenUtils.getInstance().getPlatform());
+                headerBean.setToken(BanbenUtils.getInstance().getToken());
+                headerBean.setModel(DeviceUtils.getManufacturer());
+                headerBean.setVersion(BanbenUtils.getInstance().getVersion());
+                headerBean.setVersion_code(AppUtils.getAppVersionCode() + "");
+                headerBean.setPackage_name(AppUtils.getAppPackageName() + "");
+                headerBean.setLatitude(latitude);
+                headerBean.setLongitude(longitude);
+                MmkvUtils.getInstance().set_common_json("app_header", JSON.toJSONString(headerBean), HeaderBean.class);
+//                HeaderBean bean = MmkvUtils.getInstance().get_common_json("app_header", HeaderBean.class);
+//                MyLogUtil.e("RetrofitNetNew_Interceptor", JSON.toJSONString(bean));
                 Request.Builder requestBuilder = originalRequest.newBuilder()
                         // Provide your custom header here
                         .header("imei", BanbenUtils.getInstance().getImei())

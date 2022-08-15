@@ -22,6 +22,11 @@ public class SlbBaseActivityPermissions extends SlbBaseActivityPermissionsBase {
     }
 
     @Override
+    protected int set_timer1() {
+        return 24 * 60 * 60 * 1000;
+    }
+
+    @Override
     protected String[] YouNeedPermissions() {
         return needPermissions;
     }

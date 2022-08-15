@@ -54,6 +54,8 @@ dependencies {
     api 'com.github.li-xiaojun:XPopup:2.4.9'
     api 'com.github.li-xiaojun:StateLayout:1.2.8'
     api 'com.github.li-xiaojun:EasyAdapter:1.2.5'
+    // https://seed.pgyer.com/site/2Umq3b49JJ
+    api 'com.pgyer:analytics:4.2.8'//最好写上具体依赖的版本号 如：4.2.1
 //    //
 //    api librarys.rxJava2
 //    api librarys.rxandroid2

@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.geek.libbase.R;
-import com.geek.libbase.base.SlbBaseActivity;
+import com.geek.libbase.utils.Permission24Util;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -27,6 +27,18 @@ public abstract class SlbBaseActivityPermissionsBase extends SlbBaseActivity {
     private List<String> needRequestPermissonList;
     private boolean isInstalls = true;
     private Dialog dialog;
+
+    private int timer1 = 0;
+
+    public int getTimer1() {
+        return timer1;
+    }
+
+    public void setTimer1(int timer1) {
+        this.timer1 = timer1;
+    }
+
+    protected abstract int set_timer1();
 
     protected abstract String[] YouNeedPermissions();
 
@@ -66,6 +78,7 @@ public abstract class SlbBaseActivityPermissionsBase extends SlbBaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        setTimer1(set_timer1());
         if (is_android10()) {
             isjump = true;
         } else {
@@ -85,7 +98,9 @@ public abstract class SlbBaseActivityPermissionsBase extends SlbBaseActivity {
         }
         if (Build.VERSION.SDK_INT >= 23 && getApplicationInfo().targetSdkVersion >= 23) {
             if (isNeedCheck) {
-                checkPermissions(needPermissions);
+                if (Permission24Util.checkPermissons(getApplicationContext(), needPermissions, getTimer1())) {
+                    checkPermissions(needPermissions);
+                }
             }
         }
 

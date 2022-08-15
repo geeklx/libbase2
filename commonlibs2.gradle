@@ -1,3 +1,4 @@
+// 提供keep分版本库
 def config = rootProject.ext //配置
 def librarys = config.dependencies //
 android {
@@ -11,6 +12,13 @@ android {
         renderscriptSupportModeEnabled true
         vectorDrawables.useSupportLibrary = true
 //        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+    packagingOptions {
+        pickFirst 'lib/*/libRSSupport.so'
+        pickFirst 'lib/*/librsjni_androidx.so'
+        pickFirst 'lib/*/librsjni.so'
+        pickFirst 'lib/*/libstlport_shared.so'
+
     }
     lintOptions {
         checkReleaseBuilds false
