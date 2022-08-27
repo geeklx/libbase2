@@ -1,3 +1,4 @@
+// 提供keep分版本库或包切换
 def config = rootProject.ext //配置
 def librarys = config.dependencies //
 if (isMIMode.toBoolean()) {
@@ -7,37 +8,25 @@ if (isMIMode.toBoolean()) {
 }
 android {
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
-    dexOptions {
-        jumboMode = true
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
-    packagingOptions {
-        pickFirst 'lib/armeabi/libRSSupport.so'
-        pickFirst 'lib/armeabi/librsjni_androidx.so'
-        pickFirst 'lib/armeabi/librsjni.so'
-        pickFirst 'lib/armeabi-v7a/libRSSupport.so'
-        pickFirst 'lib/armeabi-v7a/librsjni_androidx.so'
-        pickFirst 'lib/armeabi-v7a/librsjni.so'
-        pickFirst 'lib/arm64-v8a/librsjni.so'
-        pickFirst 'lib/arm64-v8a/libRSSupport.so'
-        pickFirst 'lib/arm64-v8a/librsjni_androidx.so'
-        pickFirst 'lib/x86_64/libRSSupport.so'
-        pickFirst 'lib/x86_64/librsjni_androidx.so'
-        pickFirst 'lib/x86_64/librsjni.so'
-        pickFirst 'lib/x86/librsjni_androidx.so'
-        pickFirst 'lib/x86/libRSSupport.so'
-        pickFirst 'lib/x86/librsjni.so'
-
-    }
+//    dexOptions {
+//        jumboMode = true
+//    }
     compileSdkVersion config.compileSdkVersion
 
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
-        versionCode config.appversionCode
-        versionName config.appversionName
+        versionCode config.dengtaversionCode
+        versionName config.dengtaversionName
         multiDexEnabled true
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
@@ -82,12 +71,6 @@ android {
 //        //jni.srcDirs 'src/main/jni'
 //        jniLibs.srcDir 'src/main/libs'
     }
-    lintOptions {
-        checkReleaseBuilds false
-        // Or, if you prefer, you can continue to check for errors in release builds,
-        // but continue the build even when errors are found:
-        abortOnError false
-    }
     // CMakeLists.txt
 //    externalNativeBuild {
 //        cmake {
@@ -107,13 +90,13 @@ android {
     if (config.isMIMode.toBoolean()) {
         signingConfigs {
             release {
-                storeFile file('./../../releasekey/harmonyandroid.jks')
+                storeFile file('./../releasekey/harmonyandroid.jks')
                 keyAlias 'harmonyandroid'
                 keyPassword 'HarmonyAndroid'
                 storePassword 'HarmonyAndroid'
             }
             debug {
-                storeFile file('./../../releasekey/harmonyandroid.jks')
+                storeFile file('./../releasekey/harmonyandroid.jks')
                 keyAlias 'harmonyandroid'
                 keyPassword 'HarmonyAndroid'
                 storePassword 'HarmonyAndroid'
@@ -135,12 +118,12 @@ android {
                 signingConfig signingConfigs.release
             }
         }
-//        android.applicationVariants.all { variant ->
-//            def outputApkName = "yewulibs-demo1-app-${variant.flavorName}-release.apk"
-//            variant.outputs.all {
-//                outputFileName = outputApkName
-//            }
-//        }
+        android.applicationVariants.all { variant ->
+            def outputApkName = "${project.name}-${variant.flavorName}-release.apk"
+            variant.outputs.all {
+                outputFileName = outputApkName
+            }
+        }
     } else {
         libraryVariants.all { variant ->
             variant.outputs.all {

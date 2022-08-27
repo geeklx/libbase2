@@ -14,13 +14,11 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-
 import com.geek.libbase.R;
 import com.geek.libbase.base.SlbBaseLazyFragmentNew;
-import com.geek.libbase.utils.CommonUtils;
 import com.geek.libbase.emptyview.EmptyViewNewNew;
+import com.geek.libbase.utils.CommonUtils;
 import com.geek.libbase.widgets.XRecyclerView;
 import com.geek.libutils.app.LocalBroadcastManagers;
 import com.geek.libutils.app.MyLogUtil;
@@ -39,7 +37,7 @@ public abstract class SlbBaseFragmentViewPageYewuList extends SlbBaseLazyFragmen
     protected SmartRefreshLayout refreshLayout1;
     protected ClassicsHeader smartHeader1;
     //
-    protected static final int PAGE_SIZE = 10;
+    protected int PAGE_SIZE = 10;
     protected int mNextRequestPage = 1;
     protected int mPage;
     protected static boolean mFirstPageNoMore;

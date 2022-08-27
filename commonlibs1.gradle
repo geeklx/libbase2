@@ -1,3 +1,4 @@
+// 提供单一库
 def config = rootProject.ext //配置
 def librarys = config.dependencies //
 android {
@@ -6,11 +7,20 @@ android {
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
+        versionCode config.appversionCode
+        versionName config.appversionName
         multiDexEnabled true
         renderscriptTargetApi 19
         renderscriptSupportModeEnabled true
         vectorDrawables.useSupportLibrary = true
 //        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+    }
+    packagingOptions {
+        pickFirst 'lib/*/libRSSupport.so'
+        pickFirst 'lib/*/librsjni_androidx.so'
+        pickFirst 'lib/*/librsjni.so'
+        pickFirst 'lib/*/libstlport_shared.so'
+
     }
     lintOptions {
         checkReleaseBuilds false

@@ -437,7 +437,7 @@ public class BigImageViewPagerAct extends AppCompatActivity {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(BigImageViewPagerAct.this,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                         // 拒绝权限
-                        ToastUtil.getInstance()._short(BigImageViewPagerAct.this.getApplicationContext(), "您拒绝了存储权限，无法读取图片！");
+                        ToastUtil.getInstance().showShort(BigImageViewPagerAct.this.getApplicationContext(), "您拒绝了存储权限，无法读取图片！");
                     } else {
                         // 申请权限
                         ActivityCompat.requestPermissions(BigImageViewPagerAct.this,
@@ -455,7 +455,7 @@ public class BigImageViewPagerAct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ImageLoader.cleanDiskCache(BigImageViewPagerAct.this);
-                ToastUtil.getInstance()._short(BigImageViewPagerAct.this, "磁盘缓存已成功清除");
+                ToastUtil.getInstance().showShort(BigImageViewPagerAct.this, "磁盘缓存已成功清除");
             }
         });
     }
@@ -469,7 +469,7 @@ public class BigImageViewPagerAct extends AppCompatActivity {
                 if (grantResults[i] == PERMISSION_GRANTED) {
                     chooseImage();
                 } else {
-                    ToastUtil.getInstance()._short(BigImageViewPagerAct.this.getApplicationContext(), "您拒绝了存储权限，无法读取图片！");
+                    ToastUtil.getInstance().showShort(BigImageViewPagerAct.this.getApplicationContext(), "您拒绝了存储权限，无法读取图片！");
                 }
             }
         }

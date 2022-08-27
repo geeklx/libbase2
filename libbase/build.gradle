@@ -33,21 +33,22 @@ dependencies {
     api 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx'
     api 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx'
     //3D地图so及jar
-    api 'com.amap.api:3dmap:latest.integration'
+//    api 'com.amap.api:3dmap:latest.integration'
+    api 'com.amap.api:3dmap:9.2.0'
     //定位功能
-    api 'com.amap.api:location:latest.integration'
+    api 'com.amap.api:location:6.1.0'
     //搜索功能
-    api 'com.amap.api:search:latest.integration'
+    api 'com.amap.api:search:9.2.0'
     // https://github.com/gzu-liyujiang/AndroidPicker
     api 'com.orhanobut:logger:2.2.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:Common:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelView:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:WheelPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:AddressPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:ColorPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:FilePicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:CalendarPicker:3.1.0'
-    api 'com.gitee.li_yu_jiang.AndroidPicker:ImagePicker:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:Common:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:WheelView:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:WheelPicker:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:AddressPicker:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:ColorPicker:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:CalendarPicker:3.1.0'
+    api 'com.github.gzu-liyujiang.AndroidPicker:ImagePicker:3.1.0'
     //
     api 'com.tencent.bugly:crashreport:latest.release'
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9

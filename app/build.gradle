@@ -59,7 +59,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation files('libs/jar_4_2_7.jar')
+//    implementation files('libs/jar_4_2_7.jar')
 //    implementation 'com.shouzhong:ScannerTextLib:1.0.0'
 //    implementation 'com.shouzhong:ScannerNsfwLib:1.0.0'
 //    implementation project(':libutils')
@@ -79,7 +79,7 @@ dependencies {
 //    implementation 'com.github.geeklx:fosunglibs:1.2.6'
 
 //    implementation 'com.pgyersdk:sdk:4.2.1'
-//    implementation project(':libbase')
+    implementation project(':libbase')
 //    implementation 'com.github.geeklx:fosunglibs:1.0.8'
 
 }

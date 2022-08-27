@@ -13,6 +13,7 @@ public class UriHelperNew {
     public static final String REGEXP = "^\\{([byoilfds]{1})\\}(.+)$";
 
     public static final String HIOS_SCHEME = "dataability";
+    public static final String HIOS_SCHEME2 = "app";
     public static final String CONDITION = "condition";
 
     public static final String CONDITION_LOGIN = "login";

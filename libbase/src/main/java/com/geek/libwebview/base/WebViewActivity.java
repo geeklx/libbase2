@@ -45,7 +45,8 @@ import java.net.URLDecoder;
 
 public class WebViewActivity extends AppCompatActivity implements View.OnClickListener {
 
-    public static final String UA = "Mozilla/5.0 (Linux; Android 5.1; sudy6580_we_l Build/C320) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/39.0.0.0 Safari/537.36";
+//    public static final String UA = "Mozilla/5.0 (Linux; Android 5.1; sudy6580_we_l Build/C320) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/39.0.0.0 Safari/537.36";
+    public static final String UA = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.94 Safari/537.36";
 
     private View mBackImageView;
     private View mBackView;
@@ -214,6 +215,10 @@ public class WebViewActivity extends AppCompatActivity implements View.OnClickLi
             settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        //
+//        String ua = "Mozilla/5.0 (Linux; Android 5.0; SM-N9100 Build/LRX21V) > AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 > Chrome/37.0.0.0 Mobile Safari/537.36 V1_AND_SQ_5.3.1_196_YYB_D > QQ/5.3.1.2335 NetType/WIFI";
+//        mWebView.getSettings().setUserAgentString(ua);
+
 
         mWebView.addJavascriptInterface(this, "android");//js对应tag
 
