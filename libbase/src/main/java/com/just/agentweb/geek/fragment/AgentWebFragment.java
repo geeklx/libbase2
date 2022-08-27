@@ -196,11 +196,12 @@ public class AgentWebFragment extends Fragment implements FragmentKeyDown {
 
                             @Override
                             protected ResourceRequest createResourceRequest(String url) {
+                                // https://github.com/Justson/AgentWeb/issues/1001 android12 下载崩溃问题
                                 return DownloadImpl.getInstance(getActivity())
                                         .url(url)
                                         .quickProgress()
                                         .addHeader("", "")
-                                        .setEnableIndicator(true)
+                                        .setEnableIndicator(false)
                                         .autoOpenIgnoreMD5()
                                         .setRetry(5)
                                         .setBlockMaxTime(100000L);

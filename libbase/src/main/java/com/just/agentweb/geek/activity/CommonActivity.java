@@ -85,8 +85,8 @@ public class CommonActivity extends AppCompatActivity {
 			/*下载文件*/
 			case FLAG_GUIDE_DICTIONARY_FILE_DOWNLOAD:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
-//				mBundle.putString(AgentWebFragment.URL_KEY, "https://android.myapp.com/");
-				mBundle.putString(AgentWebFragment.URL_KEY, "http://119.188.115.245:7107/noticeDetail?id=3566219418771923771");
+				mBundle.putString(AgentWebFragment.URL_KEY, "https://android.myapp.com/");
+//				mBundle.putString(AgentWebFragment.URL_KEY, "http://t-oss.ireign.cn:8380/resource-pyga/uploads/file/2022-08-16/3566219447771348189.pdf");
 				break;
             /*input标签上传文件*/
 			case FLAG_GUIDE_DICTIONARY_INPUT_TAG_PROBLEM:

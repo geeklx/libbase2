@@ -22,12 +22,12 @@ android {
         pickFirst 'lib/x86/librsjni.so'
 
     }
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.fosung.lighthouse.fosunglibs"
-        minSdk 21
-        targetSdk 32
+        minSdk 24
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
