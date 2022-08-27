@@ -194,7 +194,7 @@ public class HiosHelperNew {
     }
 
     public static boolean checkUriHost(Uri uri) {
-        return UriHelperNew.HIOS_SCHEME.equalsIgnoreCase(uri.getScheme());
+        return UriHelperNew.HIOS_SCHEME.equalsIgnoreCase(uri.getScheme()) || UriHelperNew.HIOS_SCHEME2.equalsIgnoreCase(uri.getScheme());
     }
 
     /**

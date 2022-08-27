@@ -16,6 +16,7 @@ import com.blankj.utilcode.util.Utils;
 import com.geek.libretrofit.BanbenUtils;
 import com.geek.libretrofit.HeaderBean;
 import com.geek.libutils.data.MmkvUtils;
+import com.just.agentweb.geek.activity.AgentwebAct;
 import com.just.agentweb.geek.activity.JsWebActivity3;
 import com.pgyer.pgyersdk.PgyerSDKManager;
 
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.tv1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, JsWebActivity3.class));
+//                startActivity(new Intent(MainActivity.this, JsWebActivity3.class));
+                startActivity(new Intent(MainActivity.this, AgentwebAct.class));
             }
         });
 //        //ces

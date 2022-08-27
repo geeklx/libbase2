@@ -106,8 +106,9 @@ public class CommonActivity extends AppCompatActivity {
             /*优酷全屏播放视屏*/
 			case FLAG_GUIDE_DICTIONARY_VIDEO_FULL_SCREEN:
 				ft.add(R.id.container_framelayout, mAgentWebFragment = AgentWebFragment.getInstance(mBundle = new Bundle()), AgentWebFragment.class.getName());
-				mBundle.putString(AgentWebFragment.URL_KEY, "https://v.youku.com/v_show/id_XNTgwMTY2NDkzMg==.html?spm=a2ha1.14919748_WEBGAME_JINGXUAN.drawer4.d_zj1_2&scm=20140719.manual.4471.video_XNTgwMTY2NDkzMg%3D%3D");
+//				mBundle.putString(AgentWebFragment.URL_KEY, "https://v.youku.com/v_show/id_XNTgwMTY2NDkzMg==.html?spm=a2ha1.14919748_WEBGAME_JINGXUAN.drawer4.d_zj1_2&scm=20140719.manual.4471.video_XNTgwMTY2NDkzMg%3D%3D");
 //                mBundle.putString(AgentWebFragment.URL_KEY, "https://v.qq.com/x/page/i0530nu6z1a.html");
+                mBundle.putString(AgentWebFragment.URL_KEY, "http://119.188.115.245:7107/branch-features");
 				break;
             /*淘宝自定义进度条*/
 			case FLAG_GUIDE_DICTIONARY_CUSTOM_PROGRESSBAR:

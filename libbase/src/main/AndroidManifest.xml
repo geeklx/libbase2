@@ -511,8 +511,6 @@
         </activity>
 
 
-
-
         <activity
             android:name="com.luck.pictureselector.PictureSelectorAct"
             android:screenOrientation="portrait" />

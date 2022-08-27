@@ -368,6 +368,7 @@ public class JsWebActivity3 extends BaseAgentWebActivityJs2 {
                 }
             }
         }
+        target = "http://119.188.115.245:7107/branch-features";
         return target;
     }
 
