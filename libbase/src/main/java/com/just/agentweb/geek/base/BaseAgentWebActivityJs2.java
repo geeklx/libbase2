@@ -3,6 +3,7 @@ package com.just.agentweb.geek.base;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -29,14 +30,17 @@ import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.geek.libutils.app.MyLogUtil;
-import com.github.lzyzsd.jsbridge.BridgeHandler;
+import com.download.library.DownloadImpl;
+import com.download.library.DownloadListenerAdapter;
+import com.download.library.Extra;
+import com.download.library.ResourceRequest;
+import com.geek.libbase.R;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.BridgeWebViewClient;
-import com.github.lzyzsd.jsbridge.CallBackFunction;
+import com.just.agentweb.AbsAgentWebSettings;
 import com.just.agentweb.AgentWeb;
-import com.just.agentweb.AgentWebSettingsImpl;
 import com.just.agentweb.AgentWebUIControllerImplBase;
+import com.just.agentweb.DefaultDownloadImpl;
 import com.just.agentweb.DefaultWebClient;
 import com.just.agentweb.IAgentWebSettings;
 import com.just.agentweb.IWebLayout;
@@ -44,10 +48,9 @@ import com.just.agentweb.MiddlewareWebChromeBase;
 import com.just.agentweb.MiddlewareWebClientBase;
 import com.just.agentweb.PermissionInterceptor;
 import com.just.agentweb.WebChromeClient;
+import com.just.agentweb.WebListenerManager;
 import com.just.agentweb.WebViewClient;
 import com.just.agentweb.geek.AgentUtils;
-import com.geek.libbase.R;
-import com.just.agentweb.geek.widget.JsWebLayout;
 import com.just.agentweb.geek.widget.WebLayout;
 
 /**
@@ -360,9 +363,75 @@ public abstract class BaseAgentWebActivityJs2 extends AppCompatActivity {
         return null;
     }
 
-    public @Nullable
-    IAgentWebSettings getAgentWebSettings() {
-        return AgentWebSettingsImpl.getInstance();
+//    public @Nullable
+//    IAgentWebSettings getAgentWebSettings() {
+//        return AgentWebSettingsImpl.getInstance();
+//    }
+
+    /**
+     * @return IAgentWebSettings
+     */
+    public IAgentWebSettings getAgentWebSettings() {
+        return new AbsAgentWebSettings() {
+            private AgentWeb mAgentWeb;
+
+            @Override
+            protected void bindAgentWebSupport(AgentWeb agentWeb) {
+                this.mAgentWeb = agentWeb;
+            }
+
+            /**
+             * AgentWeb 4.0.0 内部删除了 DownloadListener 监听 ，以及相关API ，将 Download 部分完全抽离出来独立一个库，
+             * 如果你需要使用 AgentWeb Download 部分 ， 请依赖上 compile 'com.download.library:Downloader:4.1.1' ，
+             * 如果你需要监听下载结果，请自定义 AgentWebSetting ， New 出 DefaultDownloadImpl
+             * 实现进度或者结果监听，例如下面这个例子，如果你不需要监听进度，或者下载结果，下面 setDownloader 的例子可以忽略。
+             * @param webView
+             * @param downloadListener
+             * @return WebListenerManager
+             */
+            @Override
+            public WebListenerManager setDownloader(WebView webView, android.webkit.DownloadListener downloadListener) {
+                return super.setDownloader(webView,
+                        new DefaultDownloadImpl(BaseAgentWebActivityJs2.this,
+                                webView,
+                                this.mAgentWeb.getPermissionInterceptor()) {
+
+                            @Override
+                            protected ResourceRequest createResourceRequest(String url) {
+                                // https://github.com/Justson/AgentWeb/issues/1001 android12 下载崩溃问题
+                                return DownloadImpl.getInstance(BaseAgentWebActivityJs2.this)
+                                        .url(url)
+                                        .quickProgress()
+                                        .addHeader("", "")
+                                        .setEnableIndicator(false)
+                                        .autoOpenIgnoreMD5()
+                                        .setRetry(5)
+                                        .setBlockMaxTime(100000L);
+                            }
+
+                            @Override
+                            protected void taskEnqueue(ResourceRequest resourceRequest) {
+                                resourceRequest.enqueue(new DownloadListenerAdapter() {
+                                    @Override
+                                    public void onStart(String url, String userAgent, String contentDisposition, String mimetype, long contentLength, Extra extra) {
+                                        super.onStart(url, userAgent, contentDisposition, mimetype, contentLength, extra);
+                                    }
+
+                                    @MainThread
+                                    @Override
+                                    public void onProgress(String url, long downloaded, long length, long usedTime) {
+                                        super.onProgress(url, downloaded, length, usedTime);
+                                    }
+
+                                    @Override
+                                    public boolean onResult(Throwable throwable, Uri path, String url, Extra extra) {
+                                        return super.onResult(throwable, path, url, extra);
+                                    }
+                                });
+                            }
+                        });
+            }
+        };
     }
 
     protected abstract @NonNull
