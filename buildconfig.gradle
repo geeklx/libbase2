@@ -1,9 +1,9 @@
 ext {
 
-    compileSdkVersion = 33
+    compileSdkVersion = 32
 //    buildToolsVersion = '30.0.3'
     minSdkVersion = 21
-    targetSdkVersion = 33
+    targetSdkVersion = 32
 //    supportLibVersion = '30.0.0'
 
 //    # for MIM
