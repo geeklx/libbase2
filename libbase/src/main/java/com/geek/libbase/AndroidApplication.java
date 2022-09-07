@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.WebView;
-import android.widget.Toast;
 
 import androidx.multidex.MultiDex;
 
@@ -22,16 +21,15 @@ import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
 import com.geek.liblanguage.MultiLanguages;
 import com.geek.liblanguage.OnLanguageListener;
-import com.geek.libutils.app.BaseApp;
+import com.geek.libretrofit.RetrofitNetNew;
 import com.geek.libutils.app.LocalManageUtil;
 import com.geek.libutils.app.MyLogUtil;
 import com.geek.libutils.data.MmkvUtils;
-import com.geek.libretrofit.RetrofitNetNew;
 import com.geek.libwebview.hois2.HiosHelper;
 import com.just.agentweb.geek.hois3.HiosHelperNew;
 import com.just.agentweb.geek.service.WebService;
 import com.queue.library.GlobalQueue;
-import com.tencent.bugly.Bugly;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
@@ -84,12 +82,12 @@ public class AndroidApplication extends Application {
         }
     }
 
-    protected void configBugly(String banben_comm, String buglykey) {
+    protected void configBugly(String banben_comm, String buglykey1, String buglykey2, String buglykey3) {
         // 多渠道需求塞入
 //         String channel = WalleChannelReader.getChannel(this);
 //         Bugly.set(getApplicationContext(), channel);
         if (TextUtils.equals(banben_comm, "测试")) {
-            Bugly.init(getApplicationContext(), buglykey, true);
+            CrashReport.initCrashReport(getApplicationContext(), buglykey1, true);
             MyLogUtil.on(true);
             //TODO test
 //            if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -99,11 +97,11 @@ public class AndroidApplication extends Application {
 //            }
 //            LeakCanary.install(this);
         } else if (TextUtils.equals(banben_comm, "预生产")) {
-            Bugly.init(getApplicationContext(), buglykey, true);
+            CrashReport.initCrashReport(getApplicationContext(), buglykey2, true);
             MyLogUtil.on(true);
         } else if (TextUtils.equals(banben_comm, "线上")) {
 //            CrashReport.initCrashReport(this, "068e7f32c3", false);// 线上
-            Bugly.init(getApplicationContext(), buglykey, true);
+            CrashReport.initCrashReport(getApplicationContext(), buglykey3, true);
             MyLogUtil.on(true);
         }
     }
