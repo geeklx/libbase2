@@ -763,8 +763,6 @@
             android:screenOrientation="portrait" />
 
 
-
-
         <activity
             android:name="com.zaaach.citypicker.activity.CityPickerAct"
             android:exported="true"

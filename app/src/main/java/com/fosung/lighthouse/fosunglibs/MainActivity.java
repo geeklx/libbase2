@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.Utils;
+import com.geek.libshuiyin.ShuiyinAct1;
 import com.geek.libutils.data.MmkvUtils;
 import com.just.agentweb.geek.activity.AgentwebAct;
 import com.pgyer.pgyersdk.PgyerSDKManager;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                startActivity(new Intent(MainActivity.this, JsWebActivity3.class));
-                startActivity(new Intent(MainActivity.this, AgentwebAct.class));
+//                startActivity(new Intent(MainActivity.this, AgentwebAct.class));
+                startActivity(new Intent(MainActivity.this, ShuiyinAct1.class));
             }
         });
 //        //ces
