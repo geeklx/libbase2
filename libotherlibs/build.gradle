@@ -19,3 +19,7 @@ dependencies {
     api 'com.kunminx.linkage:linkage-recyclerview:2.4.0'
 
 }
+
+android {
+    namespace 'com.haier.cellarette.baselibrary'
+}

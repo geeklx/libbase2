@@ -12,6 +12,7 @@ android {
                 STATISTICS_VALUE  : stValue
         ]
     }
+    namespace 'com.geek.libbase'
 //    sourceSets {
 //        main {
 //            jniLibs.srcDirs = ['libs']

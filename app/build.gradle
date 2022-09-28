@@ -5,29 +5,16 @@ plugins {
 android {
 
     packagingOptions {
-        pickFirst 'lib/armeabi/libRSSupport.so'
-        pickFirst 'lib/armeabi/librsjni_androidx.so'
-        pickFirst 'lib/armeabi/librsjni.so'
-        pickFirst 'lib/armeabi-v7a/libRSSupport.so'
-        pickFirst 'lib/armeabi-v7a/librsjni_androidx.so'
-        pickFirst 'lib/armeabi-v7a/librsjni.so'
-        pickFirst 'lib/arm64-v8a/librsjni.so'
-        pickFirst 'lib/arm64-v8a/libRSSupport.so'
-        pickFirst 'lib/arm64-v8a/librsjni_androidx.so'
-        pickFirst 'lib/x86_64/libRSSupport.so'
-        pickFirst 'lib/x86_64/librsjni_androidx.so'
-        pickFirst 'lib/x86_64/librsjni.so'
-        pickFirst 'lib/x86/librsjni_androidx.so'
-        pickFirst 'lib/x86/libRSSupport.so'
-        pickFirst 'lib/x86/librsjni.so'
-
+        jniLibs {
+            pickFirsts += ['lib/armeabi/libRSSupport.so', 'lib/armeabi/librsjni_androidx.so', 'lib/armeabi/librsjni.so', 'lib/armeabi-v7a/libRSSupport.so', 'lib/armeabi-v7a/librsjni_androidx.so', 'lib/armeabi-v7a/librsjni.so', 'lib/arm64-v8a/librsjni.so', 'lib/arm64-v8a/libRSSupport.so', 'lib/arm64-v8a/librsjni_androidx.so', 'lib/x86_64/libRSSupport.so', 'lib/x86_64/librsjni_androidx.so', 'lib/x86_64/librsjni.so', 'lib/x86/librsjni_androidx.so', 'lib/x86/libRSSupport.so', 'lib/x86/librsjni.so']
+        }
     }
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.fosung.lighthouse.fosunglibs"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -53,6 +40,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    namespace 'com.fosung.lighthouse.fosunglibs'
 }
 
 dependencies {

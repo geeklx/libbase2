@@ -40,3 +40,7 @@ dependencies {
 //    api project(':liblocations')
 //    api project(':libocr')
 }
+
+android {
+    namespace 'com.geek.libgeek'
+}
