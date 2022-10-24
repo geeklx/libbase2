@@ -73,6 +73,14 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="loginstyle2">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="notice_dialog">
         <!-- 背景颜色及透明程度 -->
         <item name="android:windowBackground">@color/transparent</item>

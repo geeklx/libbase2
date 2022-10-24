@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/activity_co_top22" />
+        <include layout="@layout/activity_co_top_sy1" />
 
 
         <RelativeLayout
