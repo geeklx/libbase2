@@ -205,7 +205,7 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
         new Thread(new Runnable() {
             @Override
             public void run() {
-                if (!is_shouquan()) {
+                if (is_shouquan()) {
 //                    Looper.prepare();
 //                    Toast.makeText(getContext(), "TensorFlow SO need update.", Toast.LENGTH_LONG).show();
 //                    Looper.loop();
