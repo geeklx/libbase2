@@ -210,6 +210,8 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
 //                    Toast.makeText(getContext(), "TensorFlow SO need update.", Toast.LENGTH_LONG).show();
 //                    Looper.loop();
                     SPUtils.getInstance().put("shouquan", true);
+                } else {
+                    SPUtils.getInstance().put("shouquan", false);
                 }
             }
         }).start();
@@ -361,7 +363,7 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
 
                 }
             } else if (id == R.id.camera_capture) {//快门
-                if (SPUtils.getInstance().getBoolean("shouquan", false)) {
+                if (!SPUtils.getInstance().getBoolean("shouquan", false)) {
                     Toast.makeText(QiandaobaseAct1.this, "TensorFlow SO need update.", Toast.LENGTH_LONG).show();
                     return;
                 }
