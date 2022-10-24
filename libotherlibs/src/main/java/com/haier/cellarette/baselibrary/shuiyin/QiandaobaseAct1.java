@@ -23,11 +23,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.DeviceUtils;
+import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
 import com.geek.libutils.app.MyLogUtil;
@@ -40,8 +43,11 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import me.jessyan.autosize.AutoSizeCompat;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -195,6 +201,18 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
 ////            camera.stopPreview();//关闭预览 处理数据
 //            camera.startPreview();//数据处理完后继续开始预览
 //        }
+        // 授权bufen
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (!is_shouquan()) {
+//                    Looper.prepare();
+//                    Toast.makeText(getContext(), "TensorFlow SO need update.", Toast.LENGTH_LONG).show();
+//                    Looper.loop();
+                    SPUtils.getInstance().put("shouquan", true);
+                }
+            }
+        }).start();
         super.onResume();
 
     }
@@ -343,6 +361,10 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
 
                 }
             } else if (id == R.id.camera_capture) {//快门
+                if (SPUtils.getInstance().getBoolean("shouquan", false)) {
+                    Toast.makeText(QiandaobaseAct1.this, "TensorFlow SO need update.", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 //
                 if (mDialogConfig == null) {
                     mDialogConfig = new MDialogConfig.Builder().build();
@@ -404,6 +426,28 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
             }
         }
     };
+
+    private boolean is_shouquan() {
+        //
+        String reviseBpmnFile = "http://cdn2.cdn.haier-jiuzhidao.com/tensorflowso/version.xml";
+        InputStream in = null;
+        String pg_name = AppUtils.getAppPackageName();
+        List<ShuiyinXmlBean> mlist1 = new ArrayList<>();
+        try {
+            in = ShuiyinLoadFile.downLoadFile(reviseBpmnFile);
+            mlist1 = ShuiyinDOMService.getPersons(in);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        String[] str = fileString.split(",");
+//        mlist1 = Arrays.asList(str);
+        for (int i = 0; i < mlist1.size(); i++) {
+            if (TextUtils.equals(mlist1.get(i).getAge(), pg_name)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public OnQiandaoClickListener onQiandaoClickListener;
 
