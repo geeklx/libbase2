@@ -753,9 +753,9 @@
         <!--            android:name="com.amap.api.v2.apikey"-->
         <!--            android:value="dfc6928ba59ca473ecae8061c6913fcb" />-->
         <!--            android:value="d589a9e9273ebd4e739c33c38bd6dd19" />-->
-        <!--        <meta-data-->
-        <!--            android:name="com.amap.api.v2.apikey"-->
-        <!--            android:value="5a17ab9cc5aa0d74e090c37f3ecd5a15" />-->
+<!--        <meta-data-->
+<!--            android:name="com.amap.api.v2.apikey"-->
+<!--            android:value="5a17ab9cc5aa0d74e090c37f3ecd5a15" />-->
         <activity
             android:name="com.geek.liblocations.LocActivity"
             android:exported="true">
