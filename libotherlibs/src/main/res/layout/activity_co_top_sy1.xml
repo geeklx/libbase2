@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="55mm"
+    android:background="@color/transparent">
+
+    <TextView
+        android:id="@+id/tv_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12mm"
+        android:background="@drawable/arrow" />
+
+    <TextView
+        android:id="@+id/tv_center"
+        style="@style/loginstyle2"
+        android:text="测试"
+        android:textSize="18mm" />
+
+    <TextView
+        android:id="@+id/tv_right2"
+        style="@style/loginstyle2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12mm"
+        android:background="@drawable/icon_photo_more"
+        android:visibility="gone"
+         />
+
+    <TextView
+        android:id="@+id/tv_right"
+        style="@style/loginstyle2"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12mm"
+        android:text="测试"
+        android:textSize="16mm"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+
+</RelativeLayout>

@@ -17,14 +17,14 @@ import androidx.multidex.MultiDex;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
+import com.geek.libretrofit.RetrofitNetNew;
 import com.geek.libutils.app.LocalManageUtil;
 import com.geek.libutils.app.MyLogUtil;
 import com.geek.libutils.data.MmkvUtils;
-import com.geek.libretrofit.RetrofitNetNew;
 import com.geek.libwebview.hois2.HiosHelper;
 import com.just.agentweb.geek.service.WebService;
 import com.queue.library.GlobalQueue;
-import com.tencent.bugly.Bugly;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
@@ -75,7 +75,7 @@ public class HarmonyApplication2 extends Application {
 //         String channel = WalleChannelReader.getChannel(this);
 //         Bugly.set(getApplicationContext(), channel);
         if (TextUtils.equals(banben_comm, "测试")) {
-            Bugly.init(getApplicationContext(), buglykey, true);
+            CrashReport.initCrashReport(getApplicationContext(), buglykey, true);
             MyLogUtil.on(true);
             //TODO test
 //            if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -85,11 +85,11 @@ public class HarmonyApplication2 extends Application {
 //            }
 //            LeakCanary.install(this);
         } else if (TextUtils.equals(banben_comm, "预生产")) {
-            Bugly.init(getApplicationContext(), buglykey, true);
+            CrashReport.initCrashReport(getApplicationContext(), buglykey, true);
             MyLogUtil.on(true);
         } else if (TextUtils.equals(banben_comm, "线上")) {
 //            CrashReport.initCrashReport(this, "068e7f32c3", false);// 线上
-            Bugly.init(getApplicationContext(), buglykey, true);
+            CrashReport.initCrashReport(getApplicationContext(), buglykey, true);
             MyLogUtil.on(true);
         }
     }

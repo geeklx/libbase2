@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.geek.libbase">
+    tools:ignore="MissingLeanbackLauncher">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -27,7 +29,17 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-feature android:name="android.hardware.camera.any" />
+
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        tools:ignore="UnsupportedTvHardware" />
+    <uses-feature
+        android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission
         android:name="android.permission.READ_LOGS"
@@ -529,8 +541,6 @@
         </activity>
 
 
-
-
         <activity
             android:name="com.geek.libxuanzeqi.activity.MainActivitylibxuanzeqi"
             android:exported="true"
@@ -574,8 +584,6 @@
             android:screenOrientation="portrait" />
 
 
-
-
         <activity
             android:name="com.geek.zxinglibs3.SaomaAct3"
             android:exported="true"
@@ -603,24 +611,24 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-<!--        <activity-->
-<!--            android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity4"-->
-<!--            android:exported="true"-->
-<!--            android:screenOrientation="portrait">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="${applicationId}.hs.act.slbapp.Saoma3CommonScanActivity4" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-<!--        <activity-->
-<!--            android:name="com.geek.zxinglibs3.idcard.ScannerActivity"-->
-<!--            android:exported="true"-->
-<!--            android:screenOrientation="portrait">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="${applicationId}.hs.act.slbapp.ScannerActivity" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
+        <!--        <activity-->
+        <!--            android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity4"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="portrait">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="${applicationId}.hs.act.slbapp.Saoma3CommonScanActivity4" />-->
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
+        <!--        <activity-->
+        <!--            android:name="com.geek.zxinglibs3.idcard.ScannerActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:screenOrientation="portrait">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="${applicationId}.hs.act.slbapp.ScannerActivity" />-->
+        <!--                <category android:name="android.intent.category.DEFAULT" />-->
+        <!--            </intent-filter>-->
+        <!--        </activity>-->
         <activity
             android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity2"
             android:exported="true"
@@ -639,7 +647,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
 
 
         <activity
@@ -678,7 +685,33 @@
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
         <!--一下为新-->
-
+        <activity
+            android:name="com.geek.libshuiyin.ShuiyinAct1"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ShuiyinAct1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libshuiyin.ShuiyinAct2"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ShuiyinAct2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.geek.libshuiyin.ShuiyinAct3"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ShuiyinAct3" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name="com.necer.ncalendar.activity.TestMonthActivity"
@@ -715,15 +748,14 @@
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
 
-
         <service android:name="com.amap.api.location.APSService" />
         <!--        <meta-data-->
         <!--            android:name="com.amap.api.v2.apikey"-->
         <!--            android:value="dfc6928ba59ca473ecae8061c6913fcb" />-->
         <!--            android:value="d589a9e9273ebd4e739c33c38bd6dd19" />-->
-        <!--        <meta-data-->
-        <!--            android:name="com.amap.api.v2.apikey"-->
-        <!--            android:value="5a17ab9cc5aa0d74e090c37f3ecd5a15" />-->
+<!--        <meta-data-->
+<!--            android:name="com.amap.api.v2.apikey"-->
+<!--            android:value="5a17ab9cc5aa0d74e090c37f3ecd5a15" />-->
         <activity
             android:name="com.geek.liblocations.LocActivity"
             android:exported="true">

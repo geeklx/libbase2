@@ -12,6 +12,7 @@ android {
                 STATISTICS_VALUE  : stValue
         ]
     }
+    namespace 'com.geek.libbase'
 //    sourceSets {
 //        main {
 //            jniLibs.srcDirs = ['libs']
@@ -80,7 +81,14 @@ dependencies {
     // https://github.com/LuckSiege/PictureSelector
     api 'androidx.camera:camera-core:1.0.2'
     api 'androidx.camera:camera-camera2:1.0.2'
-    api 'io.github.lucksiege:pictureselector:v2.7.3-rc08'
+//    api 'io.github.lucksiege:pictureselector:v2.7.3-rc08'
+    api 'io.github.lucksiege:pictureselector:v3.10.6'
+    // image compress library (Not necessary)
+    api 'io.github.lucksiege:compress:v3.10.6'
+    // uCrop library (Not necessary)
+    api 'io.github.lucksiege:ucrop:v3.10.6'
+    // simple camerax library (Not necessary)
+    api 'io.github.lucksiege:camerax:v3.10.6'
     // https://github.com/getActivity/ToastUtils 横屏Toast
     api 'com.github.getActivity:ToastUtils:9.2'
     // 标题栏框架：https://github.com/getActivity/TitleBar

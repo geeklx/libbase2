@@ -185,6 +185,7 @@ public abstract class SlbBaseActivityPermissionsBase extends SlbBaseActivity {
     @TargetApi(26)
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions, int[] paramArrayOfInt) {
+        super.onRequestPermissionsResult(requestCode, permissions, paramArrayOfInt);
         if (requestCode == PERMISSON_REQUESTCODE) {
             if (!verifyPermissions(paramArrayOfInt)) {
                 showMissingPermissionDialog();

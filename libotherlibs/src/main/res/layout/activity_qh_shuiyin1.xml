@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black_000"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/f1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <SurfaceView
+            android:id="@+id/camera_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+        </SurfaceView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/activity_co_top_sy1" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--        <FrameLayout-->
+            <!--            android:id="@+id/f1"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_centerInParent="true">-->
+
+            <!--            <SurfaceView-->
+            <!--                android:id="@+id/camera_preview"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="match_parent"-->
+            <!--                android:layout_gravity="center">-->
+
+            <!--            </SurfaceView>-->
+            <!--        </FrameLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="33mm"
+                    android:layout_marginLeft="10mm"
+                    android:layout_marginTop="10mm">
+
+                    <TextClock
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="28mm"
+                        tools:text="09:30" />
+
+                    <TextClock
+                        android:id="@+id/tv2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20mm"
+                        android:layout_toRightOf="@+id/tv1"
+                        android:textColor="@color/white"
+                        android:textSize="14mm"
+                        tools:text="2022.09.06" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10mm"
+                    android:layout_marginTop="10mm"
+                    android:drawableLeft="@drawable/icon_qd1_dw4"
+                    android:drawablePadding="4mm"
+
+                    android:text="西宁市城东街道韵家口村112号"
+                    android:textColor="@color/white"
+                    android:textSize="12mm" />
+
+                <TextView
+                    android:id="@+id/tv4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10mm"
+                    android:layout_marginTop="0mm"
+                    android:drawableLeft="@drawable/icon_qd1_dw5"
+                    android:drawablePadding="4mm"
+                    android:text="李玉国"
+                    android:textColor="@color/white"
+                    android:textSize="12mm" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100mm"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10mm">
+
+                <ImageView
+                    android:id="@+id/camera_capture2"
+                    android:layout_width="30mm"
+                    android:layout_height="30mm"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10mm"
+                    android:src="@drawable/icon_pzqh1" />
+
+                <TextView
+                    android:id="@+id/camera_capture3"
+                    android:layout_width="50mm"
+                    android:layout_height="50mm"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10mm"
+                    android:background="@drawable/bg_check_status_wzhs2"
+                    android:gravity="center"
+                    android:text="重拍"
+                    android:textColor="#E60000"
+                    android:textSize="15mm"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/camera_capture"
+                    android:layout_width="60mm"
+                    android:layout_height="60mm"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/bg_check_status_wzhs2"
+                    android:gravity="center"
+                    android:text="拍照"
+                    android:textColor="#E60000"
+                    android:textSize="15mm" />
+
+                <TextView
+                    android:id="@+id/camera_capture4"
+                    android:layout_width="60mm"
+                    android:layout_height="60mm"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/bg_check_status_wzhs2"
+                    android:gravity="center"
+                    android:text="确认"
+                    android:textColor="#E60000"
+                    android:textSize="15mm"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/camera_flash_light"
+                    android:layout_width="30mm"
+                    android:layout_height="30mm"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10mm"
+                    android:src="@drawable/flash_light_open" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

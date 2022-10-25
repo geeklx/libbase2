@@ -1,6 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.haier.cellarette.baselibrary">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission
         android:name="android.permission.READ_PRIVILEGED_PHONE_STATE"
@@ -761,8 +760,6 @@
         <activity
             android:name="com.lxj.xpopupdemo.XpopupDemoActivity"
             android:screenOrientation="portrait" />
-
-
 
 
         <activity
