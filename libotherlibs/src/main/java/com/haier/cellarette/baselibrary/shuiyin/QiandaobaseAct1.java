@@ -261,7 +261,28 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
         Camera.Parameters parameters = camera.getParameters();
         parameters.setPictureFormat(PixelFormat.JPEG);//图片格式
         parameters.setRotation(result);
-        camera.setParameters(parameters);
+        try {
+            camera.setParameters(parameters);
+        } catch (Exception e) {
+            //个别机型在SupportPreviewSizes里汇报了支持某种预览尺寸，但实际是不支持的，设置进去就会抛出RuntimeException.
+//            Camera.Size previewSize = findBestPreviewSize(parameters);
+            try {
+                //遇到上面所说的情况，只能设置一个最小的预览尺寸
+//                parameters.setPreviewSize(previewSize.width, previewSize.height);
+                parameters.setPreviewSize(1920, 1080);
+                camera.setParameters(parameters);
+            } catch (Exception e1) {
+                //到这里还有问题，就是拍照尺寸的锅了，同样只能设置一个最小的拍照尺寸
+                e1.printStackTrace();
+                try {
+//                    parameters.setPreviewSize(previewSize.width, previewSize.height);
+                    parameters.setPreviewSize(1920, 1080);
+                    camera.setParameters(parameters);
+                } catch (Exception ignored) {
+                }
+            }
+        }
+//        camera.setParameters(parameters);
     }
 
 
@@ -542,7 +563,28 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
 //                parameters.setPreviewSize(profile.videoFrameHeight, profile.videoFrameWidth);
 //                parameters.setPreviewSize(holder.getSurfaceFrame().height(), holder.getSurfaceFrame().width());
 //                parameters.setPreviewSize(800, 600);
-        camera.setParameters(parameters);
+        try {
+            camera.setParameters(parameters);
+        } catch (Exception e) {
+            //个别机型在SupportPreviewSizes里汇报了支持某种预览尺寸，但实际是不支持的，设置进去就会抛出RuntimeException.
+//            Camera.Size previewSize = findBestPreviewSize(parameters);
+            try {
+                //遇到上面所说的情况，只能设置一个最小的预览尺寸
+//                parameters.setPreviewSize(previewSize.width, previewSize.height);
+                parameters.setPreviewSize(1920, 1080);
+                camera.setParameters(parameters);
+            } catch (Exception e1) {
+                //到这里还有问题，就是拍照尺寸的锅了，同样只能设置一个最小的拍照尺寸
+                e1.printStackTrace();
+                try {
+//                    parameters.setPreviewSize(previewSize.width, previewSize.height);
+                    parameters.setPreviewSize(1920, 1080);
+                    camera.setParameters(parameters);
+                } catch (Exception ignored) {
+                }
+            }
+        }
+//        camera.setParameters(parameters);
         //
         if (cameraPosition == 0) {
             // 前置
