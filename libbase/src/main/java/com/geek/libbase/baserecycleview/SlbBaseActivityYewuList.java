@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.geek.libbase.R;
 import com.geek.libbase.base.SlbBaseActivity;
-import com.geek.libbase.emptyview.NiubiEmptyViewNew;;
+import com.geek.libbase.emptyview.NiubiEmptyViewNew;
 import com.geek.libbase.utils.CommonUtils;
 import com.geek.libbase.widgets.XRecyclerView;
 import com.geek.libutils.app.LocalBroadcastManagers;
@@ -34,13 +34,15 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
+;
+
 public abstract class SlbBaseActivityYewuList extends SlbBaseActivity {
 
     protected ImageView ivBack;
     protected TextView tvCenterContent;
     protected TextView tv_right;
     protected NiubiEmptyViewNew niubiEmptyView;
-    protected static final int PAGE_SIZE = 10;
+    protected int PAGE_SIZE = 10;
     protected int mNextRequestPage = 1;
     protected int mPage;
     protected static boolean mFirstPageNoMore;

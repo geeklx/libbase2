@@ -1,4 +1,4 @@
-package com.geek.libretrofit;
+package com.geek.libutils.libretrofit;
 
 import android.app.Application;
 
@@ -8,7 +8,6 @@ import com.blankj.utilcode.util.DeviceUtils;
 import com.blankj.utilcode.util.EncryptUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
-import com.geek.libutils.app.MyLogUtil;
 import com.geek.libutils.data.MmkvUtils;
 
 import java.io.File;

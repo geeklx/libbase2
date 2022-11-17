@@ -1,4 +1,4 @@
-package com.geek.libretrofit;
+package com.geek.libutils.libretrofit;
 
 public class ResponseSlbBeanDemo<T> extends ResponseSlbBean2 {
 

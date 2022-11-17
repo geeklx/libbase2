@@ -88,11 +88,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".baserecycleview.yewu2.ActYewuList1"
+            android:name=".baserecycleview.yewu2.ActYewuList2"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="${applicationId}.hs.act.slbapp.ActYewuList1" />
+                <action android:name="${applicationId}.hs.act.slbapp.ActYewuList2" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
