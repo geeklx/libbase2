@@ -14,6 +14,7 @@ import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
 import com.geek.libbase.baserecycleview.yewu1.ActViewPageYewuList1;
 import com.geek.libutils.data.MmkvUtils;
+import com.haier.cellarette.baselibrary.assetsfitandroid.AssetsMainActivity;
 import com.pgyer.pgyersdk.PgyerSDKManager;
 
 import me.jessyan.autosize.AutoSize;
@@ -53,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(MainActivity.this, ShuiyinAct1.class));
 //                startActivity(new Intent(MainActivity.this, LocActivity.class));
 //                startActivity(new Intent(MainActivity.this, ActYewuList1.class));
-                startActivity(new Intent(MainActivity.this, ActViewPageYewuList1.class));
+//                startActivity(new Intent(MainActivity.this, ActViewPageYewuList1.class));
+                startActivity(new Intent(MainActivity.this, AssetsMainActivity.class));
 //                Permission24Util.checkPermissonsRom(MainActivity.this,
 //                        "rom1",
 //                        "安装应用需要打开后台弹窗和弹出层权限" + "\n\n" + "请点击|" + "设置|" + "更多设置|" + "系统安全|" + "权限管理|" + "-允许后台弹窗和弹出层"

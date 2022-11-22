@@ -78,6 +78,7 @@ dependencies {
 
 //    implementation 'com.pgyersdk:sdk:4.2.1'
     implementation project(':libbase')
+    implementation project(':libotherlibs')
 //    implementation 'com.github.geeklx:fosunglibs:1.0.8'
 
 }
