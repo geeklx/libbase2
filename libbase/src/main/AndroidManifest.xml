@@ -378,7 +378,7 @@
             android:exported="true"
             android:requestLegacyExternalStorage="true">
             <intent-filter>
-                <action android:name="${applicationId}.hs.ac.github.DemoUpdateAppMainActivity" />
+                <action android:name="${applicationId}.hs.act.github.DemoUpdateAppMainActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

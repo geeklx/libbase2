@@ -11,7 +11,7 @@ import com.liulishuo.filedownloader.FileDownloader;
 
 
 /**
- * Created by Teprinciple on 2016/12/13.
+ * Created by geek on 2022/12/01.
  */
 class DownloadAppUtils {
     private static final String TAG = DownloadAppUtils.class.getSimpleName();
