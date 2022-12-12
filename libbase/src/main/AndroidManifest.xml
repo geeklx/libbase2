@@ -421,7 +421,20 @@
                 <action android:name="${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cs.znclass.com"
+                    android:path="/${applicationId}.hs.act.slbapp.HIOSLoginDemoAct1"
+                    android:scheme="https" />
+                <data android:scheme="http" />
+                <data android:scheme="app" />
+                <data android:scheme="dataability" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.just.agentweb.geek.activity.RemoteWebViewlActivity"

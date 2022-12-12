@@ -49,7 +49,7 @@ public class HIOSAct1 extends AppCompatActivity {
         findViewById(R.id.tv4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("dataability://aic.sairobo.cn/" + AppUtils.getAppPackageName() + ".hs.act.slbapp.HIOSLoginDemoAct1?query1=1&query2=2a&query3=3a"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("dataability://cs.znclass.com/" + AppUtils.getAppPackageName() + ".hs.act.slbapp.HIOSLoginDemoAct1?query1=1&query2=2a&query3=3a"));
                 startActivity(intent);
 //                Intent intent=new Intent();
 //                intent.setData(Uri.parse("example://www.example.com/user?uid=123&name=Ming"));
