@@ -271,7 +271,8 @@ public abstract class SlbBaseActivity extends AppCompatActivity implements Swipe
 
     @Override
     public void net_con_none() {
-        ToastUtils.showLong("网络异常，请检查网络连接！");
+//        ToastUtils.showLong("网络异常，请检查网络连接！");
+
     }
 
     @Override
