@@ -88,6 +88,26 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".quanxian.QuanxianActivity2"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.QuanxianActivity2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!-- 通知监听服务 -->
+        <service
+            android:name=".quanxian.NotificationMonitorService"
+            android:exported="false"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+
+        <activity
             android:name=".liandong.demo3.Liandong3Activity"
             android:exported="true"
             android:screenOrientation="portrait">

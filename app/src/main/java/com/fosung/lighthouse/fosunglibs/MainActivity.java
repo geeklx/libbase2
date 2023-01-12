@@ -3,6 +3,7 @@ package com.fosung.lighthouse.fosunglibs;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv1 = findViewById(R.id.tv1);
+        tv1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
         new PgyerSDKManager.Init()
                 .setContext(getApplicationContext()) //设置上下问对象
                 .start();

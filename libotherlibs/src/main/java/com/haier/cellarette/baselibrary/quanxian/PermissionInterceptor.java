@@ -1,17 +1,31 @@
 package com.haier.cellarette.baselibrary.quanxian;
 
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
-import androidx.fragment.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.haier.cellarette.baselibrary.R;
 import com.hjq.permissions.IPermissionInterceptor;
 import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.OnPermissionPageCallback;
 import com.hjq.permissions.Permission;
+import com.hjq.permissions.PermissionFragment;
 import com.hjq.permissions.XXPermissions;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,233 +38,207 @@ import java.util.List;
  */
 public final class PermissionInterceptor implements IPermissionInterceptor {
 
-//    @Override
-//    public void requestPermissions(FragmentActivity activity, OnPermissionCallback callback, List<String> permissions) {
-//        // 这里的 Dialog 只是示例，没有用 DialogFragment 来处理 Dialog 生命周期
-//        new AlertDialog.Builder(activity)
-//                .setTitle(R.string.common_permission_hint)
-//                .setMessage(R.string.common_permission_message)
-//                .setPositiveButton(R.string.common_permission_granted, new DialogInterface.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                        PermissionFragment.beginRequest(activity, new ArrayList<>(permissions), callback);
-//                    }
-//                })
-//                .setNegativeButton(R.string.common_permission_denied, new DialogInterface.OnClickListener() {
-//
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                })
-//                .show();
-//    }
+    public static final Handler HANDLER = new Handler(Looper.getMainLooper());
+
+    /** 权限申请标记 */
+    private boolean mRequestFlag;
+
+    /** 权限申请说明 Popup */
+    private PopupWindow mPermissionPopup;
 
     @Override
-    public void grantedPermissions(FragmentActivity activity, OnPermissionCallback callback, List<String> permissions, boolean all) {
-        // 回调授权失败的方法
-        callback.onGranted(permissions, all);
+    public void launchPermissionRequest(@NonNull Activity activity, @NonNull List<String> allPermissions, @Nullable OnPermissionCallback callback) {
+        mRequestFlag = true;
+        List<String> deniedPermissions = XXPermissions.getDenied(activity, allPermissions);
+        String message = activity.getString(R.string.common_permission_message, PermissionNameConvert.getPermissionString(activity, deniedPermissions));
+
+        ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
+        int activityOrientation = activity.getResources().getConfiguration().orientation;
+
+        boolean showPopupWindow = activityOrientation == Configuration.ORIENTATION_PORTRAIT;
+        for (String permission : allPermissions) {
+            if (!XXPermissions.isSpecial(permission)) {
+                continue;
+            }
+            if (XXPermissions.isGranted(activity, permission)) {
+                continue;
+            }
+            // 如果申请的权限带有特殊权限，并且还没有授予的话
+            // 就不用 PopupWindow 对话框来显示，而是用 Dialog 来显示
+            showPopupWindow = false;
+            break;
+        }
+
+        if (showPopupWindow) {
+
+            PermissionFragment.launch(activity, new ArrayList<>(allPermissions), this, callback);
+            // 延迟 300 毫秒是为了避免出现 PopupWindow 显示然后立马消失的情况
+            // 因为框架没有办法在还没有申请权限的情况下，去判断权限是否永久拒绝了，必须要在发起权限申请之后
+            // 所以只能通过延迟显示 PopupWindow 来做这件事，如果 300 毫秒内权限申请没有结束，证明本次申请的权限没有永久拒绝
+            HANDLER.postDelayed(() -> {
+                if (!mRequestFlag) {
+                    return;
+                }
+                if (activity.isFinishing() ||
+                        (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed())) {
+                    return;
+                }
+                showPopupWindow(activity, decorView, message);
+            }, 300);
+
+        } else {
+            // 注意：这里的 Dialog 只是示例，没有用 DialogFragment 来处理 Dialog 生命周期
+            new AlertDialog.Builder(activity)
+                    .setTitle(R.string.common_permission_description)
+                    .setMessage(message)
+                    .setCancelable(false)
+                    .setPositiveButton(R.string.common_permission_granted, (dialog, which) -> {
+                        dialog.dismiss();
+                        PermissionFragment.launch(activity, new ArrayList<>(allPermissions),
+                                PermissionInterceptor.this, callback);
+                    })
+                    .setNegativeButton(R.string.common_permission_denied, (dialog, which) -> {
+                        dialog.dismiss();
+                        if (callback == null) {
+                            return;
+                        }
+                        callback.onDenied(deniedPermissions, false);
+                    })
+                    .show();
+        }
     }
 
     @Override
-    public void deniedPermissions(FragmentActivity activity, OnPermissionCallback callback, List<String> permissions, boolean never) {
-        // 回调授权失败的方法
-        callback.onDenied(permissions, never);
-        if (never) {
-            showPermissionDialog(activity, permissions);
+    public void grantedPermissionRequest(@NonNull Activity activity, @NonNull List<String> allPermissions,
+                                         @NonNull List<String> grantedPermissions, boolean allGranted,
+                                         @Nullable OnPermissionCallback callback) {
+        if (callback == null) {
             return;
         }
-
-        if (permissions.size() == 1 && Permission.ACCESS_BACKGROUND_LOCATION.equals(permissions.get(0))) {
-            ToastUtils.showLong(R.string.common_permission_fail_4);
-            return;
-        }
-
-        ToastUtils.showLong(R.string.common_permission_fail_1);
+        callback.onGranted(grantedPermissions, allGranted);
     }
 
-    /**
-     * 显示授权对话框
-     */
-    protected void showPermissionDialog(FragmentActivity activity, List<String> permissions) {
+    @Override
+    public void deniedPermissionRequest(@NonNull Activity activity, @NonNull List<String> allPermissions,
+                                        @NonNull List<String> deniedPermissions, boolean doNotAskAgain,
+                                        @Nullable OnPermissionCallback callback) {
+        if (callback != null) {
+            callback.onDenied(deniedPermissions, doNotAskAgain);
+        }
+
+        if (doNotAskAgain) {
+            if (deniedPermissions.size() == 1 && Permission.ACCESS_MEDIA_LOCATION.equals(deniedPermissions.get(0))) {
+                ToastUtils.showLong(R.string.common_permission_media_location_hint_fail);
+                return;
+            }
+
+            showPermissionSettingDialog(activity, allPermissions, deniedPermissions, callback);
+            return;
+        }
+
+        if (deniedPermissions.size() == 1) {
+
+            String deniedPermission = deniedPermissions.get(0);
+
+            if (Permission.ACCESS_BACKGROUND_LOCATION.equals(deniedPermission)) {
+                ToastUtils.showLong(R.string.common_permission_background_location_fail_hint);
+                return;
+            }
+
+            if (Permission.BODY_SENSORS_BACKGROUND.equals(deniedPermission)) {
+                ToastUtils.showLong(R.string.common_permission_background_sensors_fail_hint);
+                return;
+            }
+        }
+
+        final String message;
+        List<String> permissionNames = PermissionNameConvert.permissionsToNames(activity, deniedPermissions);
+        if (!permissionNames.isEmpty()) {
+            message = activity.getString(R.string.common_permission_fail_assign_hint,
+                    PermissionNameConvert.listToString(activity, permissionNames));
+        } else {
+            message = activity.getString(R.string.common_permission_fail_hint);
+        }
+        ToastUtils.showLong(message);
+    }
+
+    @Override
+    public void finishPermissionRequest(@NonNull Activity activity, @NonNull List<String> allPermissions,
+                                        boolean skipRequest, @Nullable OnPermissionCallback callback) {
+        mRequestFlag = false;
+        dismissPopupWindow();
+    }
+
+    private void showPopupWindow(Activity activity, ViewGroup decorView, String message) {
+        if (mPermissionPopup == null) {
+            View contentView = LayoutInflater.from(activity)
+                    .inflate(R.layout.permission_description_popup, decorView, false);
+            mPermissionPopup = new PopupWindow(activity);
+            mPermissionPopup.setContentView(contentView);
+            mPermissionPopup.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+            mPermissionPopup.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+            mPermissionPopup.setAnimationStyle(android.R.style.Animation_Dialog);
+            mPermissionPopup.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            mPermissionPopup.setTouchable(true);
+            mPermissionPopup.setOutsideTouchable(true);
+        }
+        TextView messageView = mPermissionPopup.getContentView().findViewById(R.id.tv_permission_description_message);
+        messageView.setText(message);
+        // 注意：这里的 PopupWindow 只是示例，没有监听 Activity onDestroy 来处理 PopupWindow 生命周期
+        mPermissionPopup.showAtLocation(decorView, Gravity.TOP, 0, 0);
+    }
+
+    private void dismissPopupWindow() {
+        if (mPermissionPopup == null) {
+            return;
+        }
+        if (!mPermissionPopup.isShowing()) {
+            return;
+        }
+        mPermissionPopup.dismiss();
+    }
+
+    private void showPermissionSettingDialog(Activity activity, List<String> allPermissions,
+                                             List<String> deniedPermissions, OnPermissionCallback callback) {
+        if (activity == null || activity.isFinishing() ||
+                (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed())) {
+            return;
+        }
+
+        final String message;
+
+        List<String> permissionNames = PermissionNameConvert.permissionsToNames(activity, deniedPermissions);
+        if (!permissionNames.isEmpty()) {
+            message = activity.getString(R.string.common_permission_manual_assign_fail_hint,
+                    PermissionNameConvert.listToString(activity, permissionNames));
+        } else {
+            message = activity.getString(R.string.common_permission_manual_fail_hint);
+        }
+
         // 这里的 Dialog 只是示例，没有用 DialogFragment 来处理 Dialog 生命周期
         new AlertDialog.Builder(activity)
                 .setTitle(R.string.common_permission_alert)
-                .setCancelable(false)
-                .setMessage(getPermissionHint(activity, permissions))
-                .setPositiveButton(R.string.common_permission_goto, new DialogInterface.OnClickListener() {
+                .setMessage(message)
+                .setPositiveButton(R.string.common_permission_goto_setting_page, (dialog, which) -> {
+                    dialog.dismiss();
+                    XXPermissions.startPermissionActivity(activity,
+                            deniedPermissions, new OnPermissionPageCallback() {
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        XXPermissions.startPermissionActivity(activity, permissions);
-                    }
+                        @Override
+                        public void onGranted() {
+                            if (callback == null) {
+                                return;
+                            }
+                            callback.onGranted(allPermissions, true);
+                        }
+
+                        @Override
+                        public void onDenied() {
+                            showPermissionSettingDialog(activity, allPermissions,
+                                    XXPermissions.getDenied(activity, allPermissions), callback);
+                        }
+                    });
                 })
                 .show();
-    }
-
-    /**
-     * 根据权限获取提示
-     */
-    protected String getPermissionHint(Context context, List<String> permissions) {
-        if (permissions == null || permissions.isEmpty()) {
-            return context.getString(R.string.common_permission_fail_2);
-        }
-
-        List<String> hints = new ArrayList<>();
-        for (String permission : permissions) {
-            switch (permission) {
-                case Permission.READ_EXTERNAL_STORAGE:
-                case Permission.WRITE_EXTERNAL_STORAGE:
-                case Permission.MANAGE_EXTERNAL_STORAGE: {
-                    String hint = context.getString(R.string.common_permission_storage);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.CAMERA: {
-                    String hint = context.getString(R.string.common_permission_camera);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.RECORD_AUDIO: {
-                    String hint = context.getString(R.string.common_permission_microphone);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.ACCESS_FINE_LOCATION:
-                case Permission.ACCESS_COARSE_LOCATION:
-                case Permission.ACCESS_BACKGROUND_LOCATION: {
-                    String hint;
-                    if (!permissions.contains(Permission.ACCESS_FINE_LOCATION) &&
-                            !permissions.contains(Permission.ACCESS_COARSE_LOCATION)) {
-                        hint = context.getString(R.string.common_permission_location_background);
-                    } else {
-                        hint = context.getString(R.string.common_permission_location);
-                    }
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.READ_PHONE_STATE:
-                case Permission.CALL_PHONE:
-                case Permission.ADD_VOICEMAIL:
-                case Permission.USE_SIP:
-                case Permission.READ_PHONE_NUMBERS:
-                case Permission.ANSWER_PHONE_CALLS: {
-                    String hint = context.getString(R.string.common_permission_phone);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.GET_ACCOUNTS:
-                case Permission.READ_CONTACTS:
-                case Permission.WRITE_CONTACTS: {
-                    String hint = context.getString(R.string.common_permission_contacts);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.READ_CALENDAR:
-                case Permission.WRITE_CALENDAR: {
-                    String hint = context.getString(R.string.common_permission_calendar);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.READ_CALL_LOG:
-                case Permission.WRITE_CALL_LOG:
-                case Permission.PROCESS_OUTGOING_CALLS: {
-                    String hint = context.getString(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q ?
-                            R.string.common_permission_call_log : R.string.common_permission_phone);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.BODY_SENSORS: {
-                    String hint = context.getString(R.string.common_permission_sensors);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.ACTIVITY_RECOGNITION: {
-                    String hint = context.getString(R.string.common_permission_activity_recognition);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.SEND_SMS:
-                case Permission.RECEIVE_SMS:
-                case Permission.READ_SMS:
-                case Permission.RECEIVE_WAP_PUSH:
-                case Permission.RECEIVE_MMS: {
-                    String hint = context.getString(R.string.common_permission_sms);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.REQUEST_INSTALL_PACKAGES: {
-                    String hint = context.getString(R.string.common_permission_install);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.NOTIFICATION_SERVICE: {
-                    String hint = context.getString(R.string.common_permission_notification);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.SYSTEM_ALERT_WINDOW: {
-                    String hint = context.getString(R.string.common_permission_window);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                case Permission.WRITE_SETTINGS: {
-                    String hint = context.getString(R.string.common_permission_setting);
-                    if (!hints.contains(hint)) {
-                        hints.add(hint);
-                    }
-                    break;
-                }
-                default:
-                    break;
-            }
-        }
-
-        if (!hints.isEmpty()) {
-            StringBuilder builder = new StringBuilder();
-            for (String text : hints) {
-                if (builder.length() == 0) {
-                    builder.append(text);
-                } else {
-                    builder.append("、")
-                            .append(text);
-                }
-            }
-            builder.append(" ");
-            return context.getString(R.string.common_permission_fail_3, builder.toString());
-        }
-
-        return context.getString(R.string.common_permission_fail_2);
     }
 }

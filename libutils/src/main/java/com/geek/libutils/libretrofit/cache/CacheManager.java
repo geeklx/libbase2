@@ -36,7 +36,7 @@ public final class CacheManager {
 
     private static final int DISK_CACHE_INDEX = 0;
 
-    private static final String CACHE_DIR = "RetrofitNetNewCache";
+    private static final String CACHE_DIR = "GeekRetrofitNetCache";
 
     private DiskLruCache mDiskLruCache;
 
@@ -192,7 +192,8 @@ public final class CacheManager {
      * 获取缓存目录2
      */
     private File getDiskCacheDir2(Context context, String uniqueName) {
-        return new File(Utils.getApp().getExternalFilesDir(null).getAbsolutePath(), "RetrofitNetNew3");
+//        return new File(Utils.getApp().getExternalFilesDir(null).getAbsolutePath(), "RetrofitNetNew3");
+        return new File(Utils.getApp().getExternalFilesDir(null).getAbsolutePath(), uniqueName);
     }
 
     /**

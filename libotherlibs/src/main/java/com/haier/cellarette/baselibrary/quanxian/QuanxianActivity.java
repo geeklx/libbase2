@@ -9,11 +9,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.haier.cellarette.baselibrary.LibotherBaseApp;
 import com.haier.cellarette.baselibrary.R;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
+
 import java.util.List;
 
 /**
