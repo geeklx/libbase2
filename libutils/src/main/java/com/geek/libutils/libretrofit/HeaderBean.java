@@ -1,4 +1,4 @@
-package com.geek.libretrofit;
+package com.geek.libutils.libretrofit;
 
 import java.io.Serializable;
 

@@ -89,29 +89,29 @@ public abstract class SlbBaseActivityViewPage extends SlbBaseActivity {
 //                    .setTag(item.getTab_id()).setText(item.getTab_name()));
 //        }
         tablayoutMy.clearAnimation();
-        tablayoutMy.post(new Runnable() {
-            @Override
-            public void run() {
-                TextView textView = new TextView(SlbBaseActivityViewPage.this);
-                float selectedSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 16, getResources().getDisplayMetrics());
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, selectedSize);
-                textView.setTextColor(getResources().getColor(R.color.color_333333));// color_999999
-                textView.setText(Objects.requireNonNull(tablayoutMy.getTabAt(0)).getText());
-                textView.setTypeface(Typeface.DEFAULT_BOLD);
-                Objects.requireNonNull(tablayoutMy.getTabAt(0)).setCustomView(textView);
-            }
-        });
+//        tablayoutMy.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                TextView textView = new TextView(SlbBaseActivityViewPage.this);
+//                float selectedSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 16, getResources().getDisplayMetrics());
+//                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, selectedSize);
+//                textView.setTextColor(getResources().getColor(R.color.color_333333));// color_999999
+//                textView.setText(Objects.requireNonNull(tablayoutMy.getTabAt(0)).getText());
+//                textView.setTypeface(Typeface.DEFAULT_BOLD);
+//                Objects.requireNonNull(tablayoutMy.getTabAt(0)).setCustomView(textView);
+//            }
+//        });
         tablayoutMy.addOnTabSelectedListener(new TabSelectAdapter() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
 //                TabUtils.tabSelect(tablayoutMy, tab);
-                TextView textView = new TextView(SlbBaseActivityViewPage.this);
-                float selectedSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 16, getResources().getDisplayMetrics());
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, selectedSize);
-                textView.setTextColor(getResources().getColor(R.color.color_333333));// color_999999
-                textView.setText(tab.getText());
-                textView.setTypeface(Typeface.DEFAULT_BOLD);
-                tab.setCustomView(textView);
+//                TextView textView = new TextView(SlbBaseActivityViewPage.this);
+//                float selectedSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 16, getResources().getDisplayMetrics());
+//                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, selectedSize);
+//                textView.setTextColor(getResources().getColor(R.color.color_333333));// color_999999
+//                textView.setText(tab.getText());
+//                textView.setTypeface(Typeface.DEFAULT_BOLD);
+//                tab.setCustomView(textView);
                 //
                 String tag = mlist.get(tab.getPosition()).getTab_id();
                 current_id = tag;
@@ -131,7 +131,7 @@ public abstract class SlbBaseActivityViewPage extends SlbBaseActivity {
                 tab.setCustomView(null);
             }
         });
-        TabUtils.setIndicatorWidth(tablayoutMy, 40);
+        TabUtils.setIndicatorWidth(tablayoutMy, 80);
         //
         viewpager_my1_order.setCurrentItem(0, false);
     }

@@ -51,6 +51,8 @@ public class FragmentYewuList1 extends SlbBaseFragmentViewPageYewuList {
         emptyview1.loading();
         init_adapter(mAdapter1);
         // 接口初始化bufen
+        PAGE_SIZE = 20;
+        mNextRequestPage = 0;
 //        if (presenter1 == null) {
 //            presenter1 = new HMyorderPresenter();
 //            presenter1.onCreate(this);
@@ -59,17 +61,18 @@ public class FragmentYewuList1 extends SlbBaseFragmentViewPageYewuList {
 
     @Override
     protected void retryDataAdd() {
-        PAGE_SIZE = 20;
         String limit = PAGE_SIZE + "";
         String page = mNextRequestPage + "";
         String orderStatus = tablayoutId;
-        MyLogUtil.e("--FragmentYewuList1-tablayoutId----", tablayoutId);
+        MyLogUtil.e("--FragmentYewuList1-limit----", limit);
+        MyLogUtil.e("--FragmentYewuList1-page----", page);
+        MyLogUtil.e("--FragmentYewuList1-orderStatus----", orderStatus);
         // 接口bufen
 //        presenter1.get_myorderlist2(page, limit, orderStatus);
         // test
         mList1 = new ArrayList<>();
 ////        mList1 = hMyorderBean.getList();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < PAGE_SIZE; i++) {
             mList1.add(new SlbBaseActivityViewPageTabBean1(i + "1", "geek" + i, false));
         }
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -77,7 +80,7 @@ public class FragmentYewuList1 extends SlbBaseFragmentViewPageYewuList {
             public void run() {
                 OnOrderSuccess(mList1);
             }
-        },3000);
+        },1000);
     }
 
     @Override

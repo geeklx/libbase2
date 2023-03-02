@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.geek.libbase.R;
 import com.geek.libbase.baserecycleview.SlbBaseActivityViewPageTabBean1;
@@ -20,12 +21,14 @@ import com.geek.libglide47.base.util.DisplayUtil;
 import com.geek.libutils.app.LocalBroadcastManagers;
 import com.geek.libutils.app.MyLogUtil;
 import com.geek.libwebview.hois2.HiosHelper;
+import com.just.agentweb.geek.fragment.AgentWebFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SwipeBack(value = true)
-public class ActYewuList1 extends SlbBaseActivityYewuList implements View.OnClickListener {
+public class ActYewuList2 extends SlbBaseActivityYewuList implements View.OnClickListener {
+//public class ActYewuList1 extends SlbBaseFragmentViewPageYewuList implements View.OnClickListener {
 
     //    private HMyorderPresenter presenter1;
     //
@@ -64,6 +67,8 @@ public class ActYewuList1 extends SlbBaseActivityYewuList implements View.OnClic
     protected void donetworkAdd() {
         tvCenterContent.setText("我的订单");
         tablayoutId = getIntent().getStringExtra("id");
+        PAGE_SIZE = 5;
+        mNextRequestPage = 0;
         //HIOS协议
         // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
@@ -89,13 +94,15 @@ public class ActYewuList1 extends SlbBaseActivityYewuList implements View.OnClic
         String limit = PAGE_SIZE + "";
         String page = mNextRequestPage + "";
         String orderStatus = tablayoutId;
-        MyLogUtil.e("--FragmentYewuList1-tablayoutId----", tablayoutId);
+        MyLogUtil.e("--FragmentYewuList1-limit----", limit);
+        MyLogUtil.e("--FragmentYewuList1-page----", page);
+        MyLogUtil.e("--FragmentYewuList1-orderStatus----", tablayoutId);
         // 接口bufen
 //        presenter1.get_myorderlist2(page, limit, orderStatus);
         //TODO test
         mList1 = new ArrayList<>();
 ////        mList1 = hMyorderBean.getList();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < PAGE_SIZE; i++) {
             mList1.add(new SlbBaseActivityViewPageTabBean1(i + "1", "geek" + i, false));
         }
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -131,6 +138,48 @@ public class ActYewuList1 extends SlbBaseActivityYewuList implements View.OnClic
 //                intent.putExtra("orderType", bean.getOrderType());
 //                intent.putExtra("orderId", bean.getId());
 //                startActivity(intent);
+                // demo
+                //                final SlbBaseActivityViewPageTabBean1 bean = (SlbBaseActivityViewPageTabBean1) adapter.getData().get(position);
+//                int i = view.getId();
+//                if (i == com.geek.libbase.R.id.tv1) {
+//                    // 入学通知书
+////                    Intent intent = new Intent(AppUtils.getAppPackageName() + ".hs.act.slbapp.NoticeDetailActivity");
+////                    intent.putExtra("orderType", bean.getOrderType());
+////                    intent.putExtra("orderId", bean.getId());
+////                    startActivity(intent);
+//                }
+//                BjyyBeanYewu3 bean = (BjyyBeanYewu3) adapter.getData().get(position);
+////                HiosHelperNew.resolveAd(ShouyeCateAct1.this, ShouyeCateAct1.this, bean.getUrl());
+//                if (bean.getUrl().startsWith("gh")) {
+//                    // 调用
+//                    String appId = "wxa3fa50c49fcd271c"; // 填应用AppId
+//                    IWXAPI api = WXAPIFactory.createWXAPI(ShouyeCateAct1.this, appId);
+//                    WXLaunchMiniProgram.Req req = new WXLaunchMiniProgram.Req();
+//                    req.userName = "gh_d43f693ca31f"; // 填小程序原始id
+////                req.path = "path";                  //拉起小程序页面的可带参路径，不填默认拉起小程序首页
+//                    req.miniprogramType = WXLaunchMiniProgram.Req.MINIPTOGRAM_TYPE_RELEASE;// 可选打开 开发版，体验版和正式版
+//                    api.sendReq(req);
+//                } else if (bean.getUrl().startsWith("http")) {
+//                    Intent intent = new Intent(AppUtils.getAppPackageName() + ".hs.act.slbapp.WeChatH5JsWebActivity");
+//                    intent.putExtra(AgentWebFragment.URL_KEY, bean.getUrl());
+//                    startActivity(intent);
+////                    HiosHelperNew.resolveAd(getActivity(), getActivity(),  bean.getUrl());
+//                } else {
+//                    HiosHelperNew.resolveAd(ShouyeCateAct1.this, ShouyeCateAct1.this, bean.getUrl());
+//                }
+//                FCate4Bean2 addressBean = (FCate4Bean2) adapter.getItem(position);
+//                if (addressBean.getUrl().startsWith("http")) {
+//                    Intent intent = new Intent(AppUtils.getAppPackageName() + ".hs.act.slbapp.WeChatH5JsWebActivity");
+//                    intent.putExtra(AgentWebFragment.URL_KEY, addressBean.getUrl());
+//                    startActivity(intent);
+////                    HiosHelperNew.resolveAd(getActivity(), getActivity(), addressBean.getmBean().getUrl());
+//                } else {
+//                    Intent intent = new Intent(AppUtils.getAppPackageName() + ".hs.act.slbapp.ShouyeCateAct1");
+//                    intent.putExtra(AppCommonUtils.intent_id, addressBean.getId());
+//                    intent.putExtra(AppCommonUtils.intent_title, addressBean.getName());
+//                    startActivity(intent);
+////                    HiosHelperNew.resolveAd(getActivity(), getActivity(), addressBean.getmBean().getUrl());
+//                }
             }
         });
         mAdapter1.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -159,15 +208,15 @@ public class ActYewuList1 extends SlbBaseActivityYewuList implements View.OnClic
             if (!isEnscrolly()) {
                 // fragment传值 刷新
                 msgIntent.putExtra(CommonUtils.SlbBaseActivityViewPageAct1, CommonUtils.SlbBaseAct_update);
-                LocalBroadcastManagers.getInstance(ActYewuList1.this).sendBroadcast(msgIntent);
+                LocalBroadcastManagers.getInstance(ActYewuList2.this).sendBroadcast(msgIntent);
             } else {
                 // fragment传值 滚动
                 msgIntent.putExtra(CommonUtils.SlbBaseActivityViewPageAct1, CommonUtils.SlbBaseAct_scroll);
-                LocalBroadcastManagers.getInstance(ActYewuList1.this).sendBroadcast(msgIntent);
+                LocalBroadcastManagers.getInstance(ActYewuList2.this).sendBroadcast(msgIntent);
             }
         } else if (view.getId() == R.id.baserecycleview_tv_right1) {
             // 用户协议
-            HiosHelper.resolveAd(ActYewuList1.this, this, "http://pc.jiuzhidao.com/portal/page/index/id/9.html");
+            HiosHelper.resolveAd(ActYewuList2.this, this, "http://pc.jiuzhidao.com/portal/page/index/id/9.html");
         } else {
 
         }

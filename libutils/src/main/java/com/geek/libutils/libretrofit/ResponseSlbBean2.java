@@ -1,4 +1,4 @@
-package com.geek.libretrofit;
+package com.geek.libutils.libretrofit;
 
 public class ResponseSlbBean2<T> {
     private boolean success;

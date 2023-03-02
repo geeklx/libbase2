@@ -21,10 +21,9 @@ import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
 import com.geek.liblanguage.MultiLanguages;
 import com.geek.liblanguage.OnLanguageListener;
-import com.geek.libretrofit.RetrofitNetNew;
-import com.geek.libutils.app.LocalManageUtil;
 import com.geek.libutils.app.MyLogUtil;
 import com.geek.libutils.data.MmkvUtils;
+import com.geek.libutils.libretrofit.RetrofitNetNew;
 import com.geek.libwebview.hois2.HiosHelper;
 import com.just.agentweb.geek.hois3.HiosHelperNew;
 import com.just.agentweb.geek.service.WebService;
@@ -62,7 +61,7 @@ public class AndroidApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         //保存系统选择语言
-        LocalManageUtil.saveSystemCurrentLanguage(base);
+//        LocalManageUtil.saveSystemCurrentLanguage(base);
         super.attachBaseContext(MultiLanguages.attach(base));
         MultiDex.install(this);
     }
@@ -71,7 +70,7 @@ public class AndroidApplication extends Application {
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         //保存系统选择语言
-        LocalManageUtil.onConfigurationChanged(this);
+//        LocalManageUtil.onConfigurationChanged(this);
     }
 
     private void configWebView() {
@@ -180,7 +179,7 @@ public class AndroidApplication extends Application {
             }
         });
         // 语言切换
-        LocalManageUtil.setApplicationLanguage(this);
+//        LocalManageUtil.setApplicationLanguage(this);
         handleSSLHandshake();
         regActivityLife();
         configWebView();

@@ -41,15 +41,15 @@
                 app:tabIndicator="@drawable/baseviewpage_common_bg1"
                 app:tabIndicatorColor="@color/blue55AAFF"
                 app:tabIndicatorHeight="4mm"
-                app:tabMaxWidth="100mm"
-                app:tabMinWidth="100mm"
                 app:tabMode="scrollable"
-                app:tabPaddingEnd="50mm"
-                app:tabPaddingStart="50mm"
                 app:tabRippleColor="@null"
                 app:tabSelectedTextColor="@color/color_333333"
                 app:tabTextAppearance="@style/baseviewpage_common_tab"
                 app:tabTextColor="#999999" />
+<!--            app:tabMaxWidth="200mm"-->
+<!--            app:tabMinWidth="200mm"-->
+<!--            app:tabPaddingEnd="0mm"-->
+<!--            app:tabPaddingStart="0mm"-->
         </LinearLayout>
 
         <com.geek.libbase.widgets.ViewPagerSlide
