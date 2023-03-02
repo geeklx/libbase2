@@ -1,8 +1,6 @@
 package com.geek.libbase.baserecycleview;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,7 +25,6 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public abstract class SlbBaseActivityViewPage extends SlbBaseActivity {
 
@@ -38,7 +35,7 @@ public abstract class SlbBaseActivityViewPage extends SlbBaseActivity {
     protected LinearLayout ll_refresh1;
     protected TabLayout tablayoutMy;
     protected ViewPagerSlide viewpager_my1_order;
-    protected SlbBaseFragmentViewPagerAdapter orderFragmentPagerAdapter;
+    protected SlbBaseFragmentViewPagerAdapterlan orderFragmentPagerAdapter;
     protected String current_id;
     protected boolean enscrolly;
 
@@ -78,7 +75,8 @@ public abstract class SlbBaseActivityViewPage extends SlbBaseActivity {
             titlesString.add(bean1.getTab_name());
         }
         current_id = mlist.get(0).getTab_id();
-        orderFragmentPagerAdapter = new SlbBaseFragmentViewPagerAdapter(getSupportFragmentManager(), SlbBaseActivityViewPage.this, titlesString, mFragmentList, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        orderFragmentPagerAdapter = new SlbBaseFragmentViewPagerAdapterlan(getSupportFragmentManager(), SlbBaseActivityViewPage.this, titlesString, mFragmentList, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        orderFragmentPagerAdapter.clear(viewpager_my1_order);
         viewpager_my1_order.setAdapter(orderFragmentPagerAdapter);
         viewpager_my1_order.setOffscreenPageLimit(mFragmentList.size());
         viewpager_my1_order.setScroll(true);
