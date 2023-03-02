@@ -56,6 +56,12 @@ dependencies {
     api 'com.github.li-xiaojun:EasyAdapter:1.2.5'
     // https://seed.pgyer.com/site/2Umq3b49JJ
     api 'com.pgyer:analytics:4.2.8'//最好写上具体依赖的版本号 如：4.2.1
+    //
+    def camerax_version = "1.2.0"
+    api "androidx.camera:camera-core:${camerax_version}"
+    api "androidx.camera:camera-camera2:${camerax_version}"
+    api "androidx.camera:camera-lifecycle:${camerax_version}"
+    api "androidx.camera:camera-view:${camerax_version}"
 //    //
 //    api librarys.rxJava2
 //    api librarys.rxandroid2
