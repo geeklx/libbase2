@@ -73,7 +73,7 @@ public class AndroidApplication extends Application {
 //        LocalManageUtil.onConfigurationChanged(this);
     }
 
-    private void configWebView() {
+    protected void configWebView() {
         // 修復WebView的多進程加載的bug
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             String processName = getProcessName();

@@ -62,6 +62,8 @@ dependencies {
     api "androidx.camera:camera-camera2:${camerax_version}"
     api "androidx.camera:camera-lifecycle:${camerax_version}"
     api "androidx.camera:camera-view:${camerax_version}"
+    // https://github.com/gyf-dev/ImmersionBar
+    api 'com.geyifeng.immersionbar:immersionbar:3.2.2'
 //    //
 //    api librarys.rxJava2
 //    api librarys.rxandroid2
