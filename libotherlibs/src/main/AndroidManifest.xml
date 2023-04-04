@@ -35,8 +35,8 @@
     <!-- 短信验证登陆功能需要添加次权限来自动填充验证码，用不到可以去掉 -->
     <!--    <uses-permission android:name="android.permission.READ_SMS" />-->
     <!--    鸿蒙不支持bufen权限-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+<!--    <uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+<!--    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />-->
 
     <application
         android:allowBackup="true"
