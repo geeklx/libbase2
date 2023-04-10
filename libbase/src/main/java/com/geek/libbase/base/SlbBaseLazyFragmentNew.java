@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -58,10 +59,15 @@ public abstract class SlbBaseLazyFragmentNew extends SlbBaseFragment {
     public void onResume() {
         super.onResume();
         if (isFirstLoad) {
+            initView(rootView);
             initData();
             initEvent();
             isFirstLoad = false;
         }
+    }
+
+    protected void initView(View rootView) {
+
     }
 
     /**

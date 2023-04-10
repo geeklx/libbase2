@@ -6,29 +6,29 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.geek.libbase.netstate.NetState;
 import com.geek.libbase.netstate.NetconListener;
 import com.geek.libutils.SlbLoginUtil;
 import com.geek.libutils.app.BaseViewHelper;
 import com.geek.libutils.app.MyLogUtil;
-import com.just.agentweb.geek.fragment.EasyWebFragment;
 
 public abstract class SlbBaseFragment extends Fragment implements NetconListener {
 
     private long mCurrentMs = System.currentTimeMillis();
     protected NetState netState;
+    protected View rootView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(getLayoutId(), container, false);
+        rootView = inflater.inflate(getLayoutId(), container, false);
         setup(rootView, savedInstanceState);
         netState = new NetState();
         netState.setNetStateListener(this, getActivity());
@@ -139,7 +139,6 @@ public abstract class SlbBaseFragment extends Fragment implements NetconListener
             startActivityForResult(intent, requestCode);
         }
     }
-
 
 
     @Override
