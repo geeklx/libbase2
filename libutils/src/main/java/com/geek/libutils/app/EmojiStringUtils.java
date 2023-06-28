@@ -9,14 +9,16 @@ import java.util.regex.Pattern;
  * @date： 2021-01-26 11:01
  */
 public class EmojiStringUtils {
+
+    public static Pattern pattern1 = Pattern.compile("[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]");
     /**
      * @Title: 判断是否存在特殊字符串
      * @author: houjie
      * @date： 2021-01-26 11:01
      */
     public static boolean hasEmoji(String content) {
-        Pattern pattern = Pattern.compile("[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]");
-        Matcher matcher = pattern.matcher(content);
+//        Pattern pattern = Pattern.compile("[\ud83c\udc00-\ud83c\udfff]|[\ud83d\udc00-\ud83d\udfff]|[\u2600-\u27ff]");
+        Matcher matcher = pattern1.matcher(content);
         if (matcher.find()) {
             return true;
         }

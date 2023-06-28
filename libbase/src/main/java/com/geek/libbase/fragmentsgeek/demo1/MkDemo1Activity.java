@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.geek.libbase.base.SlbBaseActivity;
 import com.geek.libbase.R;
+import com.geek.libbase.base.SlbBaseActivity;
 import com.geek.libbase.base.SlbBaseFragment;
 import com.geek.libbase.base.SlbBaseLazyFragmentNew;
 import com.geek.libbase.fragmentsgeek.demo1.factorys.MkDemo1FragmentFactory;
@@ -53,6 +53,9 @@ public class MkDemo1Activity extends SlbBaseActivity implements OnClickListener 
     private void setupFragments() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         SparseArrayCompat<Class<? extends SlbBaseFragment>> array = MkDemo1FragmentFactory.get();//一个版本模式bufen
+        //
+        clear(ft, getSupportFragmentManager(), array);
+        //
         int size = array.size();
         SlbBaseFragment item;
         for (int i = 0; i < size; i++) {
@@ -60,6 +63,18 @@ public class MkDemo1Activity extends SlbBaseActivity implements OnClickListener 
             ft.replace(array.keyAt(i), item, item.getClass().getName());
         }
         ft.commitAllowingStateLoss();
+    }
+
+    public void clear(FragmentTransaction ft, FragmentManager supportFragmentManager, SparseArrayCompat<Class<? extends SlbBaseFragment>> array) {
+        for (int i = 0; i < array.size(); ++i) {
+            SlbBaseFragment item = FragmentHelper.newFragment(array.valueAt(i), null);
+//            Fragment fragment = getChildFragmentManager().findFragmentByTag(item.getClass().getName());
+            SlbBaseFragment fragment = (SlbBaseFragment) supportFragmentManager.findFragmentByTag(item.getClass().getName());
+            if (fragment != null) {
+                ft.remove(fragment);
+            }
+        }
+        ft.commitNowAllowingStateLoss();
     }
 
     @Override

@@ -191,11 +191,12 @@ public class StatusBarUtilV7 {
         }
     }
 
+    public static Pattern pattern2 =Pattern.compile("Flyme OS [4|5]", Pattern.CASE_INSENSITIVE);
     /** 判断是否Flyme4以上 */
     public static boolean isFlyme4Later() {
         return Build.FINGERPRINT.contains("Flyme_OS_4")
                 || Build.VERSION.INCREMENTAL.contains("Flyme_OS_4")
-                || Pattern.compile("Flyme OS [4|5]", Pattern.CASE_INSENSITIVE).matcher(Build.DISPLAY).find();
+                || pattern2.matcher(Build.DISPLAY).find();
     }
 
     /** 判断是否为MIUI6以上 */

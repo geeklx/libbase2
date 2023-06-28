@@ -36,7 +36,9 @@ public abstract class SwipeSimpleAdapter<T> extends RecyclerView.Adapter<SwipeBa
     @Override
     public void onBindViewHolder(@NonNull SwipeBaseViewHolder holder, int position) {
         handleClick(holder);
-        if(position<0||position>=list_bean.size())return;
+        if(position<0||position>=list_bean.size()) {
+            return;
+        }
         bindDataToView(holder, position, list_bean.get(position));
     }
 
@@ -50,7 +52,9 @@ public abstract class SwipeSimpleAdapter<T> extends RecyclerView.Adapter<SwipeBa
     public void onViewRecycled(@NonNull SwipeBaseViewHolder holder) {
         super.onViewRecycled(holder);
         int position=holder.getAbsoluteAdapterPosition();
-        if(position<0||position>=list_bean.size())return;
+        if(position<0||position>=list_bean.size()) {
+            return;
+        }
         onViewRecycled(holder, position,list_bean.get(position));
     }
 
@@ -92,7 +96,9 @@ public abstract class SwipeSimpleAdapter<T> extends RecyclerView.Adapter<SwipeBa
             @Override
             public void onClick(View v) {
                 int position = holder.getBindingAdapterPosition();
-                if(position<0||position>=list_bean.size())return;
+                if(position<0||position>=list_bean.size()) {
+                    return;
+                }
                 onItemClick(holder, position, list_bean.get(position));
             }
         });
@@ -101,7 +107,9 @@ public abstract class SwipeSimpleAdapter<T> extends RecyclerView.Adapter<SwipeBa
             @Override
             public boolean onLongClick(View v) {
                 int position = holder.getBindingAdapterPosition();
-                if(position<0||position>=list_bean.size())return false;
+                if(position<0||position>=list_bean.size()) {
+                    return false;
+                }
                 onItemLongClick(holder, position, list_bean.get(position));
                 return true;
                 //返回true，那么长按监听只执行长按监听中执行的代码，返回false，还会继续响应其他监听中的事件。

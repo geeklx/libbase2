@@ -100,7 +100,9 @@ public class CityListAdapter extends RecyclerView.Adapter<CityListAdapter.BaseVi
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                if (stateChanged) notifyItemChanged(0);
+                                if (stateChanged) {
+                                    notifyItemChanged(0);
+                                }
                             }
                         }, 1000);
                     }

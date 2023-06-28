@@ -29,7 +29,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author 贵州山野羡民（1032694760@qq.com）
@@ -44,6 +49,39 @@ public class TextAddressLoader implements AddressLoader {
 
     @Override
     public void loadJson(@NonNull final AddressReceiver receiver, @NonNull final AddressParser parser) {
+//        ThreadFactory namedThreadFactory = new ThreadFactoryBuilder()
+//                .setNameFormat("demo-pool-%d").build();
+//        //Common Thread Pool
+//        ExecutorService pool = new ThreadPoolExecutor(1, 200,
+//                0L, TimeUnit.MILLISECONDS,
+//                new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory, new ThreadPoolExecutor.AbortPolicy());
+//        pool.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                StringBuilder sb = new StringBuilder();
+//                AssetManager am = context.getAssets();
+//                try (BufferedReader bf = new BufferedReader(new InputStreamReader(am.open("city.txt")))) {
+//                    String line;
+//                    while ((line = bf.readLine()) != null) {
+//                        sb.append(line);
+//                    }
+//                } catch (IOException ignore) {
+//                }
+//                String json = sb.toString();
+//                try {
+//                    final List<ProvinceEntity> data = parser.parseData(json);
+//                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            receiver.onAddressReceived(data);
+//                        }
+//                    });
+//                } catch (Exception ignore) {
+//                }
+//            }
+//        });
+//        pool.execute(()-> System.out.println(Thread.currentThread().getName()));
+//        pool.shutdown();//gracefully shutdown
         Executors.newSingleThreadExecutor().execute(new Runnable() {
             @Override
             public void run() {
