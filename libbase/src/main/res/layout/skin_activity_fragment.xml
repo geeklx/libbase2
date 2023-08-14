@@ -15,7 +15,7 @@
             android:id="@+id/table_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/background_light"
+            android:background="@color/skin_global_text_color"
             app:layout_constraintTop_toTopOf="parent"
             app:tabBackground="@null"
             app:tabIndicator="@drawable/baseviewpage_common_bg1"
@@ -23,10 +23,10 @@
             app:tabIndicatorHeight="4dp"
             app:tabMode="scrollable"
             app:tabRippleColor="@null"
-            app:tabSelectedTextColor="@color/color_333333"
+            app:tabSelectedTextColor="@color/red"
             app:tabTextAppearance="@style/baseviewpage_common_tab"
-            app:tabTextColor="#999999"/>
-
+            app:tabTextColor="@color/blue55AAFF" />
+        <!--        android:background="@android:color/background_light"-->
     </com.google.android.material.appbar.AppBarLayout>
 
 
