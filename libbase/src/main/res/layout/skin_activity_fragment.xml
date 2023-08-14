@@ -17,7 +17,15 @@
             android:layout_height="wrap_content"
             android:background="@android:color/background_light"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabMode="scrollable" />
+            app:tabBackground="@null"
+            app:tabIndicator="@drawable/baseviewpage_common_bg1"
+            app:tabIndicatorColor="@color/blue55AAFF"
+            app:tabIndicatorHeight="4dp"
+            app:tabMode="scrollable"
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="@color/color_333333"
+            app:tabTextAppearance="@style/baseviewpage_common_tab"
+            app:tabTextColor="#999999"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
