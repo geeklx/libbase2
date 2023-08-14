@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/qing_song_shou_xie"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="动态换肤"
+        android:textColor="@color/red"
+        android:textSize="22sp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/skin_emoji"
+        android:drawableTop="@drawable/skin_emoji"
+        android:drawableRight="@drawable/skin_emoji"
+        android:drawableBottom="@drawable/skin_emoji"
+        android:textColor="@color/red"
+        android:text="drawableXXX测试" />
+
+
+</LinearLayout>

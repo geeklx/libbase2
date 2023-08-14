@@ -31,10 +31,6 @@
     <string name="app_lkaz" translatable="false">去升级</string>
 
 
-
-
-
-
     <string name="btn_name_rxmagic" translatable="false">前往 RxJava 魔法师</string>
     <string name="btn_name_eleme" translatable="false">你饿了么</string>
     <string name="btn_name_dialog" translatable="false">弹出对话框</string>
@@ -55,9 +51,6 @@
     <string name="app_wechat_send_num" translatable="false">发送(%1$d/%2$d)</string>
 
 
-
-
-
     <string name="hello_world" translatable="false">Hello world!</string>
     <string name="scan_barcode_title" translatable="false">条形码扫描</string>
     <string name="scan_qrcode_title" translatable="false">二维码扫描</string>
@@ -66,15 +59,13 @@
     <string name="scan_qrcode_hint" translatable="false">将二维码对入取景框，即可自动扫描</string>
     <string name="scan_allcode_hint" translatable="false">将二维码或条形码对入取景框，即可自动扫描</string>
     <string name="title_activity_sao_mao" translatable="false">SaoMaoActivity</string>
-    <string name="action_settings"  translatable="false">Settings</string>
+    <string name="action_settings" translatable="false">Settings</string>
 
 
-    <string name="title_activity_jump_to"  translatable="false">JumpToActivity</string>
+    <string name="title_activity_jump_to" translatable="false">JumpToActivity</string>
 
     <string name="permission_camera" translatable="false">扫码需要用到拍摄权限</string>
     <string name="permission_external_storage" translatable="false">需要用到读写权限</string>
-
-
 
 
     <string name="N_factual_scroll_view" translatable="false">factual_scroll_view</string>
@@ -94,4 +85,11 @@
     <string name="N_NCalendar_calendar_background_illegal" translatable="false">折叠日历不能使用此方法</string>
     <string name="N_NCalendar_set_calendar_background_illegal" translatable="false">折叠日历请调用setMonthCalendarBackground()和setWeekCalendarBackground()</string>
     <string name="N_calendarState_illegal" translatable="false">不允许直接设置成CalendarState.MONTH_STRETCH，可以设置成CalendarState.WEEK或者CalendarState.MONTH</string>
+
+
+    <string name="skin_global_re_skin" translatable="false">换肤(SKIN)</string>
+    <string name="skin_global_reset" translatable="false">重制(ORIGIN)</string>
+    <string name="skin_global_custom_view_text" translatable="false">换肤前</string>
+
+
 </resources>

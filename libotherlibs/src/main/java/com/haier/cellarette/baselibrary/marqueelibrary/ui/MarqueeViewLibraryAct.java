@@ -3,6 +3,7 @@ package com.haier.cellarette.baselibrary.marqueelibrary.ui;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
+import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 import com.haier.cellarette.baselibrary.R;
+import com.haier.cellarette.baselibrary.assetsfitandroid.AssetsDemoBean;
 import com.haier.cellarette.baselibrary.marqueelibrary.MarqueeFactory;
 import com.haier.cellarette.baselibrary.marqueelibrary.MarqueeView;
 import com.haier.cellarette.baselibrary.marqueelibrary.SimpleMF;
@@ -88,6 +90,7 @@ public class MarqueeViewLibraryAct extends AppCompatActivity {
             }
         });
     }
+    ComplexItemEntity mData;
 
     private void initMarqueeView4() {
         List<ComplexItemEntity> complexDatas = new ArrayList<>();
@@ -100,11 +103,24 @@ public class MarqueeViewLibraryAct extends AppCompatActivity {
         marqueeView4.setOnItemClickListener(new OnItemClickListener<RelativeLayout, ComplexItemEntity>() {
             @Override
             public void onItemClickListener(RelativeLayout mView, ComplexItemEntity mData, int mPosition) {
+
                 Toast.makeText(MarqueeViewLibraryAct.this, String.format("mPosition:%s,mData:%s,mView:%s,.", mPosition, mData, mView), Toast.LENGTH_SHORT).show();
             }
         });
         marqueeView4.setInAndOutAnim(R.anim.in_top, R.anim.out_bottom);
         marqueeView4.setMarqueeFactory(marqueeFactory);
+        marqueeView4.setMarqueeFactory(new MarqueeFactory<RelativeLayout, ComplexItemEntity>(this) {
+            private LayoutInflater inflater;
+            @Override
+            protected RelativeLayout generateMarqueeItemView(ComplexItemEntity data) {
+                inflater = LayoutInflater.from(mContext);
+                RelativeLayout mView = (RelativeLayout) inflater.inflate(R.layout.complex_view, null);
+                ((TextView) mView.findViewById(R.id.title)).setText(data.getTitle());
+                ((TextView) mView.findViewById(R.id.secondTitle)).setText(data.getSecondTitle());
+                ((TextView) mView.findViewById(R.id.time)).setText(data.getTime());
+                return mView;
+            }
+        });
         marqueeView4.startFlipping();
     }
 

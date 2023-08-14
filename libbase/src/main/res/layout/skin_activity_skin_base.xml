@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_re_skin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/skin_global_re_skin"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_reset"
+        app:layout_constraintTop_toBottomOf="@+id/tv_info" />
+
+    <Button
+        android:id="@+id/bt_reset"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/skin_global_reset"
+        app:layout_constraintLeft_toRightOf="@id/bt_re_skin"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bt_re_skin" />
+
+    <FrameLayout
+        android:id="@+id/root_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_reset" />
+</androidx.constraintlayout.widget.ConstraintLayout>

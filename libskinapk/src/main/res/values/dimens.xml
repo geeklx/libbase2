@@ -1,0 +1,3 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="skin_global_def_text_font" tools:ignore="MissingDefaultResource">38dp</dimen>
+</resources>

@@ -32,52 +32,22 @@ dependencyResolutionManagement {
 }
 rootProject.name = "libbase2"
 include ':app'
-// start aar
+include ':libskinapk'
+// start aar old
 include ':libsCenter', ':biz-libs'
-// end aar
-
-// start aar
+// end aar old
+// start aar new
 include ':libsCenterNew',
         ':libsCenterNew:alipaysdk',
         ':libsCenterNew:hooklistenerlib2',
         ':libsCenterNew:libmvpaar',
         ':libsCenterNew:libretrofitaar',
         ':libsCenterNew:opendroid2'
-// end aar
-
+// end aar new
 // commonlibs
 include ':libgeek'
 include ':libotherlibs'
 include ':libbase'
 include ':libutils'
-//include ':libocr'
-//include ':libyanzheng'
-//include ':libdkplayer'
+// commonlibs
 
-//include ':zdkplayer:dkplayer'
-//include ':zdkplayer:dkplayer-java'
-//include ':zdkplayer:dkplayer-players:ijkexo'
-//include ':zdkplayer:dkplayer-ui'
-//include ':zdkplayer:dkplayer-videocache'
-
-//include ':libagentweb20'
-//include ':libmvp'
-//include ':libretrofit'
-//include ':libglide47'
-//include ':libwebview'
-//include ':libswipebacklayout'
-//include ':librararyforfileprovdider'
-//include ':liblanguage'
-//include ':libupdateapp'
-//include ':libtablayout'
-//include ':libopendroid'
-
-//include ':libzxing'
-//include ':libxuanzeqi'
-//include ':libxpopup'
-//include ':libpictureselector'
-//include ':liblinkagerecyclerview'
-//include ':libexpandablerecyclerview'
-//include ':libcitypicker'
-//include ':libncalendar'
-//include ':liblocations'

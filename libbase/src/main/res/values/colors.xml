@@ -260,7 +260,8 @@
 
 
 
-
+    <color name="skin_global_background">#8BC34A</color>
+    <color name="skin_global_text_color">#000</color>
 
 
 

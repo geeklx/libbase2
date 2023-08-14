@@ -15,7 +15,7 @@
 
     <!-- 宽高 -->
 
-
+    <dimen name="skin_global_def_text_font">18dp</dimen>
 
 
 

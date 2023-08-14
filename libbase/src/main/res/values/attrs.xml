@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <declare-styleable name="SmartBar">
         <attr name="home_icon" format="reference" />
         <attr name="back_icon" format="reference" />
@@ -542,5 +542,21 @@
         <attr name="cpv_reachCapRound" format="boolean" />
     </declare-styleable>
 
+
+    <!--  只有app:skin_ignore = true 忽略当前属性，不处理 -->
+    <attr name="skin_ignore" format="boolean" tools:ignore="MissingDefaultResource" />
+    <declare-styleable name="SkinCustomView">
+        <!--     背景颜色   -->
+        <attr name="skin_background" format="color" />
+
+        <!--     字体大小   -->
+        <attr name="skin_font_size" format="dimension" />
+
+        <!--     字体颜色   -->
+        <attr name="skin_font_color" format="color" />
+
+        <!--     设置字体   -->
+        <attr name="skin_text" format="string" />
+    </declare-styleable>
 
 </resources>

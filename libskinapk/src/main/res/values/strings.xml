@@ -1,0 +1,4 @@
+<resources>
+    <string name="skin_hello_skin">我是皮肤包中的hello-skin</string>
+    <string name="skin_global_custom_view_text">自定义view换肤成功啦!</string>
+</resources>

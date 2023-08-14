@@ -779,5 +779,20 @@
         </activity>
 
 
+
+        <activity android:name="com.geek.libskin.skindemo.SkinMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.SkinMainActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinFragmentActivity" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinRecyclerViewActivity" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinCustomViewActivity" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinDynamicActivity" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinDialogActivity" />
+
+
     </application>
 </manifest>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/skin_background"
+        android:scaleType="center" />
+
+
+    <Button
+        android:id="@+id/bt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="fragmentClick"
+        android:text="fragment换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="recyclerClick"
+        android:text="recyclerView换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="customViewClick"
+        android:text="自定义view属性换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="dynamicClick"
+        android:text="动态换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="dialogClick"
+        android:text="Dialog换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:constraint_referenced_ids="bt1,bt2,bt3,bt4,bt5"
+        app:flow_horizontalGap="10dp"
+        app:flow_verticalGap="10dp"
+        app:flow_wrapMode="aligned"
+        tools:ignore="MissingClass,MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
