@@ -244,6 +244,17 @@ public class SkinManager extends Observable {
         }
         return ContextCompat.getDrawable(mApplication, getSystemResourceId(value, "drawable"));
     }
+    /*
+     * 作者:史大拿
+     * 创建时间: 1/4/23 9:32 AM
+     * TODO 获取Drawable
+     */
+    public Drawable getMipmap(String value) {
+        if (isSkinState()) {
+            return skinResource.getMipmap(value);
+        }
+        return ContextCompat.getDrawable(mApplication, getSystemResourceId(value, "mipmap"));
+    }
 
     /*
      * 作者:史大拿

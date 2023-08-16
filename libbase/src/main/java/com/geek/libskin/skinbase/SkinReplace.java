@@ -28,6 +28,8 @@ public enum SkinReplace {
                     // 有可能是drawable 或者 bitmap
                     if ("drawable".equals(attr.getType())) {
                         ((ImageView) view).setImageDrawable(SkinManager.getInstance().getDrawable(attr.getValue()));
+                    } else if ("mipmap".equals(attr.getType())) {
+                        ((ImageView) view).setImageDrawable(SkinManager.getInstance().getMipmap(attr.getValue()));
                     } else if ("color".equals(attr.getType())) {
                         view.setBackgroundColor(SkinManager.getInstance().getColor(attr.getValue()));
                     } else {
@@ -41,8 +43,7 @@ public enum SkinReplace {
 //                ((ImageView) view).setImageDrawable(SkinManager.getInstance().getDrawable(attr.getValue()));
             }
         }
-    },
-    ANDROID_TEXT("text") {
+    }, ANDROID_TEXT("text") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             SkinLog.i("szjANDROID_TEXT:", view);
@@ -55,8 +56,7 @@ public enum SkinReplace {
                 }
             }
         }
-    },
-    ANDROID_TEXT_COLOR("textColor") {
+    }, ANDROID_TEXT_COLOR("textColor") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             SkinLog.i("szjANDROID_TEXT_COLOR:", view + "\tattr:" + attr);
@@ -73,8 +73,7 @@ public enum SkinReplace {
                 }
             }
         }
-    },
-    ANDROID_TEXT_SIZE("textSize") {
+    }, ANDROID_TEXT_SIZE("textSize") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             SkinLog.i("szjANDROID_TEXT_SIZE:", view + "\tattr:" + attr);
@@ -88,8 +87,7 @@ public enum SkinReplace {
 
             }
         }
-    },
-    ANDROID_BACKGROUND("background") {
+    }, ANDROID_BACKGROUND("background") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             SkinLog.i("szjANDROID_BACKGROUND:", view + "\tattr:" + attr);
@@ -101,14 +99,17 @@ public enum SkinReplace {
                     /// 如果没有获取到color,那么就说明background是drawable，那么就尝试获取drawable
                     Drawable drawable = SkinManager.getInstance().getDrawable(attr.getValue());
                     view.setBackground(drawable);
+                } else if ("mipmap".equals(attr.getType())) {
+                    /// 如果没有获取到color,那么就说明background是drawable，那么就尝试获取drawable
+                    Drawable drawable = SkinManager.getInstance().getMipmap(attr.getValue());
+                    view.setBackground(drawable);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
                 SkinLog.e("换肤失败(background)" + SkinConfig.SKIN_ERROR_9 + ":name:" + view.getClass().getName() + "\tattr:" + attr);
             }
         }
-    },
-    ANDROID_FONT_FAMILY("fontFamily") {
+    }, ANDROID_FONT_FAMILY("fontFamily") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             SkinLog.i("szjANDROID_FONT_FAMILY:", view + "\tattr:" + attr);
@@ -121,61 +122,53 @@ public enum SkinReplace {
                 e.printStackTrace();
             }
         }
-    },
-    ANDROID_DRAWABLE_LEFT("drawableLeft") {
+    }, ANDROID_DRAWABLE_LEFT("drawableLeft") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             if (view instanceof TextView) {
                 drawableView((TextView) view, attr);
             }
         }
-    },
-    ANDROID_DRAWABLE_RIGHT("drawableRight") {
+    }, ANDROID_DRAWABLE_RIGHT("drawableRight") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             if (view instanceof TextView) {
                 drawableView((TextView) view, attr);
             }
         }
-    },
-    ANDROID_DRAWABLE_Top("drawableTop") {
+    }, ANDROID_DRAWABLE_Top("drawableTop") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             if (view instanceof TextView) {
                 drawableView((TextView) view, attr);
             }
         }
-    },
-    ANDROID_DRAWABLE_Bottom("drawableBottom") {
+    }, ANDROID_DRAWABLE_Bottom("drawableBottom") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             if (view instanceof TextView) {
                 drawableView((TextView) view, attr);
             }
         }
-    },
-    CUSTOM_SKIN_VIEW_BACKGROUND("skin_background") {
+    }, CUSTOM_SKIN_VIEW_BACKGROUND("skin_background") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             int color = SkinManager.getInstance().getColor(attr.getValue());
             setCustomAttr(view, "setBackground", new SkinReflectionMethod(int.class, color));
         }
-    },
-    CUSTOM_SKIN_VIEW_FONT_COLOR("skin_font_color") {
+    }, CUSTOM_SKIN_VIEW_FONT_COLOR("skin_font_color") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             int color = SkinManager.getInstance().getColor(attr.getValue());
             setCustomAttr(view, "setTextColor", new SkinReflectionMethod(int.class, color));
         }
-    },
-    CUSTOM_SKIN_VIEW_FONT_SIZE("skin_font_size") {
+    }, CUSTOM_SKIN_VIEW_FONT_SIZE("skin_font_size") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             float fontSize = SkinManager.getInstance().getFontSize(attr.getValue());
             setCustomAttr(view, "setTextSize", new SkinReflectionMethod(float.class, fontSize));
         }
-    },
-    CUSTOM_SKIN_VIEW_FONT_TEXT("skin_text") {
+    }, CUSTOM_SKIN_VIEW_FONT_TEXT("skin_text") {
         @Override
         void loadResource(View view, SkinAttr attr) {
             String text = SkinManager.getInstance().getString(attr.getValue());
@@ -187,8 +180,12 @@ public enum SkinReplace {
 
 //        SkinLog.i("szjDrawableView", attr.toString());
         String key = attr.getKey();
-        Drawable drawable = SkinManager.getInstance().getDrawable(attr.getValue());
-
+        Drawable drawable = null;
+        if (attr.getType().equals("drawable")) {
+            drawable = SkinManager.getInstance().getDrawable(attr.getValue());
+        } else if (attr.getType().equals("mipmap")) {
+            drawable = SkinManager.getInstance().getMipmap(attr.getValue());
+        }
         if (drawable == null) {
             return;
         }

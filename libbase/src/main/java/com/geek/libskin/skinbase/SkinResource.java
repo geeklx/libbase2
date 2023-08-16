@@ -42,6 +42,7 @@ public class SkinResource {
     private static final String COLOR = "color";
     private static final String STRING = "string";
     private static final String DRAWABLE = "drawable";
+    private static final String MIPMAP = "mipmap";
     private static final String DIMEN = "dimen";
     private static final String FONT = "font";
 
@@ -62,8 +63,7 @@ public class SkinResource {
     public static void init(Application application, String path, boolean isNewPath) {
         if (mInstance == null || isNewPath) {
             synchronized (SkinResource.class) {
-                if (mInstance == null || isNewPath)
-                    mInstance = new SkinResource(application, path);
+                if (mInstance == null || isNewPath) mInstance = new SkinResource(application, path);
             }
         }
     }
@@ -119,8 +119,7 @@ public class SkinResource {
 
             String addAssetPath = "addAssetPath";
 
-            @SuppressLint("DiscouragedPrivateApi")
-            Method method = AssetManager.class.getDeclaredMethod(addAssetPath, String.class);
+            @SuppressLint("DiscouragedPrivateApi") Method method = AssetManager.class.getDeclaredMethod(addAssetPath, String.class);
             method.setAccessible(true);
             /// 反射执行方法
             method.invoke(assetManager, path);
@@ -193,8 +192,7 @@ public class SkinResource {
             id = getSystemResourceId(value, COLOR);
 
             // 如果本地资源没有获取到，尝试吧这个参数当作系统资源再次获取
-            if (id == 0)
-                id = getSystemResourceId("android:" + value, COLOR);
+            if (id == 0) id = getSystemResourceId("android:" + value, COLOR);
 
 
             // 本地资源存在
@@ -275,15 +273,13 @@ public class SkinResource {
     // 和 getColor() 同理，这里注释就不加了
     public String getString(String value) {
         String cacheValue = tryCacheResourceStringId(value);
-        if (cacheValue != null)
-            return cacheValue;
+        if (cacheValue != null) return cacheValue;
 
         int id = mSkinResource.getIdentifier(value, "string", getPackName(mPath));
         if (id == 0) {
             id = getSystemResourceId(value, "string");
 
-            if (id == 0)
-                id = getSystemResourceId("android:" + value, "string");
+            if (id == 0) id = getSystemResourceId("android:" + value, "string");
 
             if (id != 0) {
                 cacheResourceId(value, STRING, new SkinResourceCacheBean(id, SkinResourceCacheBean.TYPE.SYSTEM));
@@ -316,15 +312,13 @@ public class SkinResource {
 
     public Drawable getDrawable(String value) {
         Drawable cacheDrawable = tryGetCacheResourceDrawableId(value);
-        if (cacheDrawable != null)
-            return cacheDrawable;
+        if (cacheDrawable != null) return cacheDrawable;
 
         int id = mSkinResource.getIdentifier(value, DRAWABLE, getPackName(mPath));
         if (id == 0) {
             id = getSystemResourceId(value, DRAWABLE);
 
-            if (id == 0)
-                id = getSystemResourceId("android:" + value, DRAWABLE);
+            if (id == 0) id = getSystemResourceId("android:" + value, DRAWABLE);
 
             if (id != 0) {
                 cacheResourceId(value, DRAWABLE, new SkinResourceCacheBean(id, SkinResourceCacheBean.TYPE.SYSTEM));
@@ -352,6 +346,43 @@ public class SkinResource {
         return null;
     }
 
+
+    public Drawable getMipmap(String value) {
+        Drawable cacheDrawable = tryGetCacheResourceMipmapId(value);
+        if (cacheDrawable != null) return cacheDrawable;
+
+        int id = mSkinResource.getIdentifier(value, MIPMAP, getPackName(mPath));
+        if (id == 0) {
+            id = getSystemResourceId(value, MIPMAP);
+
+            if (id == 0) id = getSystemResourceId("android:" + value, MIPMAP);
+
+            if (id != 0) {
+                cacheResourceId(value, MIPMAP, new SkinResourceCacheBean(id, SkinResourceCacheBean.TYPE.SYSTEM));
+                return ContextCompat.getDrawable(mApplication, id);
+            }
+            throwRuntimeException(MIPMAP);
+        }
+        cacheResourceId(value, MIPMAP, new SkinResourceCacheBean(id, SkinResourceCacheBean.TYPE.SKIN));
+        return mSkinResource.getDrawable(id, null);
+    }
+
+    private synchronized Drawable tryGetCacheResourceMipmapId(String value) {
+        // 先从缓存中取资源
+        SkinResourceCacheBean cacheData = getCacheResourceId(value, MIPMAP);
+        if (cacheData != null) {
+            int resourceId = cacheData.getResourceId(); // 获取资源id
+            SkinResourceCacheBean.TYPE type = cacheData.getType(); // 获取资源类型
+            if (type == SkinResourceCacheBean.TYPE.SKIN) {
+                // 加载皮肤包中的资源
+                return mSkinResource.getDrawable(resourceId, null);
+            } else if (type == SkinResourceCacheBean.TYPE.SYSTEM) {
+                return ContextCompat.getDrawable(mApplication, resourceId);
+            }
+        }
+        return null;
+    }
+
     public float getFontSize(String value) {
         float cacheValue = tryGetCacheResourceDimenId(value);
         if (cacheValue != SkinConfig.SKIN_FAIL) {
@@ -362,8 +393,7 @@ public class SkinResource {
         if (id == 0) {
             id = getSystemResourceId(value, DIMEN);
 
-            if (id == 0)
-                id = getSystemResourceId("android:" + value, DIMEN);
+            if (id == 0) id = getSystemResourceId("android:" + value, DIMEN);
 
             if (id != 0) {
                 cacheResourceId(value, DIMEN, new SkinResourceCacheBean(id, SkinResourceCacheBean.TYPE.SYSTEM));
@@ -414,8 +444,7 @@ public class SkinResource {
             id = getSystemResourceId(value, FONT);
 
             //没取到
-            if (id == 0)
-                id = getSystemResourceId("android:" + value, FONT);
+            if (id == 0) id = getSystemResourceId("android:" + value, FONT);
 
             // 取到了，当作系统缓存
             if (id != 0) {
@@ -484,8 +513,7 @@ public class SkinResource {
         for (String key : resourceIdCache.keySet()) {
             // 通过key 获取到value
             SkinResourceCacheBean value = resourceIdCache.get(key);
-            if (value == null)
-                continue;
+            if (value == null) continue;
             // 有皮肤资源 并且 如果当前activity相等
             if (value.getType() == SkinResourceCacheBean.TYPE.SKIN) {
                 // 那么就保存key
