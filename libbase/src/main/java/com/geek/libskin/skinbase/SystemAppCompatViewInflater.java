@@ -1,4 +1,4 @@
-package com.geek.libskin.skinbase;
+package com.example.lib_skin;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,6 +9,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
@@ -32,7 +35,6 @@ import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.appcompat.widget.TintContextWrapper;
 import androidx.collection.ArrayMap;
 import androidx.core.view.ViewCompat;
-import androidx.core.widget.NestedScrollView;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -153,8 +155,16 @@ public class SystemAppCompatViewInflater {
                 view = new ScrollView(context, attrs);
                 verifyNotNull(view, name);
                 break;
-            case "NestedScrollView":
-                view = new NestedScrollView(context, attrs);
+            case "FrameLayout":
+                view = new FrameLayout(context, attrs);
+                verifyNotNull(view, name);
+                break;
+            case "LinearLayout":
+                view = new LinearLayout(context, attrs);
+                verifyNotNull(view, name);
+                break;
+            case "RelativeLayout":
+                view = new RelativeLayout(context, attrs);
                 verifyNotNull(view, name);
                 break;
             default:
