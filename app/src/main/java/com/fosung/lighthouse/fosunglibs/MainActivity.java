@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(MainActivity.this, ActViewPageYewuList1.class));
 //                startActivity(new Intent(MainActivity.this, AssetsMainActivity.class));
                 //
-                SkinManager.init(BaseApp3.get());
+//                SkinManager.init(BaseApp3.get());
                 startActivity(new Intent(MainActivity.this, SkinMainActivity.class));
 //                Permission24Util.checkPermissonsRom(MainActivity.this,
 //                        "rom1",
