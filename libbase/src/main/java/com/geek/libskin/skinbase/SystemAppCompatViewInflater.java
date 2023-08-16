@@ -1,4 +1,4 @@
-package com.example.lib_skin;
+package com.geek.libskin.skinbase;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
