@@ -7,11 +7,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -19,6 +16,8 @@ import com.geek.libbase.R;
 import com.geek.libskin.skinbase.SkinLog;
 import com.geek.libskin.skinbase.SkinManager;
 import com.geek.libskin.skinbase.callback.SkinStateListener;
+import com.geek.libskin.skinbase.util.BaseApp3;
+import com.geek.libskin.skindemo.activity.SkinBaseActivity;
 import com.geek.libskin.skindemo.activity.SkinCustomViewActivity;
 import com.geek.libskin.skindemo.activity.SkinDialogActivity;
 import com.geek.libskin.skindemo.activity.SkinDynamicActivity;
@@ -30,27 +29,12 @@ import com.geek.libupdateapp.feature.Callback;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SkinMainActivity extends AppCompatActivity {
-
-    private TextView mTvInfo;
+public class SkinMainActivitybeifen extends SkinBaseActivity {
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.skin_activity_main2);
-        mTvInfo = findViewById(R.id.tv_info);
-        View reSkin = findViewById(R.id.bt_re_skin);
-        reSkin.setOnClickListener(v -> {
-            SkinManager.getInstance().loadSkin(SkinConfig.getPath(this), this);
-            setInfoState();
-            notifyChanged();
-        });
-        findViewById(R.id.bt_reset).setOnClickListener(v ->
-        {
-            SkinManager.getInstance().reset(this);
-            setInfoState();
-            notifyChanged();
-        });
+    protected void initCreate(Bundle savedInstanceState) {
+        //
+        SkinManager.init(BaseApp3.get());
         /// 申请读写权限
         initPermission(new ArrayList<String>() {{
             add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
@@ -65,30 +49,11 @@ public class SkinMainActivity extends AppCompatActivity {
         });
     }
 
-
-    public void setInfoState() {
-        setInfoState(SkinManager.getInstance().getState());
-    }
-
-    public void setInfoState(SkinManager.State state) {
-        mTvInfo.setText(String.format("当前皮肤状态:%s", state.name()));
-    }
-
     @Override
-    protected void onStart() {
-        super.onStart();
-
+    protected int layoutId() {
+        return R.layout.skin_activity_main2;
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        setInfoState();
-    }
-
-    /// 点击回调监听
-    protected void notifyChanged() {
-    }
 
     /*
      * 作者:史大拿

@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.View;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +32,7 @@ import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.appcompat.widget.TintContextWrapper;
 import androidx.collection.ArrayMap;
 import androidx.core.view.ViewCompat;
+import androidx.core.widget.NestedScrollView;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -145,6 +147,14 @@ public class SystemAppCompatViewInflater {
                 break;
             case "ToggleButton":
                 view = createToggleButton(context, attrs);
+                verifyNotNull(view, name);
+                break;
+            case "ScrollView":
+                view = new ScrollView(context, attrs);
+                verifyNotNull(view, name);
+                break;
+            case "NestedScrollView":
+                view = new NestedScrollView(context, attrs);
                 verifyNotNull(view, name);
                 break;
             default:

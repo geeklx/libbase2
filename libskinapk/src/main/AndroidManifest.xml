@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.skin.skin_pack_making">
+    package="com.geek.libskinapk">
+<!--    package="com.skin.skin_pack_making">-->
 
 <!--    <application-->
 <!--        android:allowBackup="true"-->

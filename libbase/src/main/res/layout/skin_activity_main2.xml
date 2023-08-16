@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/skin_background"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/skin_global_background"
+            android:gravity="center"
+            android:textColor="@color/skin_global_text_color"
+            android:textSize="18dp"
+            android:text="测试"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/bt_re_skin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/skin_global_re_skin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/bt_reset"
+            app:layout_constraintTop_toBottomOf="@+id/tv_info" />
+
+        <Button
+            android:id="@+id/bt_reset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/skin_global_reset"
+            app:layout_constraintLeft_toRightOf="@id/bt_re_skin"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bt_re_skin" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:scaleType="center" />-->
+
+
+    <Button
+        android:id="@+id/bt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="fragmentClick"
+        android:text="fragment换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="recyclerClick"
+        android:text="recyclerView换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="customViewClick"
+        android:text="自定义view属性换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="dynamicClick"
+        android:text="动态换肤"
+        android:textColor="@color/skin_global_text_color" />
+
+    <Button
+        android:id="@+id/bt5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/skin_global_background"
+        android:onClick="dialogClick"
+        android:text="Dialog换肤"
+        android:textColor="@color/skin_global_text_color"
+        app:skin_ignore="true" />
+
+    <!--    <androidx.constraintlayout.helper.widget.Flow-->
+    <!--        android:id="@+id/flow"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:constraint_referenced_ids="bt1,bt2,bt3,bt4,bt5"-->
+    <!--        app:flow_horizontalGap="10dp"-->
+    <!--        app:flow_verticalGap="10dp"-->
+    <!--        app:flow_wrapMode="aligned"-->
+    <!--        tools:ignore="MissingClass,MissingConstraints" />-->
+
+</LinearLayout>
