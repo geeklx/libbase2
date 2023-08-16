@@ -34,7 +34,9 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.appcompat.widget.TintContextWrapper;
 import androidx.collection.ArrayMap;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.ViewCompat;
+import androidx.core.widget.NestedScrollView;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -49,35 +51,25 @@ import java.util.Map;
  */
 public class SystemAppCompatViewInflater {
 
-    private static final Class<?>[] sConstructorSignature = new Class<?>[]{
-            Context.class, AttributeSet.class};
+    private static final Class<?>[] sConstructorSignature = new Class<?>[]{Context.class, AttributeSet.class};
     private static final int[] sOnClickAttrs = new int[]{android.R.attr.onClick};
 
-    private static final String[] sClassPrefixList = {
-            "android.widget.",
-            "android.view.",
-            "android.webkit."
-    };
+    private static final String[] sClassPrefixList = {"android.widget.", "android.view.", "android.webkit."};
 
     private static final String LOG_TAG = "AppCompatViewInflater";
 
-    private static final Map<String, Constructor<? extends View>> sConstructorMap
-            = new ArrayMap<>();
+    private static final Map<String, Constructor<? extends View>> sConstructorMap = new ArrayMap<>();
 
 
-    private static final HashMap<String, Constructor<? extends View>> mConstructorMap =
-            new HashMap<>();
+    private static final HashMap<String, Constructor<? extends View>> mConstructorMap = new HashMap<>();
 
     //记录对应VIEW的构造函数
-    private static final Class<?>[] mConstructorSignature = new Class[]{
-            Context.class, AttributeSet.class};
+    private static final Class<?>[] mConstructorSignature = new Class[]{Context.class, AttributeSet.class};
 
     private final Object[] mConstructorArgs = new Object[2];
 
     @SuppressLint("RestrictedApi")
-    final View createView(View parent, final String name, @NonNull Context context,
-                          @NonNull AttributeSet attrs, boolean inheritContext,
-                          boolean readAndroidTheme) {
+    final View createView(View parent, final String name, @NonNull Context context, @NonNull AttributeSet attrs, boolean inheritContext, boolean readAndroidTheme) {
         final Context originalContext = context;
 
         // We can emulate Lollipop's android:theme attribute propagating down the view hierarchy
@@ -167,6 +159,14 @@ public class SystemAppCompatViewInflater {
                 view = new RelativeLayout(context, attrs);
                 verifyNotNull(view, name);
                 break;
+            case "ConstraintLayout":
+                view = new ConstraintLayout(context, attrs);
+                verifyNotNull(view, name);
+                break;
+            case "NestedScrollView":
+                view = new NestedScrollView(context, attrs);
+                verifyNotNull(view, name);
+                break;
             default:
                 // The fallback that allows extending class to take over view inflation
                 // for other tags. Note that we don't check that the result is not-null.
@@ -235,14 +235,12 @@ public class SystemAppCompatViewInflater {
     }
 
     @NonNull
-    protected AppCompatAutoCompleteTextView createAutoCompleteTextView(Context context,
-                                                                       AttributeSet attrs) {
+    protected AppCompatAutoCompleteTextView createAutoCompleteTextView(Context context, AttributeSet attrs) {
         return new AppCompatAutoCompleteTextView(context, attrs);
     }
 
     @NonNull
-    protected AppCompatMultiAutoCompleteTextView createMultiAutoCompleteTextView(Context context,
-                                                                                 AttributeSet attrs) {
+    protected AppCompatMultiAutoCompleteTextView createMultiAutoCompleteTextView(Context context, AttributeSet attrs) {
         return new AppCompatMultiAutoCompleteTextView(context, attrs);
     }
 
@@ -263,8 +261,7 @@ public class SystemAppCompatViewInflater {
 
     private void verifyNotNull(View view, String name) {
         if (view == null) {
-            throw new IllegalStateException(this.getClass().getName()
-                    + " asked to inflate view for <" + name + ">, but returned null");
+            throw new IllegalStateException(this.getClass().getName() + " asked to inflate view for <" + name + ">, but returned null");
         }
     }
 
@@ -335,8 +332,7 @@ public class SystemAppCompatViewInflater {
     private void checkOnClickListener(View view, AttributeSet attrs) {
         final Context context = view.getContext();
 
-        if (!(context instanceof ContextWrapper) ||
-                (Build.VERSION.SDK_INT >= 15 && !ViewCompat.hasOnClickListeners(view))) {
+        if (!(context instanceof ContextWrapper) || (Build.VERSION.SDK_INT >= 15 && !ViewCompat.hasOnClickListeners(view))) {
             // Skip our compat functionality if: the Context isn't a ContextWrapper, or
             // the view doesn't have an OnClickListener (we can only rely on this on API 15+ so
             // always use our compat code on older devices)
@@ -351,17 +347,13 @@ public class SystemAppCompatViewInflater {
         a.recycle();
     }
 
-    private View createViewByPrefix(Context context, String name, String prefix)
-            throws ClassNotFoundException, InflateException {
+    private View createViewByPrefix(Context context, String name, String prefix) throws ClassNotFoundException, InflateException {
         Constructor<? extends View> constructor = sConstructorMap.get(name);
 
         try {
             if (constructor == null) {
                 // Class not found in the cache, see if it's real, and try to add it
-                Class<? extends View> clazz = Class.forName(
-                        prefix != null ? (prefix + name) : name,
-                        false,
-                        context.getClassLoader()).asSubclass(View.class);
+                Class<? extends View> clazz = Class.forName(prefix != null ? (prefix + name) : name, false, context.getClassLoader()).asSubclass(View.class);
 
                 constructor = clazz.getConstructor(sConstructorSignature);
                 sConstructorMap.put(name, constructor);
@@ -378,8 +370,7 @@ public class SystemAppCompatViewInflater {
     /**
      * Allows us to emulate the {@code android:theme} attribute for devices before L.
      */
-    private static Context themifyContext(Context context, AttributeSet attrs,
-                                          boolean useAndroidTheme, boolean useAppTheme) {
+    private static Context themifyContext(Context context, AttributeSet attrs, boolean useAndroidTheme, boolean useAppTheme) {
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.View, 0, 0);
         int themeId = 0;
         if (useAndroidTheme) {
@@ -391,14 +382,12 @@ public class SystemAppCompatViewInflater {
             themeId = a.getResourceId(R.styleable.View_theme, 0);
 
             if (themeId != 0) {
-                Log.i(LOG_TAG, "app:theme is now deprecated. "
-                        + "Please move to using android:theme instead.");
+                Log.i(LOG_TAG, "app:theme is now deprecated. " + "Please move to using android:theme instead.");
             }
         }
         a.recycle();
 
-        if (themeId != 0 && (!(context instanceof ContextThemeWrapper)
-                || ((ContextThemeWrapper) context).getThemeResId() != themeId)) {
+        if (themeId != 0 && (!(context instanceof ContextThemeWrapper) || ((ContextThemeWrapper) context).getThemeResId() != themeId)) {
             // If the context isn't a ContextThemeWrapper, or it is but does not have
             // the same theme as we need, wrap it in a new wrapper
             context = new ContextThemeWrapper(context, themeId);
@@ -431,11 +420,9 @@ public class SystemAppCompatViewInflater {
             try {
                 mResolvedMethod.invoke(mResolvedContext, v);
             } catch (IllegalAccessException e) {
-                throw new IllegalStateException(
-                        "Could not execute non-public method for android:onClick", e);
+                throw new IllegalStateException("Could not execute non-public method for android:onClick", e);
             } catch (InvocationTargetException e) {
-                throw new IllegalStateException(
-                        "Could not execute method for android:onClick", e);
+                throw new IllegalStateException("Could not execute method for android:onClick", e);
             }
         }
 
@@ -463,11 +450,8 @@ public class SystemAppCompatViewInflater {
             }
 
             final int id = mHostView.getId();
-            final String idText = id == View.NO_ID ? "" : " with id '"
-                    + mHostView.getContext().getResources().getResourceEntryName(id) + "'";
-            throw new IllegalStateException("Could not find method " + mMethodName
-                    + "(View) in a parent or ancestor Context for android:onClick "
-                    + "attribute defined on view " + mHostView.getClass() + idText);
+            final String idText = id == View.NO_ID ? "" : " with id '" + mHostView.getContext().getResources().getResourceEntryName(id) + "'";
+            throw new IllegalStateException("Could not find method " + mMethodName + "(View) in a parent or ancestor Context for android:onClick " + "attribute defined on view " + mHostView.getClass() + idText);
         }
     }
 }
