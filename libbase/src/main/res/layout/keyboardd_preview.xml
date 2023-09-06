@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@mipmap/keyboard_abc_nom"
     android:gravity="center"
-    android:paddingLeft="@dimen/x10"
-    android:paddingRight="@dimen/x10"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     android:textColor="@color/txt_orange"
     android:textSize="35sp" />
