@@ -64,6 +64,10 @@ dependencies {
     api "androidx.camera:camera-view:${camerax_version}"
     // https://github.com/gyf-dev/ImmersionBar
     api 'com.geyifeng.immersionbar:immersionbar:3.2.2'
+    // https://github.com/wasabeef/richeditor-android
+    api 'jp.wasabeef:richeditor-android:2.0.0'
+    // https://github.com/StomHong/CustomizeKeyboard
+    api 'com.github.StomHong:CustomizeKeyboard:1.0.2'
 //    //
 //    api librarys.rxJava2
 //    api librarys.rxandroid2

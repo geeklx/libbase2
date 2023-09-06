@@ -289,4 +289,20 @@
     <color name="N_hollowCircleColor">#B2B2B2</color>
 
 
+
+    <color name="product_list_bac">#efeef4</color>
+    <color name="keyboard_blackground">#bababa</color>
+    <color name="color_3c3c3c">#3c3c3c</color>
+    <color name="color_1a98ff">#1a98ff</color>
+    <color name="color_d8dbdf">#d8dbdf</color>
+
+    <color name="app_style">#03233b</color>
+    <color name="txt_orange">#ff6800</color>
+
+
+
+
+
+
+
 </resources>

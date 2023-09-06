@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
+import com.geek.libkeyboards.ActKeyboard1;
 import com.geek.libskin.skinbase.SkinManager;
 import com.geek.libskin.skinbase.util.BaseApp3;
 import com.geek.libskin.skindemo.SkinMainActivity;
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(new Intent(MainActivity.this, AssetsMainActivity.class));
                 //
 //                SkinManager.init(BaseApp3.get());
-                startActivity(new Intent(MainActivity.this, SkinMainActivity.class));
+//                startActivity(new Intent(MainActivity.this, SkinMainActivity.class));
+                startActivity(new Intent(MainActivity.this, ActKeyboard1.class));
 //                Permission24Util.checkPermissonsRom(MainActivity.this,
 //                        "rom1",
 //                        "安装应用需要打开后台弹窗和弹出层权限" + "\n\n" + "请点击|" + "设置|" + "更多设置|" + "系统安全|" + "权限管理|" + "-允许后台弹窗和弹出层"
