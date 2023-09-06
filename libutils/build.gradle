@@ -65,9 +65,15 @@ dependencies {
     // https://github.com/gyf-dev/ImmersionBar
     api 'com.geyifeng.immersionbar:immersionbar:3.2.2'
     // https://github.com/wasabeef/richeditor-android
-    api 'jp.wasabeef:richeditor-android:2.0.0'
+//    api 'jp.wasabeef:richeditor-android:2.0.0'
     // https://github.com/StomHong/CustomizeKeyboard
-    api 'com.github.StomHong:CustomizeKeyboard:1.0.2'
+//    api 'com.github.StomHong:CustomizeKeyboard:1.0.2'
+    //高斯模糊 https://github.com/Dimezis/BlurView
+    //
+//    ll2220.setTouch(true)
+//    ll2220.setupWith(rlcl1, this?.let { getBlurAlgorithm(it) })
+//            .setFrameClearDrawable(this?.window?.decorView?.background).setBlurRadius(4f)
+    api 'com.github.Dimezis:BlurView:version-2.0.3'
 //    //
 //    api librarys.rxJava2
 //    api librarys.rxandroid2

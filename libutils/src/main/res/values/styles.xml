@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <declare-styleable name="LxBlurView">
+        <attr format="boolean" name="istouch1"/>
+    </declare-styleable>
+
+
+</resources>
