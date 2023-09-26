@@ -18,7 +18,7 @@ import com.geek.libskin.skinbase.SkinManager;
 import com.geek.libskin.skinbase.util.BaseApp3;
 import com.geek.libskin.skindemo.SkinMainActivity;
 import com.geek.libutils.data.MmkvUtils;
-import com.pgyer.pgyersdk.PgyerSDKManager;
+//import com.pgyer.pgyersdk.PgyerSDKManager;
 
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-        new PgyerSDKManager.Init()
-                .setContext(getApplicationContext()) //设置上下问对象
-                .start();
+//        new PgyerSDKManager.Init()
+//                .setContext(getApplicationContext()) //设置上下问对象
+//                .start();
         BarUtils.setStatusBarColor(this, ContextCompat.getColor(this, com.geek.libbase.R.color.transparent));
         BarUtils.setStatusBarLightMode(this, true);
         Utils.init(Utils.getApp());// com.blankj:utilcode:1.17.3

@@ -113,6 +113,7 @@ public class MkDemo3Activity extends FragmentActivity implements OnClickListener
                 }
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 SparseArrayCompat<Class<? extends SlbBaseFragment>> array = MkDemo3Config.getFragments();
+                SparseArrayCompat<Class<? extends SlbBaseFragment>> array1 = null;
                 int size = array.size();
                 SlbBaseFragment item;
                 for (int i = 0; i < size; i++) {
