@@ -112,7 +112,8 @@
         <activity android:name=".viewpager2.ui.ConstraintLayoutBannerActivity" />
         <activity
             android:name=".viewpager2.ui.Vp2FragmentRecyclerviewActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+             />
+<!--        android:theme="@style/Theme.AppCompat.Light.NoActionBar"-->
         <activity android:name=".fragmentsgeek.demo1.MkDemo1Activity" />
         <activity android:name=".fragmentsgeek.demo2.MkDemo2Activity" />
         <!--demo2 config start-->
@@ -207,7 +208,8 @@
 
         <activity
             android:name="com.geek.libswipebacklayout.demo.SwipebacklayoutDemoActivity"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="${applicationId}.hs.act.slbapp.SwipebacklayoutDemoActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -217,7 +219,8 @@
         <activity
             android:name="com.geek.liblanguage.demo.LanguageAct"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="${applicationId}.hs.act.slbapp.LanguageAct" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -259,7 +262,8 @@
         <activity
             android:name="com.geek.libwebview.base.WebViewMainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable">
 
             <intent-filter>
                 <action android:name="${applicationId}.ad.web.page" />
@@ -273,7 +277,8 @@
         <activity
             android:name="com.geek.libwebview.base.WebViewPartActivity"
             android:exported="true"
-            android:theme="@style/Theme.Transparent">
+            android:theme="@style/Theme.Transparent"
+            tools:ignore="Instantiatable">
 
             <intent-filter>
                 <action android:name="${applicationId}.ad.web.page.part" />
@@ -283,7 +288,8 @@
         <activity
             android:name="com.geek.libwebview.base.WebViewPartActivity2"
             android:exported="true"
-            android:theme="@style/Theme.Transparent">
+            android:theme="@style/Theme.Transparent"
+            tools:ignore="Instantiatable">
 
             <intent-filter>
                 <action android:name="${applicationId}.ad.web.page.part2" />
@@ -293,7 +299,8 @@
         <activity
             android:name="com.geek.libwebview.base.AdCommPart1Activity"
             android:exported="true"
-            android:theme="@style/Theme.Transparent">
+            android:theme="@style/Theme.Transparent"
+            tools:ignore="Instantiatable">
 
             <intent-filter>
                 <action android:name="${applicationId}.ad.web.page.AdCommPart1Activity" />
@@ -440,12 +447,14 @@
             android:name="com.just.agentweb.geek.activity.RemoteWebViewlActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:process=":web" />
+            tools:ignore="Instantiatable" />
+<!--        android:process=":web"-->
 
         <service
             android:name="com.just.agentweb.geek.service.WebService"
             android:exported="true"
-            android:process=":web" />
+             />
+<!--        android:process=":web"-->
 
         <activity
             android:name="com.just.agentweb.geek.activity.CommonActivity"
@@ -457,7 +466,8 @@
             android:name="com.just.agentweb.geek.activity.EasyWebActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            tools:ignore="Instantiatable" />
 
         <activity
             android:name="com.just.agentweb.geek.activity.ContainerActivity"
@@ -483,11 +493,13 @@
             android:name="com.just.agentweb.geek.provider.WebServiceProvider"
             android:authorities="${applicationId}.WebServiceProvider"
             android:exported="true"
-            android:process=":web" />
+             />
+<!--        android:process=":web"-->
 
         <activity
             android:name="com.just.agentweb.geek.activity.ExternalActivity"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="Instantiatable">
             <intent-filter>
                 <!--                <action android:name="android.intent.action.VIEW" />-->
                 <category android:name="android.intent.category.DEFAULT" />
@@ -502,7 +514,8 @@
         <activity
             android:name="com.just.agentweb.geek.activity.WebActivity"
             android:exported="true"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            tools:ignore="Instantiatable">
 
             <intent-filter>
                 <action android:name="${applicationId}.web.page3" />
@@ -515,7 +528,8 @@
             android:name="com.just.agentweb.geek.activity.JsWebActivity2"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="${applicationId}.web.page3.js2" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -527,7 +541,8 @@
             android:name="com.just.agentweb.geek.activity.JsWebActivity3"
             android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="${applicationId}.web.page3.js3" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -654,7 +669,8 @@
         <activity
             android:name="com.geek.zxinglibs3.Saoma3CommonScanActivity1"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            tools:ignore="Instantiatable">
             <intent-filter>
                 <action android:name="${applicationId}.hs.act.slbapp.Saoma3CommonScanActivity1" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -673,18 +689,21 @@
 
         <activity
             android:name="com.necer.ncalendar.activity.TestMiui9Activity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            tools:ignore="Instantiatable" />
 
         <activity
             android:name="com.necer.ncalendar.activity.TestMiui10Activity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            tools:ignore="Instantiatable" />
         <activity
             android:name="com.necer.ncalendar.TestActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
         <activity
             android:name="com.necer.ncalendar.activity.TestEmuiActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            tools:ignore="Instantiatable" />
         <activity
             android:name="com.necer.ncalendar.activity.TestWeekHoldActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
@@ -728,10 +747,12 @@
 
         <activity
             android:name="com.necer.ncalendar.activity.TestMonthActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            tools:ignore="Instantiatable" />
         <activity
             android:name="com.necer.ncalendar.activity.TestWeekActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden" />
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            tools:ignore="Instantiatable" />
         <activity
             android:name="com.necer.ncalendar.activity.TestViewPagerActivity"
             android:configChanges="orientation|screenSize|keyboardHidden" />
@@ -787,11 +808,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.geek.libskin.skindemo.activity.SkinFragmentActivity" />
-        <activity android:name="com.geek.libskin.skindemo.activity.SkinRecyclerViewActivity" />
-        <activity android:name="com.geek.libskin.skindemo.activity.SkinCustomViewActivity" />
-        <activity android:name="com.geek.libskin.skindemo.activity.SkinDynamicActivity" />
-        <activity android:name="com.geek.libskin.skindemo.activity.SkinDialogActivity" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinFragmentActivity"
+            tools:ignore="Instantiatable" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinRecyclerViewActivity"
+            tools:ignore="Instantiatable" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinCustomViewActivity"
+            tools:ignore="Instantiatable" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinDynamicActivity"
+            tools:ignore="Instantiatable" />
+        <activity android:name="com.geek.libskin.skindemo.activity.SkinDialogActivity"
+            tools:ignore="Instantiatable" />
 
 
 
