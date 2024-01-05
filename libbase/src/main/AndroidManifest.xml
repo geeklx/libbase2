@@ -447,13 +447,14 @@
             android:name="com.just.agentweb.geek.activity.RemoteWebViewlActivity"
             android:exported="true"
             android:launchMode="singleTop"
+            android:process=":web"
             tools:ignore="Instantiatable" />
 <!--        android:process=":web"-->
 
         <service
             android:name="com.just.agentweb.geek.service.WebService"
             android:exported="true"
-             />
+            android:process=":web"/>
 <!--        android:process=":web"-->
 
         <activity
@@ -493,7 +494,7 @@
             android:name="com.just.agentweb.geek.provider.WebServiceProvider"
             android:authorities="${applicationId}.WebServiceProvider"
             android:exported="true"
-             />
+            android:process=":web"/>
 <!--        android:process=":web"-->
 
         <activity
