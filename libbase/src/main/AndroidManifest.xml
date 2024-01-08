@@ -60,10 +60,30 @@
     </queries>
     <!--适配Android R包可见性 结束-->
 
+<!--    数据共享-->
+<!--    <permission-->
+<!--        android:name="hs.permission.user.info"-->
+<!--        android:label="获取您的用户信息"-->
+<!--        android:protectionLevel="normal" />-->
+
+
+
     <application
         android:allowBackup="true"
         android:supportsRtl="true">
+
         <!--        android:label="@string/app_namelibbase"-->
+
+<!--        数据共享-->
+<!--        <provider-->
+<!--            android:name="com.geek.libusers.UserProvider"-->
+<!--            android:authorities="com.geek.user"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true"-->
+<!--            android:permission="hs.permission.user.info" />-->
+
+
+
         <provider
             android:name="com.geek.libfileprovdider.LibFileProvider"
             android:authorities="${applicationId}.fileprovider"
