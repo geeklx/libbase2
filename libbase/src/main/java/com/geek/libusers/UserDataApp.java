@@ -45,7 +45,7 @@ public class UserDataApp {
         UserUtils.get().setup(BaseApp.get(), isdebug, null);
     }
 
-    private void set_data2(Boolean isdebug) {
+    public void set_data2(Boolean isdebug) {
 //        UserData.get().registerListener(mSpListener);
         UserUtils.get().setup(BaseApp.get(), isdebug, new OnChangeListener() {
             @Override
@@ -125,6 +125,7 @@ public class UserDataApp {
         DataProvider.setUser_postgraduateRecordKey((String) sp.get(UserData.query11, ""));
         DataProvider.setUser_ipStr((String) sp.get(UserData.query12, ""));
         // old  LoginResponse
+        set_yewu_data(sp);
         //3
 //        if (TextUtils.isEmpty(DataProvider.user_token)) {
 //            SpUtil.isLogin = false
@@ -158,6 +159,12 @@ public class UserDataApp {
 
 
     }
+
+
+    public void set_yewu_data(UserSpUtils sp) {
+
+    }
+
 
 
 }
