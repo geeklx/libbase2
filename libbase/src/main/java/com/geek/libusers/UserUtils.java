@@ -145,11 +145,12 @@ public class UserUtils {
     private static UserUtils sInstance;
 
     private boolean debugMode = false;
+    private String uri_name = AppUtils.getAppPackageName();
     private Context mContext;
 
     private ArrayMap<String, String> mResults = new ArrayMap<>(12);
 
-    private Uri URI = Uri.parse("content://" + AppUtils.getAppPackageName() + UserProvider.AUTHORITY + "/all");
+    private Uri URI = null;
 
     private Runnable mLastRunnable;
 
@@ -178,8 +179,8 @@ public class UserUtils {
      *                所有的用户信息都返回字符串空(<b>NOT null</b>)，
      *                loginToDo()方法的Runnable都会执行。true debug模式
      */
-    public void setup(Context ctx, boolean isDebug) {
-        setup(ctx, isDebug, null);
+    public void setup(Context ctx, boolean isDebug, String uri_name1) {
+        setup(ctx, isDebug, uri_name1, null);
     }
 
     /**
@@ -191,8 +192,10 @@ public class UserUtils {
      *                loginToDo()方法的Runnable都会执行。true debug模式
      * @param li      数据监听
      */
-    public void setup(Context ctx, boolean isDebug, OnChangeListener li) {
+    public void setup(Context ctx, boolean isDebug, String uri_name1, OnChangeListener li) {
         debugMode = isDebug;
+        uri_name = uri_name1;
+        URI = Uri.parse("content://" + uri_name + UserProvider.AUTHORITY + "/all");
         mContext = ctx.getApplicationContext();
         registerOnChangeListener(li);
 

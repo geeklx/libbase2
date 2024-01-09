@@ -7,6 +7,108 @@ import android.content.Context;
 
 import com.geek.libutils.app.BaseApp;
 
+//login:登录
+//    mi:
+//    <permission
+//            android:name="hs.permission.user.login"
+//                    android:label="@string/login_permission_label"
+//                    android:protectionLevel="normal" />
+//    <permission
+//            android:name="hs.permission.user.token"
+//                    android:label="@string/token_permission_label"
+//                    android:protectionLevel="normal" />
+//    <permission
+//            android:name="hs.permission.user.info"
+//                    android:label="@string/info_permission_label"
+//                    android:protectionLevel="normal" />
+//    <provider
+//                android:name="com.geek.libusers.UserProvider"
+//                        android:authorities="${applicationId}.libusers"
+//                        android:enabled="true"
+//                        android:exported="true"
+//                        android:permission="hs.permission.user.info" />
+//    <activity
+//                android:name="com.example.appxhlogin.login.LoginActivity"
+//                        android:configChanges="orientation|keyboardHidden|navigation|screenSize|layoutDirection|smallestScreenSize|screenLayout|mnc|uiMode|fontScale|locale|mcc|keyboard"
+//                        android:exported="false"
+//                        android:label="登录"
+//                        android:launchMode="singleTask"
+//                        android:permission="hs.permission.user.login"
+//                        android:screenOrientation="portrait">
+//
+//
+//    mainxml:
+//    <permission
+//            android:name="hs.permission.user.login"
+//                    android:label="@string/login_permission_label"
+//                    android:protectionLevel="normal" />
+//    <permission
+//            android:name="hs.permission.user.token"
+//                    android:label="@string/token_permission_label"
+//                    android:protectionLevel="normal" />
+//    <permission
+//            android:name="hs.permission.user.info"
+//                    android:label="@string/info_permission_label"
+//                    android:protectionLevel="normal" />
+//
+//    <provider
+//                android:name="com.geek.libusers.UserProvider"
+//                        android:authorities="${applicationId}.libusers"
+//                        android:enabled="true"
+//                        android:exported="true"
+//                        android:permission="hs.permission.user.info" />
+//    <activity
+//                android:name="com.example.appxhlogin.login.LoginActivity"
+//                        android:configChanges="orientation|keyboardHidden|navigation|screenSize|layoutDirection|smallestScreenSize|screenLayout|mnc|uiMode|fontScale|locale|mcc|keyboard"
+//                        android:exported="false"
+//                        android:label="登录"
+//                        android:launchMode="singleTask"
+//                        android:permission="hs.permission.user.login"
+//                        android:screenOrientation="portrait">
+//
+//    mi->application:
+//                        // 跨进程数据同步
+//                        UserDataApp.get().set_data(false, AppUtils.getAppPackageName())
+//
+//
+//
+//
+//业务1：我的：
+//mi:
+//    <permission android:name="hs.permission.user.info" />
+//    <permission android:name="hs.permission.user.login" />
+//    <permission android:name="hs.permission.user.token" />
+//
+//    <uses-permission android:name="hs.permission.user.info" />
+//    <uses-permission android:name="hs.permission.user.login" />
+//    <uses-permission android:name="hs.permission.user.token" />
+//
+//
+//mainxml:
+//    无
+//
+//
+//mi->applcation:
+//        UserDataApp.get().set_data2(true, "com.example.appxhlogin")
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//宿主app:
+//        //
+//        UserDataApp.get()
+//        .set_data2(!BuildConfig.IS_USER_APK_INSTALLED, AppUtils.getAppPackageName())
+
+
+
+
+
 public class UserDataApp {
 
     private static final Object lock = new Object();
@@ -32,7 +134,7 @@ public class UserDataApp {
     }
 
 
-    public void set_data(boolean isdebug) {
+    public void set_data(boolean isdebug,String uri_name1) {
         UserData.get().registerListener(new UserSpUtils.OnSpChangeListener() {
             @Override
             public void onChange() {
@@ -42,12 +144,12 @@ public class UserDataApp {
             }
         });
         fillDataProvider(UserData.get());
-        UserUtils.get().setup(BaseApp.get(), isdebug, null);
+        UserUtils.get().setup(BaseApp.get(), isdebug, uri_name1,null);
     }
 
-    public void set_data2(Boolean isdebug) {
+    public void set_data2(Boolean isdebug,String uri_name1) {
 //        UserData.get().registerListener(mSpListener);
-        UserUtils.get().setup(BaseApp.get(), isdebug, new OnChangeListener() {
+        UserUtils.get().setup(BaseApp.get(), isdebug,uri_name1, new OnChangeListener() {
             @Override
             public void onChange() {
                 fillDataProvider();
