@@ -12,6 +12,8 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.blankj.utilcode.util.AppUtils;
+
 // 数据共享bufen SpUtil.user    SpUtil.userInfo     SpUtil.isLogin
 //            UserSpUtils.SpExt(UserData.get())
 //                    .add("kotlin_user",SpUtil.user)
@@ -21,7 +23,7 @@ import androidx.annotation.Nullable;
 //                    .apply()
 public class UserProvider extends ContentProvider implements UserSpUtils.OnSpChangeListener {
 
-    public static final String AUTHORITY = "com.geek.user";
+    public static final String AUTHORITY = ".libusers";
 
     private static final int QUERY_ALL = 1;
     private static final int INSERT_ALL = 2;
@@ -31,7 +33,7 @@ public class UserProvider extends ContentProvider implements UserSpUtils.OnSpCha
     static {
         URI_MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
 
-        URI_MATCHER.addURI(AUTHORITY, "all", QUERY_ALL);
+        URI_MATCHER.addURI(AppUtils.getAppPackageName() + AUTHORITY, "all", QUERY_ALL);
     }
 
     @Override
@@ -101,7 +103,7 @@ public class UserProvider extends ContentProvider implements UserSpUtils.OnSpCha
 
         ContentResolver resolver = ctx.getContentResolver();
         if (resolver != null) {
-            resolver.notifyChange(Uri.parse("content://" + AUTHORITY + "/all"), null);
+            resolver.notifyChange(Uri.parse("content://" + AppUtils.getAppPackageName() + AUTHORITY + "/all"), null);
         }
     }
 

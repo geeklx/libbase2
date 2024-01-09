@@ -15,6 +15,8 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 
+import com.blankj.utilcode.util.AppUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -147,7 +149,7 @@ public class UserUtils {
 
     private ArrayMap<String, String> mResults = new ArrayMap<>(12);
 
-    private Uri URI = Uri.parse("content://" + UserProvider.AUTHORITY + "/all");
+    private Uri URI = Uri.parse("content://" + AppUtils.getAppPackageName() + UserProvider.AUTHORITY + "/all");
 
     private Runnable mLastRunnable;
 
@@ -387,8 +389,6 @@ public class UserUtils {
             cursor.close();
         }
     }
-
-    private DataProvider dataProvider;
 
     private String getString(String key) {
         if (!debugMode && mResults.isEmpty()) {

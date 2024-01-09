@@ -78,6 +78,7 @@
 <!--        <provider-->
 <!--            android:name="com.geek.libusers.UserProvider"-->
 <!--            android:authorities="com.geek.user"-->
+<!--            android:authorities="${applicationId}.libusers"-->
 <!--            android:enabled="true"-->
 <!--            android:exported="true"-->
 <!--            android:permission="hs.permission.user.info" />-->
