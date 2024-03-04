@@ -1,10 +1,11 @@
 package com.geek.tablib.tablayout;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.DashPathEffect;
+import android.graphics.CornerPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
@@ -38,9 +39,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * 滑动TabLayout,对于ViewPager的依赖性强
+ * 滑动TabLayout,对于ViewPager的依赖性强 divder 圆角
  */
-public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.OnPageChangeListener {
+public class SlidingTabLayout2 extends HorizontalScrollView implements ViewPager.OnPageChangeListener {
     private Context mContext;
     private ViewPager mViewPager;
     private ArrayList<String> mTitles;
@@ -117,15 +118,15 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     private int mHeight;
     private boolean mSnapOnTabClick;
 
-    public SlidingTabLayout(Context context) {
+    public SlidingTabLayout2(Context context) {
         this(context, null, 0);
     }
 
-    public SlidingTabLayout(Context context, AttributeSet attrs) {
+    public SlidingTabLayout2(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public SlidingTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SlidingTabLayout2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setFillViewport(true);//设置滚动视图是否可以伸缩其内容以填充视口
         setWillNotDraw(false);//重写onDraw方法,需要调用这个方法来清除flag
@@ -145,7 +146,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         } else if (height.equals(ViewGroup.LayoutParams.WRAP_CONTENT + "")) {
         } else {
             int[] systemAttrs = {android.R.attr.layout_height};
-            TypedArray a = context.obtainStyledAttributes(attrs, systemAttrs);
+            @SuppressLint("ResourceType") TypedArray a = context.obtainStyledAttributes(attrs, systemAttrs);
             mHeight = a.getDimensionPixelSize(0, ViewGroup.LayoutParams.WRAP_CONTENT);
             a.recycle();
         }
@@ -500,6 +501,12 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 //            mDividerPaint.setColor(Color.parseColor("#FFAFB3BF"));
 //            mDividerPaint.setStrokeWidth(10);
 //            mDividerPaint.setPathEffect(new DashPathEffect(new float[]{5, 5}, 0));
+            mDividerPaint.setStyle(Paint.Style.STROKE);
+            mDividerPaint.setStrokeJoin(Paint.Join.ROUND);
+            mDividerPaint.setStrokeCap(Paint.Cap.ROUND);
+            mDividerPaint.setAntiAlias(true);
+            //
+            mDividerPaint.setPathEffect(new CornerPathEffect(dp2px(1)));
             for (int i = 0; i < mTabCount - 1; i++) {
                 View tab = mTabsContainer.getChildAt(i);
                 canvas.drawLine(paddingLeft + tab.getRight(), mDividerPadding, paddingLeft + tab.getRight(), height - mDividerPadding, mDividerPaint);

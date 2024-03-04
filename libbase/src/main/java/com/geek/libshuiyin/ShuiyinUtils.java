@@ -21,6 +21,8 @@ import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.Utils;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -60,6 +62,48 @@ public class ShuiyinUtils {
 //        saveImageToGallery2(img);
 
     }
+
+    public void diaoyong1(ImageView iv_shang,ImageView iv_zhong, ImageView iv_xia, ImageView iv1, String lujing1, String filename1) {
+
+        //将剪裁后照片显示出来
+//        iv1.setImageBitmap(bitmap);
+    }
+
+    //   shuiyin2_geek    filename_geek
+    public void diaoyong2(String lujing1, String filename1) {
+        //
+        Bitmap bitmap = BitmapFactory.decodeFile(init1(lujing1,filename1));
+//        //将剪裁后照片显示出来
+//        iv1.setImageBitmap(bitmap);
+        //水印图片保存到相册(需要保存到相册的话调用这个方法)
+        saveImageToGallery2(bitmap);
+
+    }
+
+    public String init1(String lujing1, String filename1) {
+        //创建目录
+        String filepath = Utils.getApp().getExternalFilesDir(null).getPath() + File.separator + lujing1 + File.separator;
+        File file = new File(filepath);
+        if (!file.exists()) {
+            if (!file.mkdirs()) {
+                Log.i("MyPictures", "创建图片存储路径目录失败");
+                Log.i("MyPictures", "mediaStorageDir : " + file.getPath());
+            }
+        }
+        // 创建图片文件
+        String filename = filename1 + ".jpg";
+        String url = filepath + File.separator + filename;
+        File cropFile = new File(url);
+        try {
+            if (cropFile.exists()) {
+                cropFile.delete();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+
 
     // 保存到相册的方法
     public void saveImageToGallery2(Bitmap image) {
