@@ -23,6 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
@@ -342,10 +343,11 @@ public class ShuiyinUtils3 {
         int topH = topView.getHeight();
         int centerW = nestedScrollView.getWidth();
         int centerH = 0;
+        nestedScrollView.setBackgroundResource(resid);
         for (int i = 0; i < nestedScrollView.getChildCount(); i++) {
             centerH += nestedScrollView.getChildAt(i).getHeight();
 //            nestedScrollView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(nestedScrollView.getContext(), R.color.color_E6F1FF));
-            nestedScrollView.getChildAt(i).setBackgroundResource(resid);
+//            nestedScrollView.getChildAt(i).setBackgroundResource(resid);
         }
         int bottomW = bottomView.getWidth();
         int bottomH = bottomView.getHeight();
@@ -393,7 +395,124 @@ public class ShuiyinUtils3 {
 //        ToastUtils.showLong(text);
         return bitmap;
     }
+    public Bitmap mergeBitmapTopBottomByScrollView2(int colorid, View topView,
+                                                    NestedScrollView nestedScrollView, int resid, View bottomView) {
+        //
+        int topW = topView.getWidth();
+        int topH = topView.getHeight();
+        int centerW = nestedScrollView.getWidth();
+        int centerH = 0;
+        nestedScrollView.setBackgroundResource(resid);
+        for (int i = 0; i < nestedScrollView.getChildCount(); i++) {
+            centerH += nestedScrollView.getChildAt(i).getHeight();
+//            nestedScrollView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(nestedScrollView.getContext(), R.color.color_E6F1FF));
+//            nestedScrollView.getChildAt(i).setBackgroundResource(resid);
+        }
+        int bottomW = bottomView.getWidth();
+        int bottomH = bottomView.getHeight();
+        // 上
+        Bitmap topBitmap = Bitmap.createBitmap(topW, topH, Bitmap.Config.RGB_565);
+        Canvas topCanvas = new Canvas(topBitmap);
+//        topCanvas.drawColor(Color.WHITE);
+        topCanvas.drawColor(ContextCompat.getColor(mContext, colorid));
+//        topView.layout(0, 0, topW, topH);
+        topView.draw(topCanvas);
+        // 中
+        Bitmap centerBitmap = Bitmap.createBitmap(centerW, centerH, Bitmap.Config.RGB_565);
+        Canvas centerCanvas = new Canvas(centerBitmap);
+        centerCanvas.drawColor(ContextCompat.getColor(mContext, colorid));
+//        nestedScrollView.layout(0, 0, centerW, centerH);
+        nestedScrollView.draw(centerCanvas);
+        // 下
+        Bitmap bottomBitmap = Bitmap.createBitmap(bottomW, bottomH, Bitmap.Config.RGB_565);
+        Canvas bottomCanvas = new Canvas(bottomBitmap);
+        /** 如果不设置canvas画布为白色，则生成透明 */
+        bottomCanvas.drawColor(ContextCompat.getColor(mContext, colorid));
+//        bottomView.layout(0, 0, bottomW, bottomH);
+        bottomView.draw(bottomCanvas);
+        //
+        Bitmap bitmap = Bitmap.createBitmap(topW, topH + centerH + bottomH, Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(bitmap);
+        //
+        Rect topRect = new Rect(0, 0, topW, topH);
+        Rect centerRect = new Rect(0, 0, centerW, centerH);
+        Rect bottomRect = new Rect(0, 0, bottomW, bottomH);
 
+        Rect bottomDst1 = new Rect(0, 0, topW, topH);
+        Rect bottomDst2 = new Rect(0, topH, bottomW, topH + centerH);
+        Rect bottomDst3 = new Rect(0, topH + centerH, bottomW, topH + centerH + bottomH);
+        //
+        canvas.drawBitmap(topBitmap, topRect, bottomDst1, null);
+        canvas.drawBitmap(centerBitmap, centerRect, bottomDst2, null);
+        canvas.drawBitmap(bottomBitmap, bottomRect, bottomDst3, null);
+        topBitmap.recycle();
+        centerBitmap.recycle();
+        bottomBitmap.recycle();
+        topBitmap = null;
+        centerBitmap = null;
+        bottomBitmap = null;
+//        ToastUtils.showLong(text);
+        return bitmap;
+    }
+    public Bitmap mergeBitmapTopBottomByScrollView2(int colorid, View topView,
+                                                    ScrollView nestedScrollView, int resid, View bottomView) {
+        //
+        int topW = topView.getWidth();
+        int topH = topView.getHeight();
+        int centerW = nestedScrollView.getWidth();
+        int centerH = 0;
+        nestedScrollView.setBackgroundResource(resid);
+        for (int i = 0; i < nestedScrollView.getChildCount(); i++) {
+            centerH += nestedScrollView.getChildAt(i).getHeight();
+//            nestedScrollView.getChildAt(i).setBackgroundColor(ContextCompat.getColor(nestedScrollView.getContext(), R.color.color_E6F1FF));
+//            nestedScrollView.getChildAt(i).setBackgroundResource(resid);
+        }
+        int bottomW = bottomView.getWidth();
+        int bottomH = bottomView.getHeight();
+        // 上
+        Bitmap topBitmap = Bitmap.createBitmap(topW, topH, Bitmap.Config.RGB_565);
+        Canvas topCanvas = new Canvas(topBitmap);
+//        topCanvas.drawColor(Color.WHITE);
+        topCanvas.drawColor(ContextCompat.getColor(mContext, colorid));
+//        topView.layout(0, 0, topW, topH);
+        topView.draw(topCanvas);
+        // 中
+        Bitmap centerBitmap = Bitmap.createBitmap(centerW, centerH, Bitmap.Config.RGB_565);
+        Canvas centerCanvas = new Canvas(centerBitmap);
+        centerCanvas.drawColor(ContextCompat.getColor(mContext, colorid));
+//        nestedScrollView.layout(0, 0, centerW, centerH);
+        nestedScrollView.draw(centerCanvas);
+        // 下
+        Bitmap bottomBitmap = Bitmap.createBitmap(bottomW, bottomH, Bitmap.Config.RGB_565);
+        Canvas bottomCanvas = new Canvas(bottomBitmap);
+        /** 如果不设置canvas画布为白色，则生成透明 */
+        bottomCanvas.drawColor(ContextCompat.getColor(mContext, colorid));
+//        bottomView.layout(0, 0, bottomW, bottomH);
+        bottomView.draw(bottomCanvas);
+        //
+        Bitmap bitmap = Bitmap.createBitmap(topW, topH + centerH + bottomH, Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(bitmap);
+        //
+        Rect topRect = new Rect(0, 0, topW, topH);
+        Rect centerRect = new Rect(0, 0, centerW, centerH);
+        Rect bottomRect = new Rect(0, 0, bottomW, bottomH);
+
+        Rect bottomDst1 = new Rect(0, 0, topW, topH);
+        Rect bottomDst2 = new Rect(0, topH, bottomW, topH + centerH);
+        Rect bottomDst3 = new Rect(0, topH + centerH, bottomW, topH + centerH + bottomH);
+        //
+        canvas.drawBitmap(topBitmap, topRect, bottomDst1, null);
+        canvas.drawBitmap(centerBitmap, centerRect, bottomDst2, null);
+        canvas.drawBitmap(bottomBitmap, bottomRect, bottomDst3, null);
+        topBitmap.recycle();
+        centerBitmap.recycle();
+        bottomBitmap.recycle();
+        topBitmap = null;
+        centerBitmap = null;
+        bottomBitmap = null;
+//        ToastUtils.showLong(text);
+        return bitmap;
+    }
 
     // 保存到相册的方法
     public void saveImageToGallery2(Bitmap image) {

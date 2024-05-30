@@ -73,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
-                        android:text="测试测试测试测尺寸惆测试测试测试测尺寸惆怅长岑长擦擦擦测试测试测试测尺寸惆怅长岑长擦擦擦测试测试测试测尺寸惆怅长岑长擦擦擦怅长岑长擦擦擦"
+                        android:text="@string/zly_tips"
                         android:textColor="@color/blue" />
 
                     <ImageView

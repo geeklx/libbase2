@@ -472,6 +472,44 @@
     </declare-styleable>
 
 
+    <declare-styleable name="CircleTextProgressbar">
+        <attr name="in_circle_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleProgressView2">
+        <attr format="color" name="progressBackgroundColor"/>
+        <attr format="color" name="progressColor"/>
+        <attr format="color" name="progressHeadColor"/>
+        <attr format="color" name="textColor"/>
+
+        <attr format="boolean" name="startupText"/>
+
+        <attr format="dimension" name="progressBackgroundWidth"/>
+        <attr format="dimension" name="progressWidth"/>
+        <attr format="dimension" name="progressHeadRadius"/>
+        <attr format="dimension" name="textSize"/>
+        <attr format="integer" name="maxProgressValue"/>
+        <attr format="integer"  name="progressValue"/>
+    </declare-styleable>
+
+
+    <declare-styleable name="RingProgressBar">
+        <attr name="ringColor" format="color" />
+        <attr name="ringProgressColor" format="color" />
+        <attr name="ringWidth" format="dimension" />
+        <attr name="textColor3" format="color" />
+        <attr name="textSize3" format="dimension" />
+        <attr name="in_circle_color3" format="color" />
+        <attr name="max" format="integer" />
+        <attr name="textIsShow" format="boolean" />
+        <attr name="progress" format="integer" />
+        <attr name="ringPadding" format="dimension" />
+        <attr name="style">
+            <enum name="STROKE" value="0" />
+            <enum name="FILL" value="1" />
+        </attr>
+    </declare-styleable>
+
     <string-array name="fragments">
         <item name="rx_magic">RxMagicSampleFragment</item>
         <item name="eleme">ElemeSampleFragment</item>
@@ -537,6 +575,8 @@
     <attr name="cpOverlayTextSize" format="dimension|reference" />
     <attr name="cpOverlayTextColor" format="color|reference" />
     <attr name="cpOverlayBackground" format="color|reference" />
+
+
 
 
 </resources>

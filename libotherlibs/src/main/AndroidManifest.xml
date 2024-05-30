@@ -79,6 +79,33 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".loading.ActCircleTextProgressbar"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ActCircleTextProgressbar1" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".loading.ActCircleTextProgressbar2"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ActCircleTextProgressbar2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".loading.ActCircleTextProgressbar3"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.hs.act.slbapp.ActCircleTextProgressbar3" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".quanxian.QuanxianActivity"
             android:exported="true"
             android:screenOrientation="portrait">

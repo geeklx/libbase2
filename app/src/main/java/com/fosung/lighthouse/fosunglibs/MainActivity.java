@@ -1,6 +1,7 @@
 package com.fosung.lighthouse.fosunglibs;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
@@ -118,48 +120,48 @@ public class MainActivity extends AppCompatActivity {
 //                    }
 //                }
                 // 水印bufen
-                ImageView iv1 = findViewById(R.id.iv1);
-                ImageView iv_shang1 = findViewById(R.id.iv_shang);
-                ImageView iv_xia1 = findViewById(R.id.iv_xia);
-                ImageView iv_zhong = findViewById(R.id.iv_zhong);
-                ImageView iv_zhong2 = findViewById(R.id.iv_zhong2);
-//                NestedScrollView sv1 = findViewById(R.id.sv1);
-                LinearLayout ll1 = findViewById(R.id.ll1);
-//                ImageView iv_shang = new ImageView(MainActivity.this);
-//                iv_shang.setImageResource(com.haier.cellarette.baselibrary.R.drawable.img03);
-//                ll1.addView(iv_shang1, 0);
-                //
-//                ImageView iv_xia = new ImageView(MainActivity.this);
-//                iv_xia.setImageResource(com.haier.cellarette.baselibrary.R.drawable.img02);
-//                ViewGroup.LayoutParams layoutParams = iv_xia.getLayoutParams();
-//                int height = layoutParams.height;
-//                iv_xia.setImageDrawable(getResources().getDrawable(com.haier.cellarette.baselibrary.R.drawable.img02)); //可用
-//                LinearLayout.LayoutParams params1 =
-//                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                iv_xia.setLayoutParams(params1);
-                // 中+下
-//                Bitmap bitmap1 = ShuiyinUtils3.getInstance(BaseApp.get()).mergeBitmapTopBottomByScrollView(sv1, iv_xia1);
-//                // 上+中下
-//                iv_zhong2.setImageBitmap(bitmap1);
-////                iv_zhong.setImageBitmap(bitmap);
-//                Bitmap bitmap2 = ShuiyinUtils3.getInstance(BaseApp.get()).mergeBitmapTopBottom(iv_zhong2, iv_zhong);
-                //
-                Bitmap bitmap3 = ShuiyinUtils3.getInstance(BaseApp.get())
-                        .mergeBitmapTopBottomByScrollView2(
-                                com.haier.cellarette.baselibrary.R.color.white,
-                                iv_shang1,
-                                ll1,
-                                com.haier.cellarette.baselibrary.R.drawable.shape_red2,
-                                iv_xia1);
+//                ImageView iv1 = findViewById(R.id.iv1);
+//                ImageView iv_shang1 = findViewById(R.id.iv_shang);
+//                ImageView iv_xia1 = findViewById(R.id.iv_xia);
+//                ImageView iv_zhong = findViewById(R.id.iv_zhong);
+//                ImageView iv_zhong2 = findViewById(R.id.iv_zhong2);
+////                NestedScrollView sv1 = findViewById(R.id.sv1);
+//                LinearLayout ll1 = findViewById(R.id.ll1);
+////                ImageView iv_shang = new ImageView(MainActivity.this);
+////                iv_shang.setImageResource(com.haier.cellarette.baselibrary.R.drawable.img03);
+////                ll1.addView(iv_shang1, 0);
 //                //
-                long timeStamp = System.currentTimeMillis();
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                String sd = sdf.format(new Date(timeStamp));
-                ShuiyinUtils3.getInstance(BaseApp.get()).saveImageToGallery1("成功保存到相册", bitmap3,
-                        "shuiyin2_geek", sd);
-//                        "shuiyin2_geek", "filename_geek");
-                ToastUtils.showLong("测试测试");
-                //
+////                ImageView iv_xia = new ImageView(MainActivity.this);
+////                iv_xia.setImageResource(com.haier.cellarette.baselibrary.R.drawable.img02);
+////                ViewGroup.LayoutParams layoutParams = iv_xia.getLayoutParams();
+////                int height = layoutParams.height;
+////                iv_xia.setImageDrawable(getResources().getDrawable(com.haier.cellarette.baselibrary.R.drawable.img02)); //可用
+////                LinearLayout.LayoutParams params1 =
+////                        new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+////                iv_xia.setLayoutParams(params1);
+//                // 中+下
+////                Bitmap bitmap1 = ShuiyinUtils3.getInstance(BaseApp.get()).mergeBitmapTopBottomByScrollView(sv1, iv_xia1);
+////                // 上+中下
+////                iv_zhong2.setImageBitmap(bitmap1);
+//////                iv_zhong.setImageBitmap(bitmap);
+////                Bitmap bitmap2 = ShuiyinUtils3.getInstance(BaseApp.get()).mergeBitmapTopBottom(iv_zhong2, iv_zhong);
+//                //
+//                Bitmap bitmap3 = ShuiyinUtils3.getInstance(BaseApp.get())
+//                        .mergeBitmapTopBottomByScrollView2(
+//                                com.haier.cellarette.baselibrary.R.color.white,
+//                                iv_shang1,
+//                                ll1,
+//                                com.haier.cellarette.baselibrary.R.drawable.shape_red2,
+//                                iv_xia1);
+////                //
+//                long timeStamp = System.currentTimeMillis();
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//                String sd = sdf.format(new Date(timeStamp));
+//                ShuiyinUtils3.getInstance(BaseApp.get()).saveImageToGallery1("成功保存到相册", bitmap3,
+//                        "shuiyin2_geek", sd);
+////                        "shuiyin2_geek", "filename_geek");
+//                ToastUtils.showLong("测试测试");
+                // ces
 //                DownloadPictureUtil1.INSTANCE.save(MainActivity.this, new File(url112), 0);
 //                DownloadPictureUtil1.INSTANCE.downloadPicture(MainActivity.this, 0, url112);
                 //
@@ -179,6 +181,8 @@ public class MainActivity extends AppCompatActivity {
 //                                });
 //                            }
 //                        });
+                //
+                startActivity(new Intent(AppUtils.getAppPackageName()+".hs.act.slbapp.ActCircleTextProgressbar3"));
 
             }
         });
