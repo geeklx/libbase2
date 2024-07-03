@@ -1,6 +1,11 @@
 # APP开发框架库11
 
+
 ### 集成方式
+
+<video width="320" height="640" controls="controls" autoplay muted > 
+  <source src="http://cdn2.cdn.haier-jiuzhidao.com/dibu1/VID_1719995486_007.mp4" type="video/mp4"> 
+</video> 
 
 ###### 1.https://github.com/GeekCodesTeam/geeklibs
 
