@@ -6,7 +6,6 @@ import android.util.Log;
 
 import com.geek.liblanguage.MultiLanguages;
 import com.geek.liblanguage.OnLanguageListener;
-import com.hjq.toast.ToastUtils;
 
 import java.util.Locale;
 
@@ -23,7 +22,7 @@ public final class LanguageAppApplication extends Application {
         super.onCreate();
 
         // 初始化 Toast 框架
-        ToastUtils.init(this);
+//        ToastUtils.init(this);
 
         // 初始化多语种框架
         MultiLanguages.init(this);

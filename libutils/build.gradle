@@ -23,6 +23,7 @@ dependencies {
     api librarys.easypermissions
     api librarys.zxing
     api librarys.XXPermissions
+    api librarys.Toaster
     //
     api librarys.glide47
     api librarys.glide47AnnProcessor

@@ -4,7 +4,6 @@
     tools:ignore="MissingLeanbackLauncher">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -46,6 +45,11 @@
 <!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
 <!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
 <!--    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />-->
+<!--    <uses-permission android:name="android.permission.READ_PHONE_STATE"    tools:node="remove" />-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"   />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"    />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"    />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"    />
     <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 

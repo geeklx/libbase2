@@ -149,7 +149,7 @@ public class HarmonyApplication2 extends Application {
     protected void others() {
         Utils.init(this);// com.blankj:utilcode:1.17.3
         // 为了横屏需求的toast
-        com.hjq.toast.ToastUtils.init(this);
+//        com.hjq.toast.ToastUtils.init(this);
         // 语言切换
         LocalManageUtil.setApplicationLanguage(this);
         handleSSLHandshake();

@@ -182,7 +182,9 @@ public class MainActivity extends AppCompatActivity {
 //                            }
 //                        });
                 //
-                startActivity(new Intent(AppUtils.getAppPackageName()+".hs.act.slbapp.ActCircleTextProgressbar3"));
+//                startActivity(new Intent(AppUtils.getAppPackageName()+".hs.act.slbapp.ActCircleTextProgressbar3"));
+                //
+                startActivity(new Intent(AppUtils.getAppPackageName()+".hs.act.slbapp.QuanxianActivity3"));
 
             }
         });

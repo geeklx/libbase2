@@ -89,8 +89,8 @@ dependencies {
     api 'io.github.lucksiege:ucrop:v3.10.6'
     // simple camerax library (Not necessary)
     api 'io.github.lucksiege:camerax:v3.10.6'
-    // https://github.com/getActivity/ToastUtils 横屏Toast
-    api 'com.github.getActivity:ToastUtils:9.2'
+//    // https://github.com/getActivity/ToastUtils 横屏Toast
+//    api 'com.github.getActivity:ToastUtils:9.2'
     // 标题栏框架：https://github.com/getActivity/TitleBar
     api 'com.github.getActivity:TitleBar:8.6'
 

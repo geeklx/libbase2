@@ -162,7 +162,7 @@ public class AndroidApplication extends Application {
     protected void others() {
         Utils.init(this);// com.blankj:utilcode:1.17.3
         // 为了横屏需求的toast
-        com.hjq.toast.ToastUtils.init(this);
+//        com.hjq.toast.ToastUtils.init(this);
         // 初始化多语种框架
         MultiLanguages.init(this);
         // 设置语种变化监听器

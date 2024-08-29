@@ -2,12 +2,14 @@ package com.haier.cellarette.baselibrary.quanxian;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +21,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.blankj.utilcode.util.ToastUtils;
 import com.haier.cellarette.baselibrary.R;
-import com.hjq.permissions.IPermissionInterceptor;
+import com.hjq.permissions.OnPermissionInterceptor;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.OnPermissionPageCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.PermissionFragment;
 import com.hjq.permissions.XXPermissions;
-import java.util.ArrayList;
+import com.hjq.toast.Toaster;
+
 import java.util.List;
 
 /**
@@ -36,7 +38,7 @@ import java.util.List;
  *    time   : 2021/01/04
  *    desc   : 权限申请拦截器
  */
-public final class PermissionInterceptor implements IPermissionInterceptor {
+public final class PermissionInterceptor implements OnPermissionInterceptor {
 
     public static final Handler HANDLER = new Handler(Looper.getMainLooper());
 
@@ -46,11 +48,26 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
     /** 权限申请说明 Popup */
     private PopupWindow mPermissionPopup;
 
+    /** 权限说明文案 */
+    @Nullable
+    private String mPermissionDescription;
+
+    public PermissionInterceptor() {
+        this(null);
+    }
+
+    public PermissionInterceptor(@Nullable String permissionDescription) {
+        mPermissionDescription = permissionDescription;
+    }
+
     @Override
     public void launchPermissionRequest(@NonNull Activity activity, @NonNull List<String> allPermissions, @Nullable OnPermissionCallback callback) {
         mRequestFlag = true;
         List<String> deniedPermissions = XXPermissions.getDenied(activity, allPermissions);
-        String message = activity.getString(R.string.common_permission_message, PermissionNameConvert.getPermissionString(activity, deniedPermissions));
+
+        if (TextUtils.isEmpty(mPermissionDescription)) {
+            mPermissionDescription = generatePermissionDescription(activity, deniedPermissions);
+        }
 
         ViewGroup decorView = (ViewGroup) activity.getWindow().getDecorView();
         int activityOrientation = activity.getResources().getConfiguration().orientation;
@@ -63,6 +80,10 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
             if (XXPermissions.isGranted(activity, permission)) {
                 continue;
             }
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
+                    TextUtils.equals(Permission.MANAGE_EXTERNAL_STORAGE, permission)) {
+                continue;
+            }
             // 如果申请的权限带有特殊权限，并且还没有授予的话
             // 就不用 PopupWindow 对话框来显示，而是用 Dialog 来显示
             showPopupWindow = false;
@@ -70,8 +91,7 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
         }
 
         if (showPopupWindow) {
-
-            PermissionFragment.launch(activity, new ArrayList<>(allPermissions), this, callback);
+            PermissionFragment.launch(activity, allPermissions, this, callback);
             // 延迟 300 毫秒是为了避免出现 PopupWindow 显示然后立马消失的情况
             // 因为框架没有办法在还没有申请权限的情况下，去判断权限是否永久拒绝了，必须要在发起权限申请之后
             // 所以只能通过延迟显示 PopupWindow 来做这件事，如果 300 毫秒内权限申请没有结束，证明本次申请的权限没有永久拒绝
@@ -83,18 +103,17 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
                         (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && activity.isDestroyed())) {
                     return;
                 }
-                showPopupWindow(activity, decorView, message);
+                showPopupWindow(activity, decorView, mPermissionDescription);
             }, 300);
-
         } else {
             // 注意：这里的 Dialog 只是示例，没有用 DialogFragment 来处理 Dialog 生命周期
             new AlertDialog.Builder(activity)
-                    .setTitle(R.string.common_permission_description)
-                    .setMessage(message)
+                    .setTitle(R.string.common_permission_description_title)
+                    .setMessage(mPermissionDescription)
                     .setCancelable(false)
                     .setPositiveButton(R.string.common_permission_granted, (dialog, which) -> {
                         dialog.dismiss();
-                        PermissionFragment.launch(activity, new ArrayList<>(allPermissions),
+                        PermissionFragment.launch(activity, allPermissions,
                                 PermissionInterceptor.this, callback);
                     })
                     .setNegativeButton(R.string.common_permission_denied, (dialog, which) -> {
@@ -128,7 +147,7 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
 
         if (doNotAskAgain) {
             if (deniedPermissions.size() == 1 && Permission.ACCESS_MEDIA_LOCATION.equals(deniedPermissions.get(0))) {
-                ToastUtils.showLong(R.string.common_permission_media_location_hint_fail);
+                Toaster.show(R.string.common_permission_media_location_hint_fail);
                 return;
             }
 
@@ -140,13 +159,15 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
 
             String deniedPermission = deniedPermissions.get(0);
 
+            String backgroundPermissionOptionLabel = getBackgroundPermissionOptionLabel(activity);
+
             if (Permission.ACCESS_BACKGROUND_LOCATION.equals(deniedPermission)) {
-                ToastUtils.showLong(R.string.common_permission_background_location_fail_hint);
+                Toaster.show(activity.getString(R.string.common_permission_background_location_fail_hint, backgroundPermissionOptionLabel));
                 return;
             }
 
             if (Permission.BODY_SENSORS_BACKGROUND.equals(deniedPermission)) {
-                ToastUtils.showLong(R.string.common_permission_background_sensors_fail_hint);
+                Toaster.show(activity.getString(R.string.common_permission_background_sensors_fail_hint, backgroundPermissionOptionLabel));
                 return;
             }
         }
@@ -159,7 +180,7 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
         } else {
             message = activity.getString(R.string.common_permission_fail_hint);
         }
-        ToastUtils.showLong(message);
+        Toaster.show(message);
     }
 
     @Override
@@ -167,6 +188,13 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
                                         boolean skipRequest, @Nullable OnPermissionCallback callback) {
         mRequestFlag = false;
         dismissPopupWindow();
+    }
+
+    /**
+     * 生成权限说明文案
+     */
+    protected String generatePermissionDescription(Context context, @NonNull List<String> permissions) {
+        return PermissionDescriptionConvert.getPermissionDescription(context, permissions);
     }
 
     private void showPopupWindow(Activity activity, ViewGroup decorView, String message) {
@@ -205,12 +233,23 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
             return;
         }
 
-        final String message;
+        String message = null;
 
         List<String> permissionNames = PermissionNameConvert.permissionsToNames(activity, deniedPermissions);
         if (!permissionNames.isEmpty()) {
-            message = activity.getString(R.string.common_permission_manual_assign_fail_hint,
+            if (deniedPermissions.size() == 1) {
+                String deniedPermission = deniedPermissions.get(0);
+
+                if (Permission.ACCESS_BACKGROUND_LOCATION.equals(deniedPermission)) {
+                    message = activity.getString(R.string.common_permission_manual_assign_fail_background_location_hint, getBackgroundPermissionOptionLabel(activity));
+                } else if (Permission.BODY_SENSORS_BACKGROUND.equals(deniedPermission)) {
+                    message = activity.getString(R.string.common_permission_manual_assign_fail_background_sensors_hint, getBackgroundPermissionOptionLabel(activity));
+                }
+            }
+            if (TextUtils.isEmpty(message)) {
+                message = activity.getString(R.string.common_permission_manual_assign_fail_hint,
                     PermissionNameConvert.listToString(activity, permissionNames));
+            }
         } else {
             message = activity.getString(R.string.common_permission_manual_fail_hint);
         }
@@ -240,5 +279,20 @@ public final class PermissionInterceptor implements IPermissionInterceptor {
                     });
                 })
                 .show();
+    }
+
+    /**
+     * 获取后台权限的《始终允许》选项的文案
+     */
+    @NonNull
+    private String getBackgroundPermissionOptionLabel(Context context) {
+        String backgroundPermissionOptionLabel = "";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            backgroundPermissionOptionLabel = String.valueOf(context.getPackageManager().getBackgroundPermissionOptionLabel());
+        }
+        if (TextUtils.isEmpty(backgroundPermissionOptionLabel)) {
+            backgroundPermissionOptionLabel = context.getString(R.string.common_permission_background_default_option_label);
+        }
+        return backgroundPermissionOptionLabel;
     }
 }
