@@ -60,6 +60,7 @@ public abstract class QiandaobaseAct1 extends AppCompatActivity implements Surfa
     protected TextClock tv2;
     protected TextView tv3;
     protected TextView tv4;
+    private String mulu;
 
     //
     private ImageView position;//返回和切换前后置摄像头

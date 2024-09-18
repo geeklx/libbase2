@@ -4,7 +4,9 @@
 package com.geek.libusers;
 
 import android.content.Context;
+import android.text.TextUtils;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.geek.libutils.app.BaseApp;
 
 //login:登录
@@ -89,7 +91,7 @@ import com.geek.libutils.app.BaseApp;
 //
 //
 //mi->applcation:
-//        UserDataApp.get().set_data2(true, "com.example.appxhlogin")
+//       UserDataApp.get().set_data1(true, "com.example.appxhlogin")
 //
 //
 //
@@ -104,6 +106,27 @@ import com.geek.libutils.app.BaseApp;
 //        //
 //        UserDataApp.get()
 //        .set_data2(!BuildConfig.IS_USER_APK_INSTALLED, AppUtils.getAppPackageName())
+
+
+//LoginActivity登录成功：
+//        // 数据共享bufen SpUtil.user    SpUtil.userInfo     SpUtil.isLogin
+//        UserSpUtils.SpExt(UserData.get())
+//        //
+//        .add(UserData.query1, SpUtil.user.token)
+//        .add(UserData.query2, SpUtil.user.userId)
+//        .add(UserData.query3, SpUtil.user.state)
+//        //
+//        .add(UserData.query4, SpUtil.userInfo.grade)
+//        .add(UserData.query5, SpUtil.userInfo.gradename)
+//        .add(UserData.query6, SpUtil.userInfo.img)
+//        .add(UserData.query7, SpUtil.userInfo.signature)
+//        .add(UserData.query8, SpUtil.userInfo.sex)
+//        .add(UserData.query9, SpUtil.userInfo.name)
+//        .add(UserData.query10, SpUtil.userInfo.birth)
+//        .add(UserData.query11, SpUtil.userInfo.postgraduateRecordKey)
+//        //
+//        .add(UserData.query12, SpUtil.ipStr)
+//        .apply()
 
 
 
@@ -147,6 +170,17 @@ public class UserDataApp {
         UserUtils.get().setup(BaseApp.get(), isdebug, uri_name1,null);
     }
 
+    public void set_data1(Boolean isdebug, String uri_name1) {
+//        UserData.get().registerListener(mSpListener);
+        UserUtils.get().setup(BaseApp.get(), isdebug, uri_name1, new OnChangeListener() {
+            @Override
+            public void onChange() {
+                set_yewu_data();
+            }
+        });
+        set_yewu_data();
+    }
+
     public void set_data2(Boolean isdebug,String uri_name1) {
 //        UserData.get().registerListener(mSpListener);
         UserUtils.get().setup(BaseApp.get(), isdebug,uri_name1, new OnChangeListener() {
@@ -173,7 +207,7 @@ public class UserDataApp {
         DataProvider.setUser_postgraduateRecordKey(UserUtils.get().user_postgraduateRecordKey());
         DataProvider.setUser_ipStr(UserUtils.get().user_ipStr());
         // old  LoginResponse
-        set_yewu_data();
+//        set_yewu_data();
         //3
 //        if (TextUtils.isEmpty(DataProvider.user_token)) {
 //            SpUtil.isLogin = false;
@@ -208,7 +242,50 @@ public class UserDataApp {
     }
 
     public void set_yewu_data() {
-
+        // new
+        DataProvider.setUser_token(UserUtils.get().user_token());
+        DataProvider.setUser_userId(UserUtils.get().user_userId());
+        DataProvider.setUser_state(UserUtils.get().user_state());
+        DataProvider.setUser_grade(UserUtils.get().user_grade());
+        DataProvider.setUser_gradename(UserUtils.get().user_gradename());
+        DataProvider.setUser_img(UserUtils.get().user_img());
+        DataProvider.setUser_signature(UserUtils.get().user_signature());
+        DataProvider.setUser_sex(UserUtils.get().user_sex());
+        DataProvider.setUser_name(UserUtils.get().user_name());
+        DataProvider.setUser_birth(UserUtils.get().user_birth());
+        DataProvider.setUser_postgraduateRecordKey(UserUtils.get().user_postgraduateRecordKey());
+        DataProvider.setUser_ipStr(UserUtils.get().user_ipStr());
+        // old  LoginResponse
+        //3 放开下面的业务 才有数据
+//        if (TextUtils.isEmpty(DataProvider.user_token)) {
+//            SpUtil.INSTANCE.setLogin(false);
+//        } else {
+//            SpUtil.INSTANCE.setLogin(true);
+//            LoginResponse loginMyApp = new LoginResponse();
+//            loginMyApp.setUserId(DataProvider.getUser_userId());
+//            loginMyApp.setToken(DataProvider.getUser_token());
+//            loginMyApp.setState(DataProvider.getUser_state());
+//            SpUtil.INSTANCE.setUser(loginMyApp);
+//            //1
+//            if (SpUtil.INSTANCE.getUser().getState().equals("isNew")) {
+//                SPUtils.getInstance().put("新用户", "1");// 1新
+//            } else {
+//                SPUtils.getInstance().put("新用户", "");// 1新
+//            }
+//            //2
+//            UserInfo userInfo = new UserInfo();
+//            userInfo.setGrade(DataProvider.getUser_grade());
+//            userInfo.setGradename(DataProvider.getUser_gradename());
+//            userInfo.setImg(DataProvider.getUser_img());
+//            userInfo.setSignature(DataProvider.getUser_signature());
+//            userInfo.setSex(DataProvider.getUser_sex());
+//            userInfo.setName(DataProvider.getUser_name());
+//            userInfo.setBirth(DataProvider.getUser_birth());
+//            userInfo.setPostgraduateRecordKey(DataProvider.getUser_postgraduateRecordKey());
+//            SpUtil.INSTANCE.setUserInfo(userInfo);
+//
+//        }
+//        SpUtil.INSTANCE.setIpStr(DataProvider.getUser_ipStr());
     }
 
 

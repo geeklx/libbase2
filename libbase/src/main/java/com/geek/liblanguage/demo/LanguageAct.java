@@ -9,11 +9,12 @@ import android.webkit.WebViewClient;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.geek.libbase.R;
 import com.geek.liblanguage.MultiLanguages;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
-import com.hjq.toast.ToastUtils;
+
 import java.util.Locale;
 
 public final class LanguageAct extends LanguageBaseActivity
@@ -133,7 +134,7 @@ public final class LanguageAct extends LanguageBaseActivity
 
     @Override
     public void onTitleClick(View view) {
-        ToastUtils.show(R.string.app_namelibbase);
+        ToastUtils.showLong(R.string.app_namelibbase);
     }
 
     @Override
