@@ -6,20 +6,13 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.Utils;
 import com.geek.libkeyboards.ActKeyboard1;
-import com.geek.libskin.skinbase.SkinManager;
-import com.geek.libskin.skinbase.util.BaseApp3;
-import com.geek.libskin.skindemo.SkinMainActivity;
 import com.geek.libutils.data.MmkvUtils;
-//import com.pgyer.pgyersdk.PgyerSDKManager;
-
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.unit.Subunits;
