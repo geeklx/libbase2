@@ -11,15 +11,15 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
+import com.geek.libkeyboards.ActKeyboard1;
+import com.geek.libutils.data.MmkvUtils;
 import com.geek.libutils.app.BaseApp;
 import com.geek.libutils.app.MyLogUtil;
 import com.geek.libutils.data.MmkvUtils;
@@ -27,10 +27,8 @@ import com.geek.libutils.jiami.AES;
 import com.haier.cellarette.baselibrary.shuiyin.DownloadPictureUtil1;
 import com.haier.cellarette.baselibrary.shuiyin.OnDownloadListener1;
 import com.haier.cellarette.baselibrary.shuiyin.ShuiyinUtils3;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.unit.Subunits;

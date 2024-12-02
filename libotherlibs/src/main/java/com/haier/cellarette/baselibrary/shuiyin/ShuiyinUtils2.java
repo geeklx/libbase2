@@ -42,6 +42,7 @@ public class ShuiyinUtils2 {
                 instance = new ShuiyinUtils2(context);
             }
         }
+
         return instance;
     }
 
