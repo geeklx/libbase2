@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -20,7 +21,9 @@ import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
 import com.geek.libutils.app.BaseApp;
+import com.geek.libutils.app.MyLogUtil;
 import com.geek.libutils.data.MmkvUtils;
+import com.geek.libutils.jiami.AES;
 import com.haier.cellarette.baselibrary.shuiyin.DownloadPictureUtil1;
 import com.haier.cellarette.baselibrary.shuiyin.OnDownloadListener1;
 import com.haier.cellarette.baselibrary.shuiyin.ShuiyinUtils3;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv1 = findViewById(R.id.tv1);
@@ -204,5 +208,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        String url1 = "EcJkI3AzTGYtOXoYxf0xsAkIlG6HYO9ZFWkkgfpKYQmBw1v20u18cJ9jkyvoKvcL+vAn1py4L5VFfsJEUHNdTXIi9yacmc5wRl5g2uBxZuxvS4sbVAyEFp4jd67Oz91QsgUjQrTY9YsFzcnUvPgo4d0kHc+GLKyMvMqkxdcAycovgJY/JFz3xXUVLaaO7u22ZyPnm18akPgaDJMHzgXdHQNtZGibL++cndytfJ4QgfVc0rh0c4g9GC1hVRpMrnJJKQf69uIUqRjSE3BzuJBCAQ==";
+        String aaa = AES.aesDecrypt(url1);
+        MyLogUtil.e("geek_url1111",aaa);
+        super.onResume();
+    }
 }
 
