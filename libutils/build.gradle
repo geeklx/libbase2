@@ -52,7 +52,7 @@ dependencies {
     // https://github.com/airbnb/lottie-android
     api 'com.airbnb.android:lottie:4.1.0'
     //  https://github.com/li-xiaojun/XPopup
-    api 'com.github.li-xiaojun:XPopup:2.4.9'
+    api 'com.github.li-xiaojun:XPopup:2.6.0'
     api 'com.github.li-xiaojun:StateLayout:1.2.8'
     api 'com.github.li-xiaojun:EasyAdapter:1.2.5'
     // https://seed.pgyer.com/site/2Umq3b49JJ
