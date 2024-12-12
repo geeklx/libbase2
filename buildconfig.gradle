@@ -145,7 +145,7 @@ xutils                            : 'org.xutils:xutils:3.5.0',
 //---------------------------------
 mqttv3                            : 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.1.1',
 rabbitmq                          : 'com.rabbitmq:amqp-client:4.4.1',
-filedownloader                    : 'com.liulishuo.filedownloader:library:1.7.5',
+filedownloader                    : 'com.liulishuo.filedownloader:library:1.7.7',
 supmultidex                       : 'com.android.support:multidex:1.0.3',
 //-----------------bugly--热更新----渠道打包
 tinkerlib                         : 'com.tencent.tinker:tinker-android-lib:1.9.9',
