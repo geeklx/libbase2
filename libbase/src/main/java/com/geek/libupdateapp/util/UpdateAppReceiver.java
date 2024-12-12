@@ -23,6 +23,7 @@ import java.io.File;
 
 public class UpdateAppReceiver extends BroadcastReceiver {
 
+
     public void UpdateAppReceiver() {
 
     }
@@ -96,13 +97,13 @@ public class UpdateAppReceiver extends BroadcastReceiver {
                 UpdateAppUtils.mProgressDialog.dismiss();
             }
 
-                if (DownloadAppUtils.downloadUpdateApkFilePath != null) {
-                    File apkFile = new File(DownloadAppUtils.downloadUpdateApkFilePath);
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    UpdateOldFileProvider7.setIntentDataAndType(context, i, "application/vnd.android.package-archive", apkFile, true);
-                    context.startActivity(i);
-                }
+//                if (DownloadAppUtils.downloadUpdateApkFilePath != null) {
+//                    File apkFile = new File(DownloadAppUtils.downloadUpdateApkFilePath);
+//                    Intent i = new Intent(Intent.ACTION_VIEW);
+//                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    UpdateOldFileProvider7.setIntentDataAndType(context, i, "application/vnd.android.package-archive", apkFile, true);
+//                    context.startActivity(i);
+//                }
         }
     }
 }

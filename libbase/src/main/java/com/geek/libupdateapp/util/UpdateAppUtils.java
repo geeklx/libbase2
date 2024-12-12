@@ -189,26 +189,26 @@ public class UpdateAppUtils {
                         break;
 
                     case 1:  //sure
-                        if (downloadBy == DOWNLOAD_BY_APP) {
-                            if (isWifiConnected(activity)) {
-                                DownloadAppUtils.download(activity, apkPath, apkLocalPath);
-                            } else {
-                                new ConfirmDialogNew(activity, new Callback() {
-                                    @Override
-                                    public void callback(int position) {
-                                        if (position == 1) {
-                                            DownloadAppUtils.download(activity, apkPath, apkLocalPath);
-                                        } else {
-                                            if (isForce) {
-                                                activity.finish();
-                                            }
-                                        }
-                                    }
-                                }).setisForce(isForce).setContent("目前手机不是WiFi状态\n确认是否继续下载更新？").setTitle("友情提示").show();
-                            }
-                        } else if (downloadBy == DOWNLOAD_BY_BROWSER) {
-                            DownloadAppUtils.downloadForWebView(activity, apkPath);
-                        }
+//                        if (downloadBy == DOWNLOAD_BY_APP) {
+//                            if (isWifiConnected(activity)) {
+//                                DownloadAppUtils.download(activity, apkPath, apkLocalPath);
+//                            } else {
+//                                new ConfirmDialogNew(activity, new Callback() {
+//                                    @Override
+//                                    public void callback(int position) {
+//                                        if (position == 1) {
+//                                            DownloadAppUtils.download(activity, apkPath, apkLocalPath);
+//                                        } else {
+//                                            if (isForce) {
+//                                                activity.finish();
+//                                            }
+//                                        }
+//                                    }
+//                                }).setisForce(isForce).setContent("目前手机不是WiFi状态\n确认是否继续下载更新？").setTitle("友情提示").show();
+//                            }
+//                        } else if (downloadBy == DOWNLOAD_BY_BROWSER) {
+//                            DownloadAppUtils.downloadForWebView(activity, apkPath);
+//                        }
                         break;
                     default:
                         break;

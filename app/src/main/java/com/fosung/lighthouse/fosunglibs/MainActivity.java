@@ -1,34 +1,26 @@
 package com.fosung.lighthouse.fosunglibs;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.BarUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.blankj.utilcode.util.Utils;
-import com.geek.libkeyboards.ActKeyboard1;
-import com.geek.libutils.data.MmkvUtils;
 import com.geek.libutils.app.BaseApp;
 import com.geek.libutils.app.MyLogUtil;
 import com.geek.libutils.data.MmkvUtils;
 import com.geek.libutils.jiami.AES;
-import com.haier.cellarette.baselibrary.shuiyin.DownloadPictureUtil1;
-import com.haier.cellarette.baselibrary.shuiyin.OnDownloadListener1;
+//import com.haier.cellarette.baselibrary.shuiyin.DownloadPictureUtil1;
 import com.haier.cellarette.baselibrary.shuiyin.ShuiyinUtils3;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import me.jessyan.autosize.AutoSize;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.autosize.unit.Subunits;
@@ -67,23 +59,23 @@ public class MainActivity extends AppCompatActivity {
                 .setSupportSubunits(Subunits.MM);
         //
         String url111 = ShuiyinUtils3.getInstance(BaseApp.get()).init1("shuiyin2_geek", "filename_geek");
-        String url112 = DownloadPictureUtil1.INSTANCE.init1("shuiyin2_geek", "filename_geek");
-        DownloadPictureUtil1.INSTANCE.onbackclicklistener(new OnDownloadListener1() {
-            @Override
-            public void onDownloadStart(Activity activity, int position) {
-
-            }
-
-            @Override
-            public void onDownloadSuccess(Activity activity, int position) {
-
-            }
-
-            @Override
-            public void onDownloadFailed(Activity activity, int position) {
-
-            }
-        });
+//        String url112 = DownloadPictureUtil1.INSTANCE.init1("shuiyin2_geek", "filename_geek");
+//        DownloadPictureUtil1.INSTANCE.onbackclicklistener(new OnDownloadListener1() {
+//            @Override
+//            public void onDownloadStart(Activity activity, int position) {
+//
+//            }
+//
+//            @Override
+//            public void onDownloadSuccess(Activity activity, int position) {
+//
+//            }
+//
+//            @Override
+//            public void onDownloadFailed(Activity activity, int position) {
+//
+//            }
+//        });
         findViewById(R.id.tv1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -186,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                 //
 //                startActivity(new Intent(AppUtils.getAppPackageName()+".hs.act.slbapp.ActCircleTextProgressbar3"));
                 //
-                startActivity(new Intent(AppUtils.getAppPackageName()+".hs.act.slbapp.QuanxianActivity3"));
+                startActivity(new Intent(AppUtils.getAppPackageName() + ".hs.act.slbapp.QuanxianActivity3"));
 
             }
         });
@@ -210,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         String url1 = "EcJkI3AzTGYtOXoYxf0xsAkIlG6HYO9ZFWkkgfpKYQmBw1v20u18cJ9jkyvoKvcL+vAn1py4L5VFfsJEUHNdTXIi9yacmc5wRl5g2uBxZuxvS4sbVAyEFp4jd67Oz91QsgUjQrTY9YsFzcnUvPgo4d0kHc+GLKyMvMqkxdcAycovgJY/JFz3xXUVLaaO7u22ZyPnm18akPgaDJMHzgXdHQNtZGibL++cndytfJ4QgfVc0rh0c4g9GC1hVRpMrnJJKQf69uIUqRjSE3BzuJBCAQ==";
         String aaa = AES.aesDecrypt(url1);
-        MyLogUtil.e("geek_url1111",aaa);
+        MyLogUtil.e("geek_url1111", aaa);
         super.onResume();
     }
 }

@@ -857,21 +857,6 @@
         </activity>
 
 
-        <activity
-            android:name="com.lxj.xpopupdemo.XpopupMainActivity"
-            android:exported="true"
-            android:hardwareAccelerated="true"
-            android:launchMode="singleTop"
-            android:windowSoftInputMode="adjustNothing">
-            <intent-filter>
-                <action android:name="${applicationId}.hs.act.slbapp.XpopupMainActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.lxj.xpopupdemo.XpopupDemoActivity"
-            android:screenOrientation="portrait" />
-
 
         <activity
             android:name="com.zaaach.citypicker.activity.CityPickerAct"

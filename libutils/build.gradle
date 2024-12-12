@@ -53,8 +53,31 @@ dependencies {
     api 'com.airbnb.android:lottie:4.1.0'
     //  https://github.com/li-xiaojun/XPopup
     api 'com.github.li-xiaojun:XPopup:2.5.2'
+//    api 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
+//    api('com.github.li-xiaojun:XPopup:2.5.2') {
+//        exclude group: 'com.davemorrissey.labs', module: 'subsampling-scale-image-view-androidx'
+//    }
+    // https://github.com/SherlockGougou/BigImageViewPager
+//    api 'com.github.SherlockGougou:BigImageViewPager:androidx-6.2.1'
+//    api 'com.github.SherlockGougou:BigImageViewPager:androidx-7.1.0'
+//    api 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
+//    api('com.github.SherlockGougou:BigImageViewPager:androidx-7.0.5') {
+//        exclude group: 'com.davemorrissey.labs', module: 'subsampling-scale-image-view-androidx'
+//    }
     api 'com.github.li-xiaojun:StateLayout:1.2.8'
     api 'com.github.li-xiaojun:EasyAdapter:1.2.5'
+    // https://github.com/LuckSiege/PictureSelector
+//    api 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
+    api 'io.github.lucksiege:pictureselector:v3.10.6'
+//    api('io.github.lucksiege:pictureselector:v3.10.6') {
+//        exclude group: 'com.davemorrissey.labs', module: 'subsampling-scale-image-view-androidx'
+//    }
+    // image compress library (Not necessary)
+    api 'io.github.lucksiege:compress:v3.10.6'
+    // uCrop library (Not necessary)
+    api 'io.github.lucksiege:ucrop:v3.10.6'
+    // simple camerax library (Not necessary)
+    api 'io.github.lucksiege:camerax:v3.10.6'
     // https://seed.pgyer.com/site/2Umq3b49JJ
 //    api 'com.pgyer:analytics:4.2.8'//最好写上具体依赖的版本号 如：4.2.1
     //
