@@ -19,7 +19,7 @@ dependencies {
     api librarys.autosize
     api librarys.mmkv
     api librarys.viewpager2
-    api librarys.filedownloader
+//    api librarys.filedownloader
     api librarys.easypermissions
     api librarys.zxing
     api librarys.XXPermissions
