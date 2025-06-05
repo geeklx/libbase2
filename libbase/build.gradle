@@ -21,7 +21,6 @@ android {
 }
 dependencies {
     api project(':libutils')
-//    implementation 'com.github.geeklx:fosunglibs:1.4.6'
     // agentlib
     api 'us.feras.mdv:markdownview:1.1.0'
     api 'com.lcodecorex:tkrefreshlayout:1.0.7'
@@ -33,13 +32,6 @@ dependencies {
     api 'com.github.Justson:Downloader:v4.1.9-androidx'
     api 'com.github.Justson.AgentWeb:agentweb-core:v4.1.9-androidx'
     api 'com.github.Justson.AgentWeb:agentweb-filechooser:v4.1.9-androidx'
-    //3D地图so及jar
-//    api 'com.amap.api:3dmap:latest.integration'
-    api 'com.amap.api:3dmap:9.2.0'
-    //定位功能
-    api 'com.amap.api:location:6.1.0'
-    //搜索功能
-    api 'com.amap.api:search:9.2.0'
     // https://github.com/gzu-liyujiang/AndroidPicker
     api 'com.orhanobut:logger:2.2.0'
     api 'com.github.gzu-liyujiang.AndroidPicker:Common:3.1.0'
@@ -50,17 +42,10 @@ dependencies {
     api 'com.github.gzu-liyujiang.AndroidPicker:FilePicker:3.1.0'
     api 'com.github.gzu-liyujiang.AndroidPicker:CalendarPicker:3.1.0'
     api 'com.github.gzu-liyujiang.AndroidPicker:ImagePicker:3.1.0'
-    //
-    api 'com.tencent.bugly:crashreport:latest.release'
-    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-    api 'com.tencent.bugly:nativecrashreport:latest.release'
-    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     // https://github.com/Meituan-Dianping/walle
 //    api 'com.meituan.android.walle:library:1.1.7'
     // viewpager2 轮播图 https://github.com/youth5201314/banner
     api 'io.github.youth5201314:banner:2.2.2'
-    //
-    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     // 注意：分包之后不会有默认的Header和Footer需要手动添加！还是原来的三种方法！
     api 'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
     api 'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
@@ -70,18 +55,7 @@ dependencies {
     api 'io.github.scwang90:refresh-header-two-level:2.0.5'   //二级刷新头
     api 'io.github.scwang90:refresh-footer-ball:2.0.5'        //球脉冲加载
     api 'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
-//    api 'com.scwang.smart:refresh-layout-kernel:2.0.5'      //核心必须依赖
-//    api 'com.scwang.smart:refresh-header-classics:2.0.5'    //经典刷新头
-//    api 'com.scwang.smart:refresh-header-radar:2.0.3'       //雷达刷新头
-//    api 'com.scwang.smart:refresh-header-falsify:2.0.3'     //虚拟刷新头
-//    api 'com.scwang.smart:refresh-header-material:2.0.5'    //谷歌刷新头
-//    api 'com.scwang.smart:refresh-header-two-level:2.0.3'   //二级刷新头
-//    api 'com.scwang.smart:refresh-footer-ball:2.0.3'        //球脉冲加载
-//    api 'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
-//    // https://github.com/getActivity/ToastUtils 横屏Toast
-//    api 'com.github.getActivity:ToastUtils:9.2'
-    // 标题栏框架：https://github.com/getActivity/TitleBar
-    api 'com.github.getActivity:TitleBar:8.6'
+
 
 
 }
