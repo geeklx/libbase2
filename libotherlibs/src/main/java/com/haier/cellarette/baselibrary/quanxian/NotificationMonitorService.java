@@ -39,7 +39,7 @@ public final class NotificationMonitorService extends NotificationListenerServic
         String title = extras.getString(Notification.EXTRA_TITLE);
         // 获取通知消息内容
         Object msgText = extras.getCharSequence(Notification.EXTRA_TEXT);
-        Toaster.show(String.format(getString(R.string.demo_notification_listener_toast), title, msgText));
+//        Toaster.show(String.format(getString(R.string.demo_notification_listener_toast), title, msgText));
     }
 
     /**
