@@ -36,15 +36,15 @@ rootProject.name = "libbase2"
 include ':app'
 include ':libskinapk'
 // start aar old
-include ':libsCenter', ':biz-libs'
+//include ':libsCenter', ':biz-libs'
 // end aar old
 // start aar new
-include ':libsCenterNew',
-        ':libsCenterNew:alipaysdk',
-        ':libsCenterNew:hooklistenerlib2',
-        ':libsCenterNew:libmvpaar',
-        ':libsCenterNew:libretrofitaar',
-        ':libsCenterNew:opendroid2'
+//include ':libsCenterNew',
+//        ':libsCenterNew:alipaysdk',
+//        ':libsCenterNew:hooklistenerlib2',
+//        ':libsCenterNew:libmvpaar',
+//        ':libsCenterNew:libretrofitaar',
+//        ':libsCenterNew:opendroid2'
 // end aar new
 // commonlibs
 include ':libgeek'
