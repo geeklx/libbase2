@@ -808,7 +808,7 @@
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
 
-        <service android:name="com.amap.api.location.APSService" />
+<!--        <service android:name="com.amap.api.location.APSService" />-->
         <!--        <meta-data-->
         <!--            android:name="com.amap.api.v2.apikey"-->
         <!--            android:value="dfc6928ba59ca473ecae8061c6913fcb" />-->
@@ -816,14 +816,14 @@
 <!--        <meta-data-->
 <!--            android:name="com.amap.api.v2.apikey"-->
 <!--            android:value="5a17ab9cc5aa0d74e090c37f3ecd5a15" />-->
-        <activity
-            android:name="com.geek.liblocations.LocActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="${applicationId}.hs.act.slbapp.LocActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+<!--        <activity-->
+<!--            android:name="com.geek.liblocations.LocActivity"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="${applicationId}.hs.act.slbapp.LocActivity" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
 
 
 

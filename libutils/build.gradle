@@ -89,11 +89,11 @@ dependencies {
     //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
     //3D地图so及jar
 //    api 'com.amap.api:3dmap:latest.integration'
-    api 'com.amap.api:3dmap:9.2.0'
-    //定位功能
-    api 'com.amap.api:location:6.1.0'
-    //搜索功能
-    api 'com.amap.api:search:9.2.0'
+//    api 'com.amap.api:3dmap:9.2.0'
+//    //定位功能
+//    api 'com.amap.api:location:6.1.0'
+//    //搜索功能
+//    api 'com.amap.api:search:9.2.0'
     //
     api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 

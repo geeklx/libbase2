@@ -9,8 +9,7 @@
 ###### 2.https://github.com/geeklx/libbase1
 
 ###### 3.https://github.com/geeklx/libbase2
-
-How to To get a Git project into your build:
+  ·How to To get a Git project into your build:
 
 Step 1. Add the JitPack repository to your build file
 

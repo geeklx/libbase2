@@ -8,10 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.amap.api.maps.MapView
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="300dp" />
+<!--        <com.amap.api.maps.MapView-->
+<!--            android:id="@+id/map"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300dp" />-->
 
         <TextView
             android:id="@+id/tv2"

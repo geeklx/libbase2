@@ -111,7 +111,7 @@ public class BannerDemoActivity extends Activity {
 
     }
 
-    public static class BannerViewHolder implements LXViewHolder<Biaoge_listBean> {
+    public  class BannerViewHolder implements LXViewHolder<Biaoge_listBean> {
         private ImageView mImageView;
 
         @Override
