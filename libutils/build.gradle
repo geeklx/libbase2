@@ -95,7 +95,7 @@ dependencies {
 //    //搜索功能
 //    api 'com.amap.api:search:9.2.0'
     //
-    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+//    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
 
 }
